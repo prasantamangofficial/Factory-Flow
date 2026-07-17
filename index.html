@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactoryFlow</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-industry"></i>
+        <span>FactoryFlow</span>
+    </div>
+
+    <ul class="menu">
+
+        <li class="active">
+            <a href="#">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-box"></i>
+                <span>Inventory</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-gears"></i>
+                <span>Production</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Sales</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Expenses</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-users"></i>
+                <span>Workers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="logout">
+
+        <a href="#">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <!-- Navbar -->
+
+        <header class="navbar">
+
+    <div class="nav-left">
+
+        <button class="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                placeholder="Search anything..."
+            >
+
+        </div>
+
+    </div>
+
+    <div class="nav-right">
+
+        <div class="date">
+
+            <i class="fa-regular fa-calendar"></i>
+
+            <span>11 Jul 2026</span>
+
+        </div>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <div class="profile">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Admin</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+        <!-- Content -->
+
+        <section class="content">
+
+    <div class="page-header">
+
+        <h1>Dashboard</h1>
+
+        <p>Welcome back! Here's what's happening in your factory.</p>
+
+    </div>
+
+    <div class="dashboard-cards">
+
+    <div class="card income-card">
+
+        <div class="card-icon income-icon">
+            <i class="fa-solid fa-money-bill-wave"></i>
+        </div>
+
+        <div class="card-info">
+
+            <h4>Total Income</h4>
+
+            <h2>NPR 125,000</h2>
+
+            <span>This Month</span>
+
+        </div>
+
+    </div>
+
+    <div class="card expense-card">
+
+        <div class="card-icon expense-icon">
+            <i class="fa-solid fa-arrow-trend-down"></i>
+        </div>
+
+        <div class="card-info">
+
+            <h4>Total Expenses</h4>
+
+            <h2>NPR 78,500</h2>
+
+            <span>This Month</span>
+
+        </div>
+
+    </div>
+
+    <div class="card profit-card">
+
+        <div class="card-icon profit-icon">
+            <i class="fa-solid fa-chart-line"></i>
+        </div>
+
+        <div class="card-info">
+
+            <h4>Net Profit</h4>
+
+            <h2>NPR 46,500</h2>
+
+            <span>This Month</span>
+
+        </div>
+
+    </div>
+
+    <div class="card material-card">
+
+        <div class="card-icon material-icon">
+            <i class="fa-solid fa-cubes"></i>
+        </div>
+
+        <div class="card-info">
+
+            <h4>Raw Material Value</h4>
+
+            <h2>NPR 96,000</h2>
+
+            <span>In Stock</span>
+
+        </div>
+
+    </div>
+
+    <div class="card product-card">
+
+        <div class="card-icon product-icon">
+            <i class="fa-solid fa-box-open"></i>
+        </div>
+
+        <div class="card-info">
+
+            <h4>Total Products</h4>
+
+            <h2>120</h2>
+
+            <span>In Stock</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- Dashboard cards will go here next -->
+
+</section>
+
+    </main>
+
+</div>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
