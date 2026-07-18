@@ -265,35 +265,103 @@
 
 </div>
 
-<!-- Revenue & Expense Chart -->
 
-<div class="chart-section">
 
-    <div class="chart-card">
+<!-- Charts Section -->
+
+<div class="dashboard-row">
+
+    <!-- Revenue Chart -->
+    <div class="chart-card revenue-card">
 
         <div class="chart-header">
-            <h3>Revenue & Expense</h3>
-            <span>Last 6 Months</span>
+            <div>
+                <h3>Revenue & Expense</h3>
+                <span>Last 6 Months</span>
+            </div>
         </div>
 
-        <canvas id="revenueChart"></canvas>
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Expense Breakdown -->
+
+<div class="chart-card pie-card">
+
+    <div class="chart-header">
+        <div>
+            <h3>Expense Breakdown</h3>
+            <span>This Month</span>
+        </div>
+    </div>
+
+    <div class="pie-wrapper">
+
+        <div class="pie-container">
+            <canvas id="expenseChart"></canvas>
+        </div>
+
+        <div class="pie-legend">
+
+            <div class="legend-item">
+                <span class="legend-color blue"></span>
+                <span>Raw Materials</span>
+                <strong>45%</strong>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color green"></span>
+                <span>Salaries</span>
+                <strong>20%</strong>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color orange"></span>
+                <span>Electricity</span>
+                <strong>10%</strong>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color purple"></span>
+                <span>Transport</span>
+                <strong>10%</strong>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color red"></span>
+                <span>Maintenance</span>
+                <strong>10%</strong>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color gray"></span>
+                <span>Others</span>
+                <strong>5%</strong>
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
+</div>
+
 </section>
 
-    </main>
+</main>
 
 </div>
 
-<!-- Chart.js -->
+<!-- Chart JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- JavaScript -->
+<!-- Main JavaScript -->
 <script src="assets/js/app.js"></script>
 
 </body>
-
 </html>
