@@ -1,0 +1,392 @@
+/* ==========================
+Income Form
+========================== */
+
+.form-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    margin-top:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    border:1px solid #ececec;
+}
+
+.form-header{
+    margin-bottom:25px;
+}
+
+.form-header h2{
+    font-size:24px;
+    font-weight:600;
+}
+
+.sales-form{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:#666;
+    text-transform:uppercase;
+}
+
+.form-group input,
+.form-group select{
+
+    padding:12px 15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#2563eb;
+
+}
+
+.form-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:25px;
+
+}
+
+.btn-primary{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#1d4ed8;
+
+}
+
+.btn-primary i{
+
+    margin-right:8px;
+
+}
+/* ===========================
+Income Page
+=========================== */
+
+.form-card,
+.table-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    margin-top:30px;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+    border:1px solid #ececec;
+}
+
+/* ===========================
+Headings
+=========================== */
+
+.form-header,
+.table-header{
+    margin-bottom:25px;
+}
+
+.form-header h2,
+.table-header h2{
+    font-size:28px;
+    font-weight:700;
+    color:#222;
+}
+
+/* ===========================
+Form Grid
+=========================== */
+
+.sales-form{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+/* ===========================
+Form Group
+=========================== */
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:13px;
+    font-weight:600;
+    color:#666;
+    margin-bottom:8px;
+    text-transform:uppercase;
+}
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+    height:48px;
+
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+
+    padding:0 14px;
+
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+
+    outline:none;
+    transition:.3s;
+    background:#fff;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+/* ===========================
+Button
+=========================== */
+
+.form-footer{
+
+    display:flex;
+    justify-content:flex-end;
+    margin-top:25px;
+
+}
+
+.btn-primary{
+
+    background:#2563eb;
+    color:#fff;
+
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-primary i{
+
+    margin-right:8px;
+
+}
+
+.btn-primary:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================
+Table
+=========================== */
+
+.table-responsive{
+
+    overflow-x:auto;
+
+}
+
+.table-card table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+.table-card thead{
+
+    background:#f7f9fc;
+
+}
+
+.table-card th{
+
+    padding:15px;
+    text-align:left;
+
+    font-size:13px;
+    font-weight:700;
+
+    color:#666;
+
+    text-transform:uppercase;
+
+}
+
+.table-card td{
+
+    padding:15px;
+
+    border-top:1px solid #ececec;
+
+    font-size:14px;
+    color:#444;
+
+}
+
+/* ===========================
+Status Badge
+=========================== */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:600;
+
+}
+
+.paid{
+
+    background:#dcfce7;
+    color:#16a34a;
+
+}
+
+.pending{
+
+    background:#fee2e2;
+    color:#dc2626;
+
+}
+
+/* ===========================
+Action Buttons
+=========================== */
+
+.action-btn{
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#eef4ff;
+
+    color:#2563eb;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    margin-right:6px;
+
+}
+
+.action-btn:hover{
+
+    background:#2563eb;
+    color:#fff;
+
+}
+
+.action-btn.delete{
+
+    background:#fff1f2;
+    color:#ef4444;
+
+}
+
+.action-btn.delete:hover{
+
+    background:#ef4444;
+    color:#fff;
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:1200px){
+
+    .sales-form{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sales-form{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-footer{
+
+        justify-content:center;
+
+    }
+
+}
