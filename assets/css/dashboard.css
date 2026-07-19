@@ -158,10 +158,6 @@
     height:320px !important;
 }
 
-.pie-card canvas{
-    width:100% !important;
-    height:320px !important;
-}
 
 /* Responsive */
 
@@ -178,10 +174,6 @@
     flex-direction:column;
 }
 
-.pie-card canvas{
-    width:100% !important;
-    height:300px !important;
-}
 
 /* Pie Chart Layout */
 
