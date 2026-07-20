@@ -1,0 +1,362 @@
+/* ==========================================
+RAW MATERIALS PAGE
+========================================== */
+
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:42px;
+    font-weight:700;
+    color:#1e293b;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#64748b;
+    font-size:15px;
+}
+
+/* =========================
+Cards
+========================= */
+
+.form-card,
+.table-card{
+
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:28px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+}
+
+.form-header,
+.table-header{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:22px;
+
+}
+
+.form-header h2,
+.table-header h2{
+
+    font-size:24px;
+    font-weight:700;
+    color:#1f2937;
+
+}
+
+/* =========================
+FORM
+========================= */
+
+.purchase-form{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    font-size:12px;
+    text-transform:uppercase;
+
+    color:#64748b;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.form-group input,
+.form-group select{
+
+    height:46px;
+
+    border:1px solid #dbe3f0;
+
+    border-radius:10px;
+
+    padding:0 14px;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#3b82f6;
+
+}
+
+.form-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:25px;
+
+}
+
+.btn-primary{
+
+    background:#3b5bfd;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:13px 28px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#2949e7;
+
+}
+
+/* =========================
+TABLE
+========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#f5f8fc;
+
+}
+
+th{
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    color:#64748b;
+
+}
+
+td{
+
+    padding:16px;
+
+    border-top:1px solid #edf2f7;
+
+    font-size:14px;
+
+    color:#334155;
+
+}
+
+/* =========================
+TOTAL ROW
+========================= */
+
+.total-row{
+
+    background:#fff8e8;
+
+    font-weight:700;
+
+}
+
+/* =========================
+Stock Badge
+========================= */
+
+.stock-good{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.stock-medium{
+
+    background:#fef3c7;
+
+    color:#ca8a04;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+.stock-low{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+/* =========================
+Status
+========================= */
+
+.status-paid{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.status-pending{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/* =========================
+Buttons
+========================= */
+
+.action-btn{
+
+    width:34px;
+    height:34px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+}
+
+.edit{
+
+    background:#3b82f6;
+
+}
+
+.delete{
+
+    background:#ef4444;
+
+}
+
+.action-btn:hover{
+
+    opacity:.9;
+
+}
+
+/* =========================
+Responsive
+========================= */
+
+@media(max-width:1200px){
+
+.purchase-form{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.purchase-form{
+
+grid-template-columns:1fr;
+
+}
+
+table{
+
+display:block;
+overflow-x:auto;
+
+}
+
+.page-header h1{
+
+font-size:32px;
+
+}
+
+}

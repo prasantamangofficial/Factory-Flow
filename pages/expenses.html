@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactoryFlow | Expenses</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Expenses CSS -->
+    <link rel="stylesheet" href="../assets/css/expenses.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-industry"></i>
+
+        <span>FactoryFlow</span>
+
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <a href="../index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="income.html">
+                <i class="fa-solid fa-dollar-sign"></i>
+                <span>Income (Sales)</span>
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="expenses.html">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Expenses</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="raw-materials.html">
+                <i class="fa-solid fa-cubes"></i>
+                <span>Raw Materials</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="production.html">
+                <i class="fa-solid fa-industry"></i>
+                <span>Production</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                <i class="fa-solid fa-box-open"></i>
+                <span>Products Catalog</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="suppliers.html">
+                <i class="fa-solid fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="customers.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Customers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="reports.html">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Reports & Audits</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="logout">
+
+        <a href="#">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<!-- Navbar -->
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<button class="menu-btn">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Search Expenses..."
+>
+
+</div>
+
+</div>
+
+<div class="nav-right">
+
+<div class="date">
+
+<i class="fa-regular fa-calendar"></i>
+
+<span>20 Jul 2026</span>
+
+</div>
+
+<button class="icon-btn">
+
+<i class="fa-regular fa-bell"></i>
+
+</button>
+
+<div class="profile">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Admin</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+</div>
+
+</header>
+
+<!--CONTENT -->
+
+<section class="content">
+
+<div class="page-header">
+
+<h1>Factory Expenses</h1>
+
+<p>
+
+Record wages, utilities, transportation, maintenance and other operational expenses.
+
+</p>
+
+</div>
+<!-- ======================================
+ADD EXPENSE ENTRY
+====================================== -->
+
+<div class="form-card">
+
+    <div class="form-header">
+        <h2>Add Expense Entry</h2>
+    </div>
+
+    <form class="expense-form">
+
+        <!-- Date -->
+
+        <div class="form-group">
+
+            <label>Date</label>
+
+            <input type="date">
+
+        </div>
+
+        <!-- Category -->
+
+        <div class="form-group">
+
+            <label>Category</label>
+
+            <select>
+
+                <option>Rent</option>
+                <option>Salary</option>
+                <option>Electricity</option>
+                <option>Transport</option>
+                <option>Maintenance</option>
+                <option>Raw Materials</option>
+                <option>Internet</option>
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+        <!-- Description -->
+
+        <div class="form-group">
+
+            <label>Description</label>
+
+            <input
+                type="text"
+                placeholder="Expense description"
+            >
+
+        </div>
+
+        <!-- Amount -->
+
+        <div class="form-group">
+
+            <label>Amount (NPR)</label>
+
+            <input
+                type="number"
+                placeholder="Amount spent"
+            >
+
+        </div>
+
+    </form>
+
+    <div class="form-footer">
+
+        <button class="btn-primary">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Expense Record
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+EXPENSE LOG TABLE
+====================================== -->
+
+<div class="table-card">
+
+    <div class="table-header">
+        <h2>Operation Overhead Expense Log</h2>
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount Spent</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>20 Jul 2026</td>
+
+                <td>
+                    <span class="badge transport">
+                        Transport
+                    </span>
+                </td>
+
+                <td>Yango Delivery</td>
+
+                <td class="expense">
+                    NPR 1,200
+                </td>
+
+                <td>
+
+                    <button class="delete-btn">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>20 Jul 2026</td>
+
+                <td>
+                    <span class="badge rent">
+                        Rent
+                    </span>
+                </td>
+
+                <td>Factory Building Rent</td>
+
+                <td class="expense">
+                    NPR 20,000
+                </td>
+
+                <td>
+
+                    <button class="delete-btn">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr class="total-row">
+
+                <td colspan="3">
+
+                    <strong>Cumulative Overhead Total</strong>
+
+                </td>
+
+                <td class="expense">
+
+                    <strong>NPR 21,200</strong>
+
+                </td>
+
+                <td></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<!-- JavaScript -->
+<script src="../assets/js/app.js"></script>
+
+</body>
+</html>
