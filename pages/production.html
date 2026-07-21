@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactoryFlow | Production</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Production CSS -->
+    <link rel="stylesheet" href="../assets/css/production.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- 
+SIDEBAR
+-->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-industry"></i>
+        <span>FactoryFlow</span>
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <a href="../index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="income.html">
+                <i class="fa-solid fa-dollar-sign"></i>
+                <span>Income (Sales)</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="expenses.html">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Expenses</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="raw-materials.html">
+                <i class="fa-solid fa-cubes"></i>
+                <span>Raw Materials</span>
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="production.html">
+                <i class="fa-solid fa-industry"></i>
+                <span>Production</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                <i class="fa-solid fa-box-open"></i>
+                <span>Products</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="suppliers.html">
+                <i class="fa-solid fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="customers.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Customers</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="reports.html">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+
+    </ul>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<button class="menu-btn">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Search Production...">
+
+</div>
+
+</div>
+
+<div class="nav-right">
+
+<div class="date">
+
+<i class="fa-regular fa-calendar"></i>
+
+<span>21 Jul 2026</span>
+
+</div>
+
+<button class="icon-btn">
+<i class="fa-regular fa-bell"></i>
+</button>
+
+<div class="profile">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Admin</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="content">
+
+<div class="page-header">
+
+<h1>Production Management</h1>
+
+<p>
+Track daily shoe production, workers and manufacturing status.
+</p>
+
+</div>
+
+<!-- 
+PRODUCTION ENTRY FORM
+ -->
+
+<div class="form-card">
+
+    <div class="form-header">
+        <h2>
+            <i class="fa-solid fa-industry"></i>
+            Record Production
+        </h2>
+    </div>
+
+    <form class="production-form">
+
+        <!-- Row 1 -->
+
+        <div class="form-group">
+            <label>Production Date</label>
+            <input type="date">
+        </div>
+
+        <div class="form-group">
+            <label>Batch No.</label>
+            <input type="text" placeholder="BATCH-001">
+        </div>
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" placeholder="Men Casual Shoes">
+        </div>
+
+        <div class="form-group">
+            <label>Supervisor</label>
+            <input type="text" placeholder="Supervisor Name">
+        </div>
+
+        <div class="form-group">
+            <label>Quantity Produced</label>
+            <input type="number" placeholder="0">
+        </div>
+
+        <!-- Row 2 -->
+
+        <div class="form-group">
+            <label>Material Used</label>
+            <input type="text" placeholder="Leather, Rubber Sole">
+        </div>
+
+        <div class="form-group">
+            <label>Machine</label>
+
+            <select>
+                <option>Cutting Machine</option>
+                <option>Stitching Machine</option>
+                <option>Moulding Machine</option>
+                <option>Finishing Machine</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+
+            <select>
+                <option>Completed</option>
+                <option>In Progress</option>
+                <option>Pending</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Defective Qty</label>
+            <input type="number" placeholder="0">
+        </div>
+
+        <div class="form-group">
+            <label>Remarks</label>
+            <input type="text" placeholder="Production Notes">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
+
+        <button class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Add Production Record
+        </button>
+
+    </div>
+
+</div>
