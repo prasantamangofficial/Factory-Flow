@@ -1,0 +1,256 @@
+/* =====================================
+PRODUCT PAGE
+===================================== */
+
+.page-header{
+    margin-bottom:25px;
+}
+
+.page-header h1{
+    font-size:30px;
+    font-weight:700;
+    color:#222;
+}
+
+.page-header p{
+    margin-top:6px;
+    color:#777;
+}
+
+/* =====================================
+FORM CARD
+===================================== */
+
+.form-card{
+    background:#fff;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:30px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.form-header{
+    margin-bottom:25px;
+}
+
+.form-header h2{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    color:#222;
+}
+
+.product-form{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-size:14px;
+    font-weight:500;
+    color:#555;
+}
+
+.form-group input,
+.form-group select{
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:0 15px;
+    outline:none;
+    transition:.3s;
+    background:#fff;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#2563eb;
+}
+
+.form-footer{
+    margin-top:25px;
+    text-align:right;
+}
+
+/* =====================================
+BUTTON
+===================================== */
+
+.btn-primary{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+}
+
+/* =====================================
+TABLE CARD
+===================================== */
+
+.table-card{
+    background:#fff;
+    border-radius:16px;
+    padding:25px;
+    margin-top:30px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.table-header{
+    margin-bottom:20px;
+}
+
+.table-header h2{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+}
+
+/* =====================================
+TABLE
+===================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#f8fafc;
+}
+
+th{
+    padding:15px;
+    text-align:left;
+    font-size:14px;
+    color:#555;
+    border-bottom:1px solid #eee;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+    font-size:15px;
+}
+
+tbody tr:hover{
+    background:#fafafa;
+}
+
+/* =====================================
+STATUS
+===================================== */
+
+.stock-good{
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.stock-medium{
+    background:#fef3c7;
+    color:#b45309;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.stock-low{
+    background:#fee2e2;
+    color:#dc2626;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.income{
+    color:#16a34a;
+    font-weight:600;
+}
+
+/* =====================================
+ACTION BUTTONS
+===================================== */
+
+.btn-edit{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:#fff;
+    cursor:pointer;
+    margin-right:8px;
+    transition:.3s;
+}
+
+.btn-edit:hover{
+    background:#1d4ed8;
+}
+
+.btn-delete{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:8px;
+    background:#ef4444;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-delete:hover{
+    background:#dc2626;
+}
+
+/* =====================================
+RESPONSIVE
+===================================== */
+
+@media(max-width:1200px){
+
+    .product-form{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .product-form{
+
+        grid-template-columns:1fr;
+
+    }
+
+    table{
+
+        display:block;
+        overflow-x:auto;
+
+    }
+
+}

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactoryFlow | Product Catalog</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Product CSS -->
+    <link rel="stylesheet" href="../assets/css/products.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =====================================
+SIDEBAR
+===================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-industry"></i>
+
+        <span>FactoryFlow</span>
+
+    </div>
+
+    <ul class="menu">
+
+        <li>
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="income.html">
+
+                <i class="fa-solid fa-dollar-sign"></i>
+
+                <span>Income (Sales)</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="expenses.html">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                <span>Expenses</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="raw-materials.html">
+
+                <i class="fa-solid fa-cubes"></i>
+
+                <span>Raw Materials</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="production.html">
+
+                <i class="fa-solid fa-industry"></i>
+
+                <span>Production</span>
+
+            </a>
+
+        </li>
+
+        <li class="active">
+
+            <a href="products.html">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <span>Products</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="suppliers.html">
+
+                <i class="fa-solid fa-truck"></i>
+
+                <span>Suppliers</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="customers.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Customers</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="reports.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <div class="logout">
+
+        <a href="#">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+<!-- =====================================
+MAIN
+===================================== -->
+
+<main class="main">
+
+<header class="navbar">
+
+    <div class="nav-left">
+
+        <button class="menu-btn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+            type="text"
+            placeholder="Search Products...">
+
+        </div>
+
+    </div>
+
+    <div class="nav-right">
+
+        <div class="date">
+
+            <i class="fa-regular fa-calendar"></i>
+
+            <span>21 Jul 2026</span>
+
+        </div>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <div class="profile">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Admin</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section class="content">
+
+<div class="page-header">
+
+<h1>Product Catalog</h1>
+
+<p>
+
+Manage all finished shoe products, stock levels, prices and availability.
+
+</p>
+
+</div>
+
+
+<!-- ======================================
+ADD NEW PRODUCT
+====================================== -->
+
+<div class="form-card">
+
+    <div class="form-header">
+
+        <h2>
+            <i class="fa-solid fa-box-open"></i>
+            Add New Product
+        </h2>
+
+    </div>
+
+    <form class="product-form">
+
+        <!-- Row 1 -->
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" placeholder="Men Sports Shoes">
+        </div>
+
+        <div class="form-group">
+            <label>Product Code (SKU)</label>
+            <input type="text" placeholder="SKU-1001">
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+
+            <select>
+                <option>Sports Shoes</option>
+                <option>School Shoes</option>
+                <option>Casual Shoes</option>
+                <option>Formal Shoes</option>
+                <option>Boots</option>
+                <option>Sandals</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Brand</label>
+            <input type="text" placeholder="FactoryFlow Brand">
+        </div>
+
+        <div class="form-group">
+            <label>Color</label>
+            <input type="text" placeholder="White">
+        </div>
+
+        <!-- Row 2 -->
+
+        <div class="form-group">
+            <label>Size</label>
+
+            <select>
+                <option>38</option>
+                <option>39</option>
+                <option>40</option>
+                <option>41</option>
+                <option>42</option>
+                <option>43</option>
+                <option>44</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Cost Price (NPR)</label>
+            <input type="number" placeholder="1500">
+        </div>
+
+        <div class="form-group">
+            <label>Selling Price (NPR)</label>
+            <input type="number" placeholder="2500">
+        </div>
+
+        <div class="form-group">
+            <label>Current Stock</label>
+            <input type="number" placeholder="250">
+        </div>
+
+        <div class="form-group">
+            <label>Reorder Level</label>
+            <input type="number" placeholder="50">
+        </div>
+
+        <!-- Row 3 -->
+
+        <div class="form-group">
+            <label>Status</label>
+
+            <select>
+                <option>Available</option>
+                <option>Out of Stock</option>
+                <option>Discontinued</option>
+            </select>
+
+        </div>
+
+        <div class="form-group" style="grid-column: span 2;">
+            <label>Product Image</label>
+            <input type="file">
+        </div>
+
+        <div class="form-group" style="grid-column: span 2;">
+            <label>Description</label>
+            <input type="text" placeholder="Short product description">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
+
+        <button class="btn-primary">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Save Product
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ======================================
+PRODUCT SUMMARY
+====================================== -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+            <i class="fa-solid fa-chart-column"></i>
+            Product Summary
+        </h2>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Total Products</th>
+                <th>In Stock</th>
+                <th>Low Stock</th>
+                <th>Out of Stock</th>
+                <th>Total Inventory Value</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>85</td>
+
+                <td>
+                    <span class="stock-good">
+                        72
+                    </span>
+                </td>
+
+                <td>
+                    <span class="stock-medium">
+                        9
+                    </span>
+                </td>
+
+                <td>
+                    <span class="stock-low">
+                        4
+                    </span>
+                </td>
+
+                <td class="income">
+                    NPR 2,850,000
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- ======================================
+PRODUCT CATALOG
+====================================== -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+
+            <i class="fa-solid fa-box-open"></i>
+
+            Product Catalog
+
+        </h2>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>SKU</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>SKU-1001</td>
+
+                <td>Men Sports Shoes</td>
+
+                <td>Sports</td>
+
+                <td>NPR 2,500</td>
+
+                <td>
+                    <span class="stock-good">
+                        120
+                    </span>
+                </td>
+
+                <td>
+
+                    <span class="stock-good">
+                        Available
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button class="btn-edit">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>SKU-1002</td>
+
+                <td>School Shoes</td>
+
+                <td>School</td>
+
+                <td>NPR 1,800</td>
+
+                <td>
+
+                    <span class="stock-medium">
+                        25
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <span class="stock-medium">
+                        Low Stock
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button class="btn-edit">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>SKU-1003</td>
+
+                <td>Formal Shoes</td>
+
+                <td>Formal</td>
+
+                <td>NPR 3,200</td>
+
+                <td>
+
+                    <span class="stock-low">
+                        0
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <span class="stock-low">
+                        Out of Stock
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button class="btn-edit">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+            </div> <!-- End table-card -->
+
+        </section> <!-- End content -->
+
+    </main> <!-- End main -->
+
+</div> <!-- End app -->
+
+<!-- JavaScript -->
+<script src="../assets/js/script.js"></script>
+
+</body>
+</html>
