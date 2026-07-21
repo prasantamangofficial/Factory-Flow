@@ -1,14 +1,314 @@
-<!-- ======================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactoryFlow | Raw Materials</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Raw Materials CSS -->
+    <link rel="stylesheet" href="../assets/css/raw-materials.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- 
+    SIDEBAR
+     -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-industry"></i>
+            <span>FactoryFlow</span>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="../index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="income.html">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <span>Income (Sales)</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="expenses.html">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Expenses</span>
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="raw-materials.html">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Raw Materials</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="production.html">
+                    <i class="fa-solid fa-industry"></i>
+                    <span>Production</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="suppliers.html">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="customers.html">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="logout">
+
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- 
+    MAIN
+     -->
+
+    <main class="main">
+
+        <!-- Navbar -->
+
+        <header class="navbar">
+
+            <div class="nav-left">
+
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search Raw Materials...">
+
+                </div>
+
+            </div>
+
+            <div class="nav-right">
+
+                <div class="date">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span>21 Jul 2026</span>
+
+                </div>
+
+                <button class="icon-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+                <div class="profile">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Admin</span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- 
+        CONTENT
+         -->
+
+        <section class="content">
+
+            <div class="page-header">
+
+                <h1>Raw Materials Ledger</h1>
+                    <!-- ======================================
+ADD PURCHASE
+====================================== -->
+
+<div class="form-card">
+
+    <div class="form-header">
+        <h2>
+            <i class="fa-solid fa-cart-plus"></i>
+            Record Material Purchase
+        </h2>
+    </div>
+
+    <form class="purchase-form">
+
+        <!-- Row 1 -->
+
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date">
+        </div>
+
+        <div class="form-group">
+            <label>Supplier</label>
+            <input type="text" placeholder="Supplier Name">
+        </div>
+
+        <div class="form-group">
+            <label>Material Name</label>
+            <input type="text" placeholder="White Leather">
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+
+            <select>
+                <option>Leather</option>
+                <option>Rubber Sole</option>
+                <option>Fabric</option>
+                <option>Packaging</option>
+                <option>Accessories</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" placeholder="0">
+        </div>
+
+        <!-- Row 2 -->
+
+        <div class="form-group">
+            <label>Unit</label>
+
+            <select>
+                <option>Pieces</option>
+                <option>KG</option>
+                <option>Meter</option>
+                <option>Pair</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Unit Cost (NPR)</label>
+            <input type="number" placeholder="0">
+        </div>
+
+        <div class="form-group">
+            <label>Total Cost</label>
+            <input type="number" placeholder="0">
+        </div>
+
+        <div class="form-group">
+            <label>Payment Status</label>
+
+            <select>
+                <option>Paid</option>
+                <option>Pending</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Remarks</label>
+            <input type="text" placeholder="Optional Notes">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
+
+        <button class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Add Purchase
+        </button>
+
+    </div>
+
+</div>
+                <p>
+                    Manage raw material purchases, suppliers and stock inventory.
+                </p>
+
+            </div>
+            <!-- ======================================
 CURRENT STOCK SUMMARY
 ====================================== -->
 
 <div class="table-card">
 
     <div class="table-header">
+
         <h2>
             <i class="fa-solid fa-boxes-stacked"></i>
             Current Stock Summary
         </h2>
+
     </div>
 
     <table>
@@ -21,7 +321,7 @@ CURRENT STOCK SUMMARY
                 <th>Consumed Qty</th>
                 <th>In Stock</th>
                 <th>Avg Unit Cost</th>
-                <th>Stock Valuation</th>
+                <th>Stock Value</th>
             </tr>
 
         </thead>
@@ -31,15 +331,11 @@ CURRENT STOCK SUMMARY
             <tr>
 
                 <td>White Leather</td>
-
                 <td>10</td>
-
                 <td>0</td>
 
                 <td>
-                    <span class="stock-good">
-                        10
-                    </span>
+                    <span class="stock-good">10</span>
                 </td>
 
                 <td>NPR 1,000</td>
@@ -53,15 +349,11 @@ CURRENT STOCK SUMMARY
             <tr>
 
                 <td>Rubber Sole</td>
-
                 <td>120</td>
-
                 <td>45</td>
 
                 <td>
-                    <span class="stock-medium">
-                        75
-                    </span>
+                    <span class="stock-medium">75</span>
                 </td>
 
                 <td>NPR 180</td>
@@ -75,15 +367,11 @@ CURRENT STOCK SUMMARY
             <tr>
 
                 <td>Shoe Box</td>
-
                 <td>200</td>
-
                 <td>150</td>
 
                 <td>
-                    <span class="stock-low">
-                        50
-                    </span>
+                    <span class="stock-low">50</span>
                 </td>
 
                 <td>NPR 45</td>
@@ -97,15 +385,11 @@ CURRENT STOCK SUMMARY
             <tr class="total-row">
 
                 <td colspan="5">
-
-                    <strong>Total Raw Material Assets Value</strong>
-
+                    <strong>Total Raw Material Value</strong>
                 </td>
 
                 <td class="income">
-
                     <strong>NPR 25,750</strong>
-
                 </td>
 
             </tr>
