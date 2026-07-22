@@ -1,0 +1,283 @@
+/* ==========================================
+   CUSTOMER PAGE
+========================================== */
+
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:38px;
+    font-weight:700;
+    color:#1e293b;
+}
+
+.page-header p{
+    margin-top:8px;
+    color:#64748b;
+    font-size:15px;
+}
+
+/* ==========================================
+   FORM CARD
+========================================== */
+
+.form-card{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:35px;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.form-header{
+    margin-bottom:25px;
+    border-bottom:1px solid #e5e7eb;
+    padding-bottom:15px;
+}
+
+.form-header h2{
+    font-size:24px;
+    color:#1e293b;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.customer-form{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:12px;
+    font-weight:600;
+    color:#64748b;
+    margin-bottom:8px;
+    text-transform:uppercase;
+}
+
+.form-group input,
+.form-group select{
+
+    height:48px;
+    border:1px solid #dbe3ef;
+    border-radius:10px;
+    padding:0 15px;
+    font-size:14px;
+    outline:none;
+    transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    border-color:#4f46e5;
+    box-shadow:0 0 0 3px rgba(79,70,229,.15);
+
+}
+
+.form-footer{
+
+    display:flex;
+    justify-content:flex-end;
+    margin-top:30px;
+
+}
+
+.btn-primary{
+
+    background:#4f46e5;
+    color:#fff;
+    border:none;
+    padding:14px 28px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#4338ca;
+
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.table-card{
+
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+.table-header{
+
+    padding:20px 25px;
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.table-header h2{
+
+    font-size:22px;
+    color:#1e293b;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#f8fafc;
+
+}
+
+thead th{
+
+    padding:16px;
+    text-align:left;
+    font-size:13px;
+    color:#475569;
+    text-transform:uppercase;
+
+}
+
+tbody td{
+
+    padding:16px;
+    border-top:1px solid #edf2f7;
+    font-size:14px;
+
+}
+
+tbody tr:hover{
+
+    background:#f8fafc;
+
+}
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status-active{
+
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+
+}
+
+.status-inactive{
+
+    background:#fee2e2;
+    color:#dc2626;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+
+}
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.action-btn{
+
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:5px;
+
+}
+
+.edit-btn{
+
+    background:#dbeafe;
+    color:#2563eb;
+
+}
+
+.delete-btn{
+
+    background:#fee2e2;
+    color:#dc2626;
+
+}
+
+.income{
+
+    color:#16a34a;
+    font-weight:600;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+    .customer-form{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .customer-form{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .customer-form{
+
+        grid-template-columns:1fr;
+
+    }
+
+    table{
+
+        display:block;
+        overflow-x:auto;
+
+    }
+
+}

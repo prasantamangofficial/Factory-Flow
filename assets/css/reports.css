@@ -1,0 +1,417 @@
+/* ==========================================
+   REPORTS PAGE
+========================================== */
+
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:38px;
+    font-weight:700;
+    color:#1f2937;
+}
+
+.page-header p{
+    margin-top:8px;
+    color:#6b7280;
+    font-size:15px;
+}
+
+/* ==========================================
+   KPI CARDS
+========================================== */
+
+.report-cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:35px;
+
+}
+
+.report-card{
+
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+.card-icon{
+
+    width:65px;
+    height:65px;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:#fff;
+
+}
+
+.revenue .card-icon{
+    background:#22c55e;
+}
+
+.expense .card-icon{
+    background:#ef4444;
+}
+
+.profit .card-icon{
+    background:#3b82f6;
+}
+
+.production .card-icon{
+    background:#8b5cf6;
+}
+
+.card-info h3{
+
+    font-size:15px;
+    color:#64748b;
+    margin-bottom:6px;
+
+}
+
+.card-info h2{
+
+    font-size:28px;
+    color:#111827;
+    margin-bottom:6px;
+
+}
+
+.card-info p{
+
+    font-size:13px;
+    color:#94a3b8;
+
+}
+
+/* ==========================================
+   ANALYTICS
+========================================== */
+
+.analytics-grid{
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+    margin-bottom:35px;
+
+}
+
+.analytics-card{
+
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.analytics-card.large{
+
+    grid-row:span 2;
+
+}
+
+.card-header{
+
+    margin-bottom:20px;
+
+}
+
+.card-header h2{
+
+    font-size:22px;
+    color:#1f2937;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+.chart-placeholder{
+
+    height:320px;
+    border:2px dashed #d1d5db;
+    border-radius:15px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:#94a3b8;
+
+}
+
+.chart-placeholder.small{
+
+    height:180px;
+
+}
+
+.chart-placeholder i{
+
+    font-size:60px;
+    margin-bottom:20px;
+
+}
+
+.chart-placeholder h3{
+
+    color:#374151;
+    margin-bottom:10px;
+
+}
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.summary-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.summary-item{
+
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    border-radius:12px;
+    background:#f8fafc;
+
+}
+
+.summary-item strong{
+
+    color:#4f46e5;
+
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.table-card{
+
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    margin-bottom:35px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.table-header{
+
+    padding:20px 25px;
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.table-header h2{
+
+    font-size:22px;
+    color:#1f2937;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#f9fafb;
+
+}
+
+thead th{
+
+    padding:16px;
+    text-align:left;
+    color:#6b7280;
+    text-transform:uppercase;
+    font-size:13px;
+
+}
+
+tbody td{
+
+    padding:16px;
+    border-top:1px solid #edf2f7;
+
+}
+
+tbody tr:hover{
+
+    background:#f9fafb;
+
+}
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status-good{
+
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+
+}
+
+.status-average{
+
+    background:#fef3c7;
+    color:#b45309;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+
+}
+
+.income{
+
+    color:#16a34a;
+    font-weight:700;
+
+}
+
+/* ==========================================
+   EXPORT
+========================================== */
+
+.export-card{
+
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.export-card p{
+
+    color:#64748b;
+    margin-top:5px;
+
+}
+
+.export-buttons{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:25px;
+
+}
+
+.export-btn{
+
+    border:none;
+    color:#fff;
+    border-radius:12px;
+    padding:14px 22px;
+    cursor:pointer;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:.3s;
+
+}
+
+.export-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.pdf{
+
+    background:#dc2626;
+
+}
+
+.excel{
+
+    background:#16a34a;
+
+}
+
+.print{
+
+    background:#3b82f6;
+
+}
+
+.backup{
+
+    background:#8b5cf6;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+.report-cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.analytics-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.report-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.export-buttons{
+
+flex-direction:column;
+
+}
+
+table{
+
+display:block;
+overflow-x:auto;
+
+}
+
+}
