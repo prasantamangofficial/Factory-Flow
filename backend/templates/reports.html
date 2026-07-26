@@ -1,202 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
+{% block title %}FactoryFlow | Reports{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reports.css' %}">
+{% endblock %}
 
-    <title>FactoryFlow | Reports</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-
-    <!-- Reports CSS -->
-    <link rel="stylesheet" href="../assets/css/reports.css">
-
-</head>
-
-<body>
-
-<div class="app">
-
-<!-- =====================================
-SIDEBAR
-===================================== -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-
-        <i class="fa-solid fa-industry"></i>
-
-        <span>FactoryFlow</span>
-
-    </div>
-
-    <ul class="menu">
-
-        <li>
-            <a href="../index.html">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="income.html">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <span>Income (Sales)</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="expenses.html">
-                <i class="fa-solid fa-wallet"></i>
-                <span>Expenses</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="raw-materials.html">
-                <i class="fa-solid fa-cubes"></i>
-                <span>Raw Materials</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="production.html">
-                <i class="fa-solid fa-industry"></i>
-                <span>Production</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="products.html">
-                <i class="fa-solid fa-box-open"></i>
-                <span>Products</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="suppliers.html">
-                <i class="fa-solid fa-truck"></i>
-                <span>Suppliers</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="customers.html">
-                <i class="fa-solid fa-users"></i>
-                <span>Customers</span>
-            </a>
-        </li>
-
-        <li class="active">
-            <a href="reports.html">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Reports</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="settings.html">
-                <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
-            </a>
-        </li>
-
-    </ul>
-
-    <div class="logout">
-
-        <a href="#">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            <span>Logout</span>
-
-        </a>
-
-    </div>
-
-</aside>
-
-<!-- =====================================
-MAIN
-===================================== -->
-
-<main class="main">
-
-<header class="navbar">
-
-    <div class="nav-left">
-
-        <button class="menu-btn">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-            type="text"
-            placeholder="Search Reports...">
-
-        </div>
-
-    </div>
-
-    <div class="nav-right">
-
-        <div class="date">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span>21 Jul 2026</span>
-
-        </div>
-
-        <button class="icon-btn">
-
-            <i class="fa-regular fa-bell"></i>
-
-        </button>
-
-        <div class="profile">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Admin</span>
-
-            <i class="fa-solid fa-chevron-down"></i>
-
-        </div>
-
-    </div>
-
-</header>
+{% block content %}
 
 <section class="content">
 
 <div class="page-header">
 
-<h1>Reports & Analytics</h1>
+<h1>Reports &amp; Analytics</h1>
 
 <p>
-
 Monitor factory performance, financial summaries and production analytics.
-
 </p>
 
 </div>
@@ -210,19 +30,13 @@ REPORT SUMMARY CARDS
     <div class="report-card revenue">
 
         <div class="card-icon">
-
             <i class="fa-solid fa-sack-dollar"></i>
-
         </div>
 
         <div class="card-info">
-
             <h3>Total Revenue</h3>
-
             <h2>NPR 2,850,000</h2>
-
             <p>+12.5% from last month</p>
-
         </div>
 
     </div>
@@ -230,19 +44,13 @@ REPORT SUMMARY CARDS
     <div class="report-card expense">
 
         <div class="card-icon">
-
             <i class="fa-solid fa-wallet"></i>
-
         </div>
 
         <div class="card-info">
-
             <h3>Total Expenses</h3>
-
             <h2>NPR 1,920,000</h2>
-
-            <p>Material & Operating Cost</p>
-
+            <p>Material &amp; Operating Cost</p>
         </div>
 
     </div>
@@ -250,19 +58,13 @@ REPORT SUMMARY CARDS
     <div class="report-card profit">
 
         <div class="card-icon">
-
             <i class="fa-solid fa-chart-line"></i>
-
         </div>
 
         <div class="card-info">
-
             <h3>Net Profit</h3>
-
             <h2>NPR 930,000</h2>
-
             <p>Profit Margin 32.6%</p>
-
         </div>
 
     </div>
@@ -270,19 +72,13 @@ REPORT SUMMARY CARDS
     <div class="report-card production">
 
         <div class="card-icon">
-
             <i class="fa-solid fa-industry"></i>
-
         </div>
 
         <div class="card-info">
-
             <h3>Total Production</h3>
-
             <h2>12,450 Pairs</h2>
-
             <p>July 2026</p>
-
         </div>
 
     </div>
@@ -395,11 +191,8 @@ MONTHLY FINANCIAL SUMMARY
     <div class="table-header">
 
         <h2>
-
             <i class="fa-solid fa-table"></i>
-
             Monthly Financial Summary
-
         </h2>
 
     </div>
@@ -409,14 +202,12 @@ MONTHLY FINANCIAL SUMMARY
         <thead>
 
             <tr>
-
                 <th>Month</th>
                 <th>Revenue</th>
                 <th>Expenses</th>
                 <th>Net Profit</th>
                 <th>Production</th>
                 <th>Performance</th>
-
             </tr>
 
         </thead>
@@ -427,28 +218,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>January</td>
 
-                <td class="income">
-                    NPR 2,350,000
-                </td>
+                <td class="income">NPR 2,350,000</td>
+
+                <td>NPR 1,520,000</td>
+
+                <td class="income">NPR 830,000</td>
+
+                <td>9,820 Pairs</td>
 
                 <td>
-                    NPR 1,520,000
-                </td>
-
-                <td class="income">
-                    NPR 830,000
-                </td>
-
-                <td>
-                    9,820 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-good">
-                        Excellent
-                    </span>
-
+                    <span class="status-good">Excellent</span>
                 </td>
 
             </tr>
@@ -457,28 +236,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>February</td>
 
-                <td class="income">
-                    NPR 2,480,000
-                </td>
+                <td class="income">NPR 2,480,000</td>
+
+                <td>NPR 1,610,000</td>
+
+                <td class="income">NPR 870,000</td>
+
+                <td>10,250 Pairs</td>
 
                 <td>
-                    NPR 1,610,000
-                </td>
-
-                <td class="income">
-                    NPR 870,000
-                </td>
-
-                <td>
-                    10,250 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-good">
-                        Excellent
-                    </span>
-
+                    <span class="status-good">Excellent</span>
                 </td>
 
             </tr>
@@ -487,28 +254,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>March</td>
 
-                <td class="income">
-                    NPR 2,710,000
-                </td>
+                <td class="income">NPR 2,710,000</td>
+
+                <td>NPR 1,760,000</td>
+
+                <td class="income">NPR 950,000</td>
+
+                <td>11,340 Pairs</td>
 
                 <td>
-                    NPR 1,760,000
-                </td>
-
-                <td class="income">
-                    NPR 950,000
-                </td>
-
-                <td>
-                    11,340 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-good">
-                        Excellent
-                    </span>
-
+                    <span class="status-good">Excellent</span>
                 </td>
 
             </tr>
@@ -517,28 +272,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>April</td>
 
-                <td class="income">
-                    NPR 2,950,000
-                </td>
+                <td class="income">NPR 2,950,000</td>
+
+                <td>NPR 1,900,000</td>
+
+                <td class="income">NPR 1,050,000</td>
+
+                <td>12,120 Pairs</td>
 
                 <td>
-                    NPR 1,900,000
-                </td>
-
-                <td class="income">
-                    NPR 1,050,000
-                </td>
-
-                <td>
-                    12,120 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-average">
-                        Good
-                    </span>
-
+                    <span class="status-average">Good</span>
                 </td>
 
             </tr>
@@ -547,28 +290,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>May</td>
 
-                <td class="income">
-                    NPR 3,180,000
-                </td>
+                <td class="income">NPR 3,180,000</td>
+
+                <td>NPR 2,020,000</td>
+
+                <td class="income">NPR 1,160,000</td>
+
+                <td>12,870 Pairs</td>
 
                 <td>
-                    NPR 2,020,000
-                </td>
-
-                <td class="income">
-                    NPR 1,160,000
-                </td>
-
-                <td>
-                    12,870 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-good">
-                        Excellent
-                    </span>
-
+                    <span class="status-good">Excellent</span>
                 </td>
 
             </tr>
@@ -577,28 +308,16 @@ MONTHLY FINANCIAL SUMMARY
 
                 <td>June</td>
 
-                <td class="income">
-                    NPR 3,420,000
-                </td>
+                <td class="income">NPR 3,420,000</td>
+
+                <td>NPR 2,150,000</td>
+
+                <td class="income">NPR 1,270,000</td>
+
+                <td>13,640 Pairs</td>
 
                 <td>
-                    NPR 2,150,000
-                </td>
-
-                <td class="income">
-                    NPR 1,270,000
-                </td>
-
-                <td>
-                    13,640 Pairs
-                </td>
-
-                <td>
-
-                    <span class="status-good">
-                        Excellent
-                    </span>
-
+                    <span class="status-good">Excellent</span>
                 </td>
 
             </tr>
@@ -618,11 +337,8 @@ EXPORT REPORTS
     <div class="card-header">
 
         <h2>
-
             <i class="fa-solid fa-file-export"></i>
-
             Export Reports
-
         </h2>
 
         <p>
@@ -634,35 +350,23 @@ EXPORT REPORTS
     <div class="export-buttons">
 
         <button class="export-btn pdf">
-
             <i class="fa-solid fa-file-pdf"></i>
-
             Export PDF
-
         </button>
 
         <button class="export-btn excel">
-
             <i class="fa-solid fa-file-excel"></i>
-
             Export Excel
-
         </button>
 
         <button class="export-btn print">
-
             <i class="fa-solid fa-print"></i>
-
             Print Report
-
         </button>
 
         <button class="export-btn backup">
-
             <i class="fa-solid fa-download"></i>
-
             Download Backup
-
         </button>
 
     </div>
@@ -670,15 +374,4 @@ EXPORT REPORTS
 </div>
 
 </section>
-
-</main>
-
-</div>
-
-<!-- Main JavaScript -->
-
-<script src="../assets/js/main.js"></script>
-
-</body>
-
-</html>
+{% endblock %}

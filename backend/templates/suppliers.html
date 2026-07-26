@@ -1,240 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
+{% block title %}FactoryFlow | Suppliers{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}">
+{% endblock %}
 
-    <title>FactoryFlow | Suppliers</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-  <!-- Main CSS -->
-<link rel="stylesheet" href="../assets/css/style.css">
-
-<!-- Suppliers CSS -->
-<link rel="stylesheet" href="../assets/css/suppliers.css">
-</head>
-
-<body>
-
-<div class="app">
-
-<!-- =====================================
-SIDEBAR
-===================================== -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-
-        <i class="fa-solid fa-industry"></i>
-
-        <span>FactoryFlow</span>
-
-    </div>
-
-    <ul class="menu">
-
-        <li>
-
-            <a href="../index.html">
-
-                <i class="fa-solid fa-house"></i>
-
-                <span>Dashboard</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="income.html">
-
-                <i class="fa-solid fa-dollar-sign"></i>
-
-                <span>Income (Sales)</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="expenses.html">
-
-                <i class="fa-solid fa-wallet"></i>
-
-                <span>Expenses</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="raw-materials.html">
-
-                <i class="fa-solid fa-cubes"></i>
-
-                <span>Raw Materials</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="production.html">
-
-                <i class="fa-solid fa-industry"></i>
-
-                <span>Production</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="products.html">
-
-                <i class="fa-solid fa-box-open"></i>
-
-                <span>Products</span>
-
-            </a>
-
-        </li>
-
-        <li class="active">
-
-            <a href="suppliers.html">
-
-                <i class="fa-solid fa-truck"></i>
-
-                <span>Suppliers</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="customers.html">
-
-                <i class="fa-solid fa-users"></i>
-
-                <span>Customers</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="reports.html">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <span>Reports</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="settings.html">
-
-                <i class="fa-solid fa-gear"></i>
-
-                <span>Settings</span>
-
-            </a>
-
-        </li>
-
-    </ul>
-
-    <div class="logout">
-
-        <a href="#">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            <span>Logout</span>
-
-        </a>
-
-    </div>
-
-</aside>
-
-<!-- =====================================
-MAIN
-===================================== -->
-
-<main class="main">
-
-<header class="navbar">
-
-    <div class="nav-left">
-
-        <button class="menu-btn">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-            type="text"
-            placeholder="Search Suppliers...">
-
-        </div>
-
-    </div>
-
-    <div class="nav-right">
-
-        <div class="date">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span>21 Jul 2026</span>
-
-        </div>
-
-        <button class="icon-btn">
-
-            <i class="fa-regular fa-bell"></i>
-
-        </button>
-
-        <div class="profile">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Admin</span>
-
-            <i class="fa-solid fa-chevron-down"></i>
-
-        </div>
-
-    </div>
-
-</header>
+{% block content %}
 
 <section class="content">
 
@@ -243,9 +16,7 @@ MAIN
 <h1>Supplier Management</h1>
 
 <p>
-
 Manage suppliers, contacts and purchasing information.
-
 </p>
 
 </div>
@@ -418,18 +189,5 @@ ACTIVE RAW MATERIAL VENDORS
 
 </div>
 
-        </section>
-
-    </main>
-
-</div>
-
-<!-- ======================================
-JAVASCRIPT
-====================================== -->
-
-<script src="../assets/js/main.js"></script>
-
-</body>
-
-</html>
+</section>
+{% endblock %}

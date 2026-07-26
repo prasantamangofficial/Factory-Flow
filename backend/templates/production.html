@@ -1,207 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
+{% block title %}FactoryFlow | Production{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/production.css' %}">
+{% endblock %}
 
-    <title>FactoryFlow | Production</title>
+{% block content %}
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<section class="content">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <div class="page-header">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+        <h1>Production Management</h1>
 
-    <!-- Production CSS -->
-    <link rel="stylesheet" href="../assets/css/production.css">
+        <p>
+            Track daily shoe production, monitor batches, workers, and manufacturing progress.
+        </p>
 
-</head>
-
-<body>
-
-<div class="app">
-
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
-
-    <aside class="sidebar">
-
-        <div class="logo">
-            <i class="fa-solid fa-industry"></i>
-            <span>FactoryFlow</span>
-        </div>
-
-        <ul class="menu">
-
-            <li>
-                <a href="../index.html">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="income.html">
-                    <i class="fa-solid fa-dollar-sign"></i>
-                    <span>Income (Sales)</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="expenses.html">
-                    <i class="fa-solid fa-wallet"></i>
-                    <span>Expenses</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="raw-materials.html">
-                    <i class="fa-solid fa-cubes"></i>
-                    <span>Raw Materials</span>
-                </a>
-            </li>
-
-            <li class="active">
-                <a href="production.html">
-                    <i class="fa-solid fa-industry"></i>
-                    <span>Production</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="products.html">
-                    <i class="fa-solid fa-box-open"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="suppliers.html">
-                    <i class="fa-solid fa-truck"></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="customers.html">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Customers</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="reports.html">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span>Reports</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="settings.html">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-
-        </ul>
-
-        <div class="logout">
-
-            <a href="#">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                <span>Logout</span>
-
-            </a>
-
-        </div>
-
-    </aside>
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
-    <main class="main">
-
-        <!-- NAVBAR -->
-
-        <header class="navbar">
-
-            <div class="nav-left">
-
-                <button class="menu-btn">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-
-                <div class="search-box">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    <input
-                        type="text"
-                        placeholder="Search Production...">
-
-                </div>
-
-            </div>
-
-            <div class="nav-right">
-
-                <div class="date">
-
-                    <i class="fa-regular fa-calendar"></i>
-
-                    <span>21 Jul 2026</span>
-
-                </div>
-
-                <button class="icon-btn">
-
-                    <i class="fa-regular fa-bell"></i>
-
-                </button>
-
-                <div class="profile">
-
-                    <i class="fa-solid fa-user"></i>
-
-                    <span>Admin</span>
-
-                    <i class="fa-solid fa-chevron-down"></i>
-
-                </div>
-
-            </div>
-
-        </header>
-
-        <!-- CONTENT -->
-
-        <section class="content">
-
-            <div class="page-header">
-
-                <h1>Production Management</h1>
-
-                <p>
-                    Track daily shoe production, monitor batches, workers, and manufacturing progress.
-                </p>
-
-            </div>
-
-            <!-- PART 2 STARTS HERE -->
-             <!-- ======================================
-RECORD PRODUCTION
-====================================== -->
+    </div>
 
 <div class="form-card">
 
@@ -215,8 +33,6 @@ RECORD PRODUCTION
     </div>
 
     <form class="production-form">
-
-        <!-- Row 1 -->
 
         <div class="form-group">
             <label>Production Date</label>
@@ -249,8 +65,6 @@ RECORD PRODUCTION
             </select>
 
         </div>
-
-        <!-- Row 2 -->
 
         <div class="form-group">
             <label>Target Quantity</label>
@@ -288,19 +102,14 @@ RECORD PRODUCTION
     <div class="form-footer">
 
         <button class="btn-primary">
-
             <i class="fa-solid fa-plus"></i>
-
             Record Production
-
         </button>
 
     </div>
 
 </div>
-<!-- ======================================
-PRODUCTION SUMMARY
-====================================== -->
+
 
 <div class="table-card">
 
@@ -318,13 +127,11 @@ PRODUCTION SUMMARY
         <thead>
 
             <tr>
-
                 <th>Today's Production</th>
                 <th>This Week</th>
                 <th>This Month</th>
                 <th>Defective</th>
                 <th>Efficiency</th>
-
             </tr>
 
         </thead>
@@ -355,9 +162,6 @@ PRODUCTION SUMMARY
 
 </div>
 
-<!-- ======================================
-TODAY'S PRODUCTION STATUS
-====================================== -->
 
 <div class="table-card">
 
@@ -375,13 +179,11 @@ TODAY'S PRODUCTION STATUS
         <thead>
 
             <tr>
-
                 <th>Department</th>
                 <th>Target</th>
                 <th>Completed</th>
                 <th>Progress</th>
                 <th>Status</th>
-
             </tr>
 
         </thead>
@@ -453,3 +255,6 @@ TODAY'S PRODUCTION STATUS
     </table>
 
 </div>
+
+</section>
+{% endblock %}

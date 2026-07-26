@@ -1,181 +1,15 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}FactoryFlow | Dashboard{% endblock %}
 
-    <title>FactoryFlow</title>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% block content %}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/....">
-</head>
-
-<body>
-
-<div class="app">
-
-    <!-- Sidebar -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-        <i class="fa-solid fa-industry"></i>
-        <span>FactoryFlow</span>
-    </div>
-
-    <ul class="menu">
-
-        <li class="active">
-            <a href="index.html">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/income.html">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <span>Income (Sales)</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/expenses.html">
-                <i class="fa-solid fa-wallet"></i>
-                <span>Expenses</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/raw-materials.html">
-                <i class="fa-solid fa-cubes"></i>
-                <span>Raw Materials</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/production.html">
-                <i class="fa-solid fa-industry"></i>
-                <span>Production</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/products.html">
-                <i class="fa-solid fa-box-open"></i>
-                <span>Products Catalog</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/suppliers.html">
-                <i class="fa-solid fa-truck"></i>
-                <span>Suppliers</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/customers.html">
-                <i class="fa-solid fa-users"></i>
-                <span>Customers</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/reports.html">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Reports & Audits</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pages/settings.html">
-                <i class="fa-solid fa-gear"></i>
-                <span>Settings</span>
-            </a>
-        </li>
-
-    </ul>
-
-    <div class="logout">
-        <a href="#">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Logout</span>
-        </a>
-    </div>
-
-</aside>
-
-    <!-- Main -->
-
-    <main class="main">
-
-        <!-- Navbar -->
-
-        <header class="navbar">
-
-    <div class="nav-left">
-
-        <button class="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-                type="text"
-                placeholder="Search anything..."
-            >
-
-        </div>
-
-    </div>
-
-    <div class="nav-right">
-
-        <div class="date">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span>11 Jul 2026</span>
-
-        </div>
-
-        <button class="icon-btn">
-
-            <i class="fa-regular fa-bell"></i>
-
-        </button>
-
-        <div class="profile">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Admin</span>
-
-            <i class="fa-solid fa-chevron-down"></i>
-
-        </div>
-
-    </div>
-
-</header>
-
-        <!-- Content -->
-
-        <section class="content">
+<section class="content">
 
     <div class="page-header">
 
@@ -187,318 +21,285 @@
 
     <div class="dashboard-cards">
 
-    <div class="card income-card">
+        <div class="card income-card">
 
-        <div class="card-icon income-icon">
-            <i class="fa-solid fa-money-bill-wave"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h4>Total Income</h4>
-
-            <h2>NPR 125,000</h2>
-
-            <span>This Month</span>
-
-        </div>
-
-    </div>
-
-    <div class="card expense-card">
-
-        <div class="card-icon expense-icon">
-            <i class="fa-solid fa-arrow-trend-down"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h4>Total Expenses</h4>
-
-            <h2>NPR 78,500</h2>
-
-            <span>This Month</span>
-
-        </div>
-
-    </div>
-
-    <div class="card profit-card">
-
-        <div class="card-icon profit-icon">
-            <i class="fa-solid fa-chart-line"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h4>Net Profit</h4>
-
-            <h2>NPR 46,500</h2>
-
-            <span>This Month</span>
-
-        </div>
-
-    </div>
-
-    <div class="card material-card">
-
-        <div class="card-icon material-icon">
-            <i class="fa-solid fa-cubes"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h4>Raw Material Value</h4>
-
-            <h2>NPR 96,000</h2>
-
-            <span>In Stock</span>
-
-        </div>
-
-    </div>
-
-    <div class="card product-card">
-
-        <div class="card-icon product-icon">
-            <i class="fa-solid fa-box-open"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h4>Total Products</h4>
-
-            <h2>120</h2>
-
-            <span>In Stock</span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- Charts Section -->
-
-<div class="dashboard-row">
-
-    <!-- Revenue Chart -->
-    <div class="chart-card revenue-card">
-
-        <div class="chart-header">
-            <div>
-                <h3>Revenue & Expense</h3>
-                <span>Last 6 Months</span>
-            </div>
-        </div>
-
-        <div class="chart-container">
-            <canvas id="revenueChart"></canvas>
-        </div>
-
-    </div>
-
-    <!-- Expense Breakdown -->
-
-<div class="chart-card pie-card">
-
-    <div class="chart-header">
-        <div>
-            <h3>Expense Breakdown</h3>
-            <span>This Month</span>
-        </div>
-    </div>
-
-    <div class="pie-wrapper">
-
-        <div class="pie-container">
-            <canvas id="expenseChart"></canvas>
-        </div>
-
-        <div class="pie-legend">
-
-            <div class="legend-item">
-                <span class="legend-color blue"></span>
-                <span>Raw Materials</span>
-                <strong>45%</strong>
+            <div class="card-icon income-icon">
+                <i class="fa-solid fa-money-bill-wave"></i>
             </div>
 
-            <div class="legend-item">
-                <span class="legend-color green"></span>
-                <span>Salaries</span>
-                <strong>20%</strong>
+            <div class="card-info">
+                <h4>Total Income</h4>
+                <h2>NPR 125,000</h2>
+                <span>This Month</span>
             </div>
 
-            <div class="legend-item">
-                <span class="legend-color orange"></span>
-                <span>Electricity</span>
-                <strong>10%</strong>
+        </div>
+
+        <div class="card expense-card">
+
+            <div class="card-icon expense-icon">
+                <i class="fa-solid fa-arrow-trend-down"></i>
             </div>
 
-            <div class="legend-item">
-                <span class="legend-color purple"></span>
-                <span>Transport</span>
-                <strong>10%</strong>
+            <div class="card-info">
+                <h4>Total Expenses</h4>
+                <h2>NPR 78,500</h2>
+                <span>This Month</span>
             </div>
 
-            <div class="legend-item">
-                <span class="legend-color red"></span>
-                <span>Maintenance</span>
-                <strong>10%</strong>
+        </div>
+
+        <div class="card profit-card">
+
+            <div class="card-icon profit-icon">
+                <i class="fa-solid fa-chart-line"></i>
             </div>
 
-            <div class="legend-item">
-                <span class="legend-color gray"></span>
-                <span>Others</span>
-                <strong>5%</strong>
+            <div class="card-info">
+                <h4>Net Profit</h4>
+                <h2>NPR 46,500</h2>
+                <span>This Month</span>
+            </div>
+
+        </div>
+
+        <div class="card material-card">
+
+            <div class="card-icon material-icon">
+                <i class="fa-solid fa-cubes"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Raw Material Value</h4>
+                <h2>NPR 96,000</h2>
+                <span>In Stock</span>
+            </div>
+
+        </div>
+
+        <div class="card product-card">
+
+            <div class="card-icon product-icon">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Total Products</h4>
+                <h2>120</h2>
+                <span>In Stock</span>
             </div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- Charts Section -->
 
-</div>
+    <div class="dashboard-row">
 
+        <!-- Revenue Chart -->
 
-<!-- Recent Tables -->
+        <div class="chart-card revenue-card">
 
-<div class="table-row">
+            <div class="chart-header">
+                <div>
+                    <h3>Revenue &amp; Expense</h3>
+                    <span>Last 6 Months</span>
+                </div>
+            </div>
 
-    <!-- Recent Income -->
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
 
-    <div class="table-card">
-
-        <div class="table-header">
-            <h3>Recent Income (Sales)</h3>
         </div>
 
-        <table>
+        <!-- Expense Breakdown -->
 
-            <thead>
+        <div class="chart-card pie-card">
 
-                <tr>
-                    <th>Date</th>
-                    <th>Invoice</th>
-                    <th>Customer</th>
-                    <th>Amount</th>
-                </tr>
+            <div class="chart-header">
+                <div>
+                    <h3>Expense Breakdown</h3>
+                    <span>This Month</span>
+                </div>
+            </div>
 
-            </thead>
+            <div class="pie-wrapper">
 
-            <tbody>
+                <div class="pie-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
 
-                <tr>
-                    <td>11 Jul 2026</td>
-                    <td>INV-001</td>
-                    <td>ABC Traders</td>
-                    <td class="income">NPR 25,000</td>
-                </tr>
+                <div class="pie-legend">
 
-                <tr>
-                    <td>10 Jul 2026</td>
-                    <td>INV-002</td>
-                    <td>XYZ Enterprises</td>
-                    <td class="income">NPR 18,000</td>
-                </tr>
+                    <div class="legend-item">
+                        <span class="legend-color blue"></span>
+                        <span>Raw Materials</span>
+                        <strong>45%</strong>
+                    </div>
 
-                <tr>
-                    <td>09 Jul 2026</td>
-                    <td>INV-003</td>
-                    <td>Green Store</td>
-                    <td class="income">NPR 22,500</td>
-                </tr>
+                    <div class="legend-item">
+                        <span class="legend-color green"></span>
+                        <span>Salaries</span>
+                        <strong>20%</strong>
+                    </div>
 
-                <tr>
-                    <td>08 Jul 2026</td>
-                    <td>INV-004</td>
-                    <td>Local Market</td>
-                    <td class="income">NPR 15,000</td>
-                </tr>
+                    <div class="legend-item">
+                        <span class="legend-color orange"></span>
+                        <span>Electricity</span>
+                        <strong>10%</strong>
+                    </div>
 
-            </tbody>
+                    <div class="legend-item">
+                        <span class="legend-color purple"></span>
+                        <span>Transport</span>
+                        <strong>10%</strong>
+                    </div>
 
-        </table>
+                    <div class="legend-item">
+                        <span class="legend-color red"></span>
+                        <span>Maintenance</span>
+                        <strong>10%</strong>
+                    </div>
 
-        <a href="#" class="view-all">View All</a>
+                    <div class="legend-item">
+                        <span class="legend-color gray"></span>
+                        <span>Others</span>
+                        <strong>5%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <!-- Recent Expenses -->
+    <!-- Recent Tables -->
 
-    <div class="table-card">
+    <div class="table-row">
 
-        <div class="table-header">
-            <h3>Recent Expenses</h3>
+        <!-- Recent Income -->
+
+        <div class="table-card">
+
+            <div class="table-header">
+                <h3>Recent Income (Sales)</h3>
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Invoice</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>11 Jul 2026</td>
+                        <td>INV-001</td>
+                        <td>ABC Traders</td>
+                        <td class="income">NPR 25,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>10 Jul 2026</td>
+                        <td>INV-002</td>
+                        <td>XYZ Enterprises</td>
+                        <td class="income">NPR 18,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>09 Jul 2026</td>
+                        <td>INV-003</td>
+                        <td>Green Store</td>
+                        <td class="income">NPR 22,500</td>
+                    </tr>
+
+                    <tr>
+                        <td>08 Jul 2026</td>
+                        <td>INV-004</td>
+                        <td>Local Market</td>
+                        <td class="income">NPR 15,000</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <a href="{% url 'income' %}" class="view-all">View All</a>
+
         </div>
 
-        <table>
+        <!-- Recent Expenses -->
 
-            <thead>
+        <div class="table-card">
 
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                </tr>
+            <div class="table-header">
+                <h3>Recent Expenses</h3>
+            </div>
 
-            </thead>
+            <table>
 
-            <tbody>
+                <thead>
 
-                <tr>
-                    <td>11 Jul 2026</td>
-                    <td>Raw Materials</td>
-                    <td>Purchased Steel</td>
-                    <td class="expense">NPR 20,000</td>
-                </tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
 
-                <tr>
-                    <td>10 Jul 2026</td>
-                    <td>Salaries</td>
-                    <td>Workers Salary</td>
-                    <td class="expense">NPR 15,000</td>
-                </tr>
+                </thead>
 
-                <tr>
-                    <td>09 Jul 2026</td>
-                    <td>Electricity</td>
-                    <td>Monthly Bill</td>
-                    <td class="expense">NPR 5,000</td>
-                </tr>
+                <tbody>
 
-                <tr>
-                    <td>08 Jul 2026</td>
-                    <td>Transport</td>
-                    <td>Delivery Charge</td>
-                    <td class="expense">NPR 4,500</td>
-                </tr>
+                    <tr>
+                        <td>11 Jul 2026</td>
+                        <td>Raw Materials</td>
+                        <td>Purchased Steel</td>
+                        <td class="expense">NPR 20,000</td>
+                    </tr>
 
-            </tbody>
+                    <tr>
+                        <td>10 Jul 2026</td>
+                        <td>Salaries</td>
+                        <td>Workers Salary</td>
+                        <td class="expense">NPR 15,000</td>
+                    </tr>
 
-        </table>
+                    <tr>
+                        <td>09 Jul 2026</td>
+                        <td>Electricity</td>
+                        <td>Monthly Bill</td>
+                        <td class="expense">NPR 5,000</td>
+                    </tr>
 
-        <a href="#" class="view-all">View All</a>
+                    <tr>
+                        <td>08 Jul 2026</td>
+                        <td>Transport</td>
+                        <td>Delivery Charge</td>
+                        <td class="expense">NPR 4,500</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <a href="{% url 'expenses' %}" class="view-all">View All</a>
+
+        </div>
 
     </div>
-
-</div>
 
 </section>
-
-</main>
-
-</div>
-
-
-
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{% static 'js/app.js' %}"></script>
-</body>
-</html>
+{% endblock %}

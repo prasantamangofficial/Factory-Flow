@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}FactoryFlow | Expenses{% endblock %}
+{% block title %}FactoryFlow | Raw Materials{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/expenses.css' %}">
+<link rel="stylesheet" href="{% static 'css/raw-materials.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -15,68 +15,68 @@
 
 <div class="page-header">
 
-    <h1>Expenses</h1>
+    <h1>Raw Materials</h1>
 
-    <p>Track and manage all factory expenses.</p>
+    <p>Monitor stock levels and material costs.</p>
 
 </div>
 
 <!-- SUMMARY CARDS -->
 
-<div class="expense-summary">
+<div class="material-summary">
 
     <div class="summary-card">
 
-        <div class="summary-icon total-icon">
-            <i class="fa-solid fa-wallet"></i>
+        <div class="summary-icon value-icon">
+            <i class="fa-solid fa-sack-dollar"></i>
         </div>
 
         <div class="summary-info">
-            <h4>Total Expenses</h4>
-            <h2>NPR 78,500</h2>
-            <span>This Month</span>
+            <h4>Stock Value</h4>
+            <h2>NPR 96,000</h2>
+            <span>Current</span>
         </div>
 
     </div>
 
     <div class="summary-card">
 
-        <div class="summary-icon material-icon">
+        <div class="summary-icon items-icon">
             <i class="fa-solid fa-cubes"></i>
         </div>
 
         <div class="summary-info">
-            <h4>Raw Materials</h4>
-            <h2>NPR 35,000</h2>
-            <span>This Month</span>
+            <h4>Total Items</h4>
+            <h2>18</h2>
+            <span>In Stock</span>
         </div>
 
     </div>
 
     <div class="summary-card">
 
-        <div class="summary-icon salary-icon">
-            <i class="fa-solid fa-users"></i>
+        <div class="summary-icon low-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
 
         <div class="summary-info">
-            <h4>Salaries</h4>
-            <h2>NPR 25,000</h2>
-            <span>This Month</span>
+            <h4>Low Stock</h4>
+            <h2>4</h2>
+            <span>Need Reorder</span>
         </div>
 
     </div>
 
     <div class="summary-card">
 
-        <div class="summary-icon other-icon">
-            <i class="fa-solid fa-ellipsis"></i>
+        <div class="summary-icon supplier-icon">
+            <i class="fa-solid fa-truck"></i>
         </div>
 
         <div class="summary-info">
-            <h4>Other</h4>
-            <h2>NPR 18,500</h2>
-            <span>This Month</span>
+            <h4>Suppliers</h4>
+            <h2>7</h2>
+            <span>Active</span>
         </div>
 
     </div>
@@ -91,17 +91,13 @@
 
         <div class="search-input">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search expense...">
+            <input type="text" placeholder="Search material...">
         </div>
 
         <select class="filter-select">
-            <option>All Categories</option>
-            <option>Raw Materials</option>
-            <option>Salaries</option>
-            <option>Electricity</option>
-            <option>Transport</option>
-            <option>Maintenance</option>
-            <option>Others</option>
+            <option>All Stock</option>
+            <option>In Stock</option>
+            <option>Low Stock</option>
         </select>
 
     </div>
@@ -115,14 +111,14 @@
 
         <button class="btn-primary">
             <i class="fa-solid fa-plus"></i>
-            Add Expense
+            Add Material
         </button>
 
     </div>
 
 </div>
 
-<!-- EXPENSE TABLE -->
+<!-- MATERIALS TABLE -->
 
 <div class="table-card">
 
@@ -131,10 +127,12 @@
         <thead>
 
             <tr>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Amount</th>
+                <th>Material</th>
+                <th>Unit</th>
+                <th>Quantity</th>
+                <th>Unit Cost</th>
+                <th>Stock Value</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
 
@@ -143,10 +141,12 @@
         <tbody>
 
             <tr>
-                <td>11 Jul 2026</td>
-                <td><span class="badge material">Raw Materials</span></td>
-                <td>Purchased Steel</td>
-                <td class="amount">NPR 20,000</td>
+                <td>Leather</td>
+                <td>kg</td>
+                <td>500</td>
+                <td>NPR 120</td>
+                <td class="amount">NPR 60,000</td>
+                <td><span class="badge in-stock">In Stock</span></td>
                 <td>
 
                     <button class="action-btn edit">
@@ -161,10 +161,12 @@
             </tr>
 
             <tr>
-                <td>10 Jul 2026</td>
-                <td><span class="badge salary">Salaries</span></td>
-                <td>Workers Salary</td>
-                <td class="amount">NPR 15,000</td>
+                <td>Rubber Sole</td>
+                <td>pcs</td>
+                <td>800</td>
+                <td>NPR 45</td>
+                <td class="amount">NPR 36,000</td>
+                <td><span class="badge in-stock">In Stock</span></td>
                 <td>
 
                     <button class="action-btn edit">
@@ -179,10 +181,12 @@
             </tr>
 
             <tr>
-                <td>09 Jul 2026</td>
-                <td><span class="badge electricity">Electricity</span></td>
-                <td>Monthly Bill</td>
-                <td class="amount">NPR 5,000</td>
+                <td>Thread</td>
+                <td>roll</td>
+                <td>30</td>
+                <td>NPR 25</td>
+                <td class="amount">NPR 750</td>
+                <td><span class="badge low-stock">Low Stock</span></td>
                 <td>
 
                     <button class="action-btn edit">
@@ -197,10 +201,12 @@
             </tr>
 
             <tr>
-                <td>08 Jul 2026</td>
-                <td><span class="badge transport">Transport</span></td>
-                <td>Delivery Charge</td>
+                <td>Glue</td>
+                <td>litre</td>
+                <td>15</td>
+                <td>NPR 300</td>
                 <td class="amount">NPR 4,500</td>
+                <td><span class="badge low-stock">Low Stock</span></td>
                 <td>
 
                     <button class="action-btn edit">
