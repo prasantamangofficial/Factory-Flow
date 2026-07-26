@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Suppliers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/suppliers.css' %}">
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}?v=3">
 {% endblock %}
 
 {% block content %}
@@ -34,41 +34,47 @@ ADD SUPPLIER ACCOUNT
         </h2>
     </div>
 
-    <form class="supplier-form">
+    <form class="supplier-form" method="post">
+        {% csrf_token %}
 
         <div class="form-group">
             <label>Supplier Name</label>
-            <input type="text" placeholder="e.g. Balaju Leather Co.">
+            {{ form.name }}
+            {{ form.name.errors }}
         </div>
 
         <div class="form-group">
             <label>Contact Person</label>
-            <input type="text" placeholder="e.g. Ramesh Thapa">
+            {{ form.contact_person }}
+            {{ form.contact_person.errors }}
         </div>
 
         <div class="form-group">
             <label>Phone / Mobile</label>
-            <input type="text" placeholder="e.g. 98510XXXXX">
+            {{ form.phone }}
+            {{ form.phone.errors }}
         </div>
 
         <div class="form-group">
             <label>Materials Supplied</label>
-            <input type="text" placeholder="e.g. Leather, Rubber Soles">
+            {{ form.materials_supplied }}
+            {{ form.materials_supplied.errors }}
         </div>
 
         <div class="form-group">
             <label>Address</label>
-            <input type="text" placeholder="e.g. Balaju, Kathmandu">
+            {{ form.address }}
+            {{ form.address.errors }}
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Add Supplier
+            </button>
         </div>
 
     </form>
-
-    <div class="form-footer">
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Add Supplier
-        </button>
-    </div>
 
 </div>
 
@@ -105,83 +111,42 @@ ACTIVE RAW MATERIAL VENDORS
 
         <tbody>
 
+            {% for s in suppliers %}
             <tr>
 
-                <td>Balaju Leather Co.</td>
-                <td>Ramesh Thapa</td>
-                <td>9851012345</td>
-                <td>Leather</td>
-                <td>Balaju, Kathmandu</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.contact_person }}</td>
+                <td>{{ s.phone }}</td>
+                <td>{{ s.materials_supplied }}</td>
+                <td>{{ s.address }}</td>
 
                 <td class="income">
-                    NPR 245,000
+                    NPR {{ s.total_spend|floatformat:0 }}
                 </td>
 
                 <td>
 
                     <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <form method="post" action="{% url 'supplier_delete' s.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="action-btn delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
 
                 </td>
 
             </tr>
-
+            {% empty %}
             <tr>
-
-                <td>Everest Rubber Industries</td>
-                <td>Suresh Lama</td>
-                <td>9845678910</td>
-                <td>Rubber Soles</td>
-                <td>Lalitpur</td>
-
-                <td class="income">
-                    NPR 118,500
+                <td colspan="7" class="empty-row">
+                    No suppliers yet. Add one using the form above.
                 </td>
-
-                <td>
-
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
             </tr>
-
-            <tr>
-
-                <td>ABC Packaging Pvt. Ltd.</td>
-                <td>Bikash Sharma</td>
-                <td>9812345678</td>
-                <td>Shoe Boxes</td>
-                <td>Bhaktapur</td>
-
-                <td class="income">
-                    NPR 72,800
-                </td>
-
-                <td>
-
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
-            </tr>
+            {% endfor %}
 
         </tbody>
 

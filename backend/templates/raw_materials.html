@@ -11,116 +11,123 @@
 
 <section class="content">
 
-<!-- PAGE HEADER -->
+    <div class="page-header">
 
-<div class="page-header">
+        <h1>Raw Materials Ledger</h1>
 
-    <h1>Raw Materials</h1>
+<div class="form-card">
 
-    <p>Monitor stock levels and material costs.</p>
-
-</div>
-
-<!-- SUMMARY CARDS -->
-
-<div class="material-summary">
-
-    <div class="summary-card">
-
-        <div class="summary-icon value-icon">
-            <i class="fa-solid fa-sack-dollar"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Stock Value</h4>
-            <h2>NPR 96,000</h2>
-            <span>Current</span>
-        </div>
-
+    <div class="form-header">
+        <h2>
+            <i class="fa-solid fa-cart-plus"></i>
+            Record Material Purchase
+        </h2>
     </div>
 
-    <div class="summary-card">
+    <form class="purchase-form">
 
-        <div class="summary-icon items-icon">
-            <i class="fa-solid fa-cubes"></i>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date">
         </div>
 
-        <div class="summary-info">
-            <h4>Total Items</h4>
-            <h2>18</h2>
-            <span>In Stock</span>
+        <div class="form-group">
+            <label>Supplier</label>
+            <input type="text" placeholder="Supplier Name">
         </div>
 
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon low-icon">
-            <i class="fa-solid fa-triangle-exclamation"></i>
+        <div class="form-group">
+            <label>Material Name</label>
+            <input type="text" placeholder="White Leather">
         </div>
 
-        <div class="summary-info">
-            <h4>Low Stock</h4>
-            <h2>4</h2>
-            <span>Need Reorder</span>
+        <div class="form-group">
+
+            <label>Category</label>
+
+            <select>
+                <option>Leather</option>
+                <option>Rubber Sole</option>
+                <option>Fabric</option>
+                <option>Packaging</option>
+                <option>Accessories</option>
+            </select>
+
         </div>
 
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon supplier-icon">
-            <i class="fa-solid fa-truck"></i>
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" placeholder="0">
         </div>
 
-        <div class="summary-info">
-            <h4>Suppliers</h4>
-            <h2>7</h2>
-            <span>Active</span>
+        <div class="form-group">
+
+            <label>Unit</label>
+
+            <select>
+                <option>Pieces</option>
+                <option>KG</option>
+                <option>Meter</option>
+                <option>Pair</option>
+            </select>
+
         </div>
 
-    </div>
-
-</div>
-
-<!-- TOOLBAR -->
-
-<div class="table-toolbar">
-
-    <div class="toolbar-left">
-
-        <div class="search-input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search material...">
+        <div class="form-group">
+            <label>Unit Cost (NPR)</label>
+            <input type="number" placeholder="0">
         </div>
 
-        <select class="filter-select">
-            <option>All Stock</option>
-            <option>In Stock</option>
-            <option>Low Stock</option>
-        </select>
+        <div class="form-group">
+            <label>Total Cost</label>
+            <input type="number" placeholder="0">
+        </div>
 
-    </div>
+        <div class="form-group">
 
-    <div class="toolbar-right">
+            <label>Payment Status</label>
 
-        <button class="btn-secondary">
-            <i class="fa-solid fa-file-export"></i>
-            Export
-        </button>
+            <select>
+                <option>Paid</option>
+                <option>Pending</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Remarks</label>
+            <input type="text" placeholder="Optional Notes">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
 
         <button class="btn-primary">
             <i class="fa-solid fa-plus"></i>
-            Add Material
+            Add Purchase
         </button>
 
     </div>
 
 </div>
 
-<!-- MATERIALS TABLE -->
+        <p>
+            Manage raw material purchases, suppliers and stock inventory.
+        </p>
+
+    </div>
 
 <div class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+            <i class="fa-solid fa-boxes-stacked"></i>
+            Current Stock Summary
+        </h2>
+
+    </div>
 
     <table>
 
@@ -128,12 +135,11 @@
 
             <tr>
                 <th>Material</th>
-                <th>Unit</th>
-                <th>Quantity</th>
-                <th>Unit Cost</th>
+                <th>Purchased Qty</th>
+                <th>Consumed Qty</th>
+                <th>In Stock</th>
+                <th>Avg Unit Cost</th>
                 <th>Stock Value</th>
-                <th>Status</th>
-                <th>Action</th>
             </tr>
 
         </thead>
@@ -141,83 +147,63 @@
         <tbody>
 
             <tr>
-                <td>Leather</td>
-                <td>kg</td>
-                <td>500</td>
-                <td>NPR 120</td>
-                <td class="amount">NPR 60,000</td>
-                <td><span class="badge in-stock">In Stock</span></td>
+
+                <td>White Leather</td>
+                <td>10</td>
+                <td>0</td>
+
                 <td>
-
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
+                    <span class="stock-good">10</span>
                 </td>
+
+                <td>NPR 1,000</td>
+
+                <td class="income">NPR 10,000</td>
+
             </tr>
 
             <tr>
+
                 <td>Rubber Sole</td>
-                <td>pcs</td>
-                <td>800</td>
+                <td>120</td>
+                <td>45</td>
+
+                <td>
+                    <span class="stock-medium">75</span>
+                </td>
+
+                <td>NPR 180</td>
+
+                <td class="income">NPR 13,500</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Shoe Box</td>
+                <td>200</td>
+                <td>150</td>
+
+                <td>
+                    <span class="stock-low">50</span>
+                </td>
+
                 <td>NPR 45</td>
-                <td class="amount">NPR 36,000</td>
-                <td><span class="badge in-stock">In Stock</span></td>
-                <td>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                <td class="income">NPR 2,250</td>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
             </tr>
 
-            <tr>
-                <td>Thread</td>
-                <td>roll</td>
-                <td>30</td>
-                <td>NPR 25</td>
-                <td class="amount">NPR 750</td>
-                <td><span class="badge low-stock">Low Stock</span></td>
-                <td>
+            <tr class="total-row">
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
+                <td colspan="5">
+                    <strong>Total Raw Material Value</strong>
                 </td>
-            </tr>
 
-            <tr>
-                <td>Glue</td>
-                <td>litre</td>
-                <td>15</td>
-                <td>NPR 300</td>
-                <td class="amount">NPR 4,500</td>
-                <td><span class="badge low-stock">Low Stock</span></td>
-                <td>
-
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
+                <td class="income">
+                    <strong>NPR 25,750</strong>
                 </td>
+
             </tr>
 
         </tbody>

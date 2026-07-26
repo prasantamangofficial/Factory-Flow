@@ -11,120 +11,82 @@
 
 <section class="content">
 
-<!-- PAGE HEADER -->
-
 <div class="page-header">
 
-    <h1>Expenses</h1>
+<h1>Factory Expenses</h1>
 
-    <p>Track and manage all factory expenses.</p>
-
-</div>
-
-<!-- SUMMARY CARDS -->
-
-<div class="expense-summary">
-
-    <div class="summary-card">
-
-        <div class="summary-icon total-icon">
-            <i class="fa-solid fa-wallet"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Total Expenses</h4>
-            <h2>NPR 78,500</h2>
-            <span>This Month</span>
-        </div>
-
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon material-icon">
-            <i class="fa-solid fa-cubes"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Raw Materials</h4>
-            <h2>NPR 35,000</h2>
-            <span>This Month</span>
-        </div>
-
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon salary-icon">
-            <i class="fa-solid fa-users"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Salaries</h4>
-            <h2>NPR 25,000</h2>
-            <span>This Month</span>
-        </div>
-
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon other-icon">
-            <i class="fa-solid fa-ellipsis"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Other</h4>
-            <h2>NPR 18,500</h2>
-            <span>This Month</span>
-        </div>
-
-    </div>
+<p>
+Record wages, utilities, transportation, maintenance and other operational expenses.
+</p>
 
 </div>
 
-<!-- TOOLBAR -->
+<!-- ======================================
+ADD EXPENSE ENTRY
+====================================== -->
 
-<div class="table-toolbar">
+<div class="form-card">
 
-    <div class="toolbar-left">
-
-        <div class="search-input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search expense...">
-        </div>
-
-        <select class="filter-select">
-            <option>All Categories</option>
-            <option>Raw Materials</option>
-            <option>Salaries</option>
-            <option>Electricity</option>
-            <option>Transport</option>
-            <option>Maintenance</option>
-            <option>Others</option>
-        </select>
-
+    <div class="form-header">
+        <h2>Add Expense Entry</h2>
     </div>
 
-    <div class="toolbar-right">
+    <form class="expense-form">
 
-        <button class="btn-secondary">
-            <i class="fa-solid fa-file-export"></i>
-            Export
-        </button>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date">
+        </div>
+
+        <div class="form-group">
+
+            <label>Category</label>
+
+            <select>
+                <option>Rent</option>
+                <option>Salary</option>
+                <option>Electricity</option>
+                <option>Transport</option>
+                <option>Maintenance</option>
+                <option>Raw Materials</option>
+                <option>Internet</option>
+                <option>Other</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" placeholder="Expense description">
+        </div>
+
+        <div class="form-group">
+            <label>Amount (NPR)</label>
+            <input type="number" placeholder="Amount spent">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
 
         <button class="btn-primary">
             <i class="fa-solid fa-plus"></i>
-            Add Expense
+            Add Expense Record
         </button>
 
     </div>
 
 </div>
 
-<!-- EXPENSE TABLE -->
+<!-- ======================================
+EXPENSE LOG TABLE
+====================================== -->
 
 <div class="table-card">
+
+    <div class="table-header">
+        <h2>Operation Overhead Expense Log</h2>
+    </div>
 
     <table>
 
@@ -134,8 +96,8 @@
                 <th>Date</th>
                 <th>Category</th>
                 <th>Description</th>
-                <th>Amount</th>
-                <th>Action</th>
+                <th>Amount Spent</th>
+                <th>Actions</th>
             </tr>
 
         </thead>
@@ -143,75 +105,57 @@
         <tbody>
 
             <tr>
-                <td>11 Jul 2026</td>
-                <td><span class="badge material">Raw Materials</span></td>
-                <td>Purchased Steel</td>
-                <td class="amount">NPR 20,000</td>
+
+                <td>20 Jul 2026</td>
+
                 <td>
+                    <span class="badge transport">Transport</span>
+                </td>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                <td>Yango Delivery</td>
 
-                    <button class="action-btn delete">
+                <td class="expense">NPR 1,200</td>
+
+                <td>
+                    <button class="delete-btn">
                         <i class="fa-solid fa-trash"></i>
                     </button>
-
                 </td>
+
             </tr>
 
             <tr>
-                <td>10 Jul 2026</td>
-                <td><span class="badge salary">Salaries</span></td>
-                <td>Workers Salary</td>
-                <td class="amount">NPR 15,000</td>
+
+                <td>20 Jul 2026</td>
+
                 <td>
+                    <span class="badge rent">Rent</span>
+                </td>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                <td>Factory Building Rent</td>
 
-                    <button class="action-btn delete">
+                <td class="expense">NPR 20,000</td>
+
+                <td>
+                    <button class="delete-btn">
                         <i class="fa-solid fa-trash"></i>
                     </button>
-
                 </td>
+
             </tr>
 
-            <tr>
-                <td>09 Jul 2026</td>
-                <td><span class="badge electricity">Electricity</span></td>
-                <td>Monthly Bill</td>
-                <td class="amount">NPR 5,000</td>
-                <td>
+            <tr class="total-row">
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
+                <td colspan="3">
+                    <strong>Cumulative Overhead Total</strong>
                 </td>
-            </tr>
 
-            <tr>
-                <td>08 Jul 2026</td>
-                <td><span class="badge transport">Transport</span></td>
-                <td>Delivery Charge</td>
-                <td class="amount">NPR 4,500</td>
-                <td>
-
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
+                <td class="expense">
+                    <strong>NPR 21,200</strong>
                 </td>
+
+                <td></td>
+
             </tr>
 
         </tbody>

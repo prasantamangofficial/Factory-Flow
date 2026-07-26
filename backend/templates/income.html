@@ -15,214 +15,203 @@
 
 <h1>Income (Sales Ledger)</h1>
 
-<p>Track all your sales and customer payments here.</p>
+<p>
+Manage customer sales, invoices and payment records.
+</p>
 
-</div>
+<!-- =====================================
+ADD SALES RECORD
+====================================== -->
 
-<!-- Summary Cards -->
+<div class="form-card">
 
-<div class="income-summary">
-
-    <div class="summary-card">
-
-        <div class="summary-icon total-icon">
-            <i class="fa-solid fa-sack-dollar"></i>
-        </div>
-
-        <div class="summary-info">
-            <h4>Total Sales</h4>
-            <h2>NPR 125,000</h2>
-            <span>This Month</span>
-        </div>
-
+    <div class="form-header">
+        <h2>Add Sales Record</h2>
     </div>
 
-    <div class="summary-card">
+    <form class="sales-form">
 
-        <div class="summary-icon paid-icon">
-            <i class="fa-solid fa-circle-check"></i>
+        <!-- Row 1 -->
+
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date">
         </div>
 
-        <div class="summary-info">
-            <h4>Paid</h4>
-            <h2>NPR 98,000</h2>
-            <span>Received</span>
+        <div class="form-group">
+            <label>Invoice No.</label>
+            <input type="text" placeholder="INV-001">
         </div>
 
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon due-icon">
-            <i class="fa-solid fa-clock"></i>
+        <div class="form-group">
+            <label>Customer / Buyer</label>
+            <input type="text" placeholder="Customer Name">
         </div>
 
-        <div class="summary-info">
-            <h4>Pending</h4>
-            <h2>NPR 27,000</h2>
-            <span>Due</span>
+        <div class="form-group">
+
+            <label>Sales Channel</label>
+
+            <select>
+                <option>Wholesale</option>
+                <option>Retail Shop</option>
+                <option>Online</option>
+                <option>Distributor</option>
+            </select>
+
         </div>
 
-    </div>
-
-    <div class="summary-card">
-
-        <div class="summary-icon invoice-icon">
-            <i class="fa-solid fa-file-invoice"></i>
+        <div class="form-group">
+            <label>Product</label>
+            <input type="text" placeholder="Men Shoes">
         </div>
 
-        <div class="summary-info">
-            <h4>Total Invoices</h4>
-            <h2>42</h2>
-            <span>This Month</span>
+        <!-- Row 2 -->
+
+        <div class="form-group">
+            <label>Pairs Sold</label>
+            <input type="number" placeholder="0">
         </div>
 
-    </div>
-
-</div>
-
-<!-- Toolbar -->
-
-<div class="table-toolbar">
-
-    <div class="toolbar-left">
-
-        <div class="search-input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search invoice or customer...">
+        <div class="form-group">
+            <label>Unit Price (NPR)</label>
+            <input type="number" placeholder="0">
         </div>
 
-        <select class="filter-select">
-            <option>All Status</option>
-            <option>Paid</option>
-            <option>Pending</option>
-        </select>
+        <div class="form-group">
+            <label>Total Amount</label>
+            <input type="number" placeholder="0">
+        </div>
 
-    </div>
+        <div class="form-group">
 
-    <div class="toolbar-right">
+            <label>Payment Status</label>
 
-        <button class="btn-secondary">
-            <i class="fa-solid fa-file-export"></i>
-            Export
-        </button>
+            <select>
+                <option>Paid</option>
+                <option>Pending</option>
+                <option>Partial</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Notes</label>
+            <input type="text" placeholder="Additional Notes">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
 
         <button class="btn-primary">
             <i class="fa-solid fa-plus"></i>
-            Add Sale
+            Add Sales Entry
         </button>
 
     </div>
 
 </div>
 
-<!-- Income Table -->
+<!-- =====================================
+SALES LEDGER TABLE
+====================================== -->
 
 <div class="table-card">
 
-    <table>
+    <div class="table-header">
+        <h2>Sales Dispatch Ledger</h2>
+    </div>
 
-        <thead>
+    <div class="table-responsive">
 
-            <tr>
-                <th>Date</th>
-                <th>Invoice</th>
-                <th>Customer</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+        <table>
 
-        </thead>
+            <thead>
 
-        <tbody>
+                <tr>
+                    <th>Date</th>
+                    <th>Invoice</th>
+                    <th>Customer</th>
+                    <th>Channel</th>
+                    <th>Product</th>
+                    <th>Pairs</th>
+                    <th>Unit Price</th>
+                    <th>Total Revenue</th>
+                    <th>Payment</th>
+                    <th>Actions</th>
+                </tr>
 
-            <tr>
-                <td>11 Jul 2026</td>
-                <td>INV-001</td>
-                <td>ABC Traders</td>
-                <td class="amount">NPR 25,000</td>
-                <td><span class="badge paid">Paid</span></td>
-                <td>
+            </thead>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+            <tbody>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                <tr>
 
-                </td>
+                    <td>19 Jul 2026</td>
+                    <td>INV-001</td>
+                    <td>ABC Traders</td>
+                    <td>Wholesale</td>
+                    <td>Men Shoes</td>
+                    <td>120</td>
+                    <td>NPR 1,200</td>
+                    <td>NPR 144,000</td>
 
-            </tr>
+                    <td>
+                        <span class="status paid">Paid</span>
+                    </td>
 
-            <tr>
-                <td>10 Jul 2026</td>
-                <td>INV-002</td>
-                <td>XYZ Enterprises</td>
-                <td class="amount">NPR 18,000</td>
-                <td><span class="badge pending">Pending</span></td>
-                <td>
+                    <td>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                        <button class="action-btn edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                        <button class="action-btn delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
 
-                </td>
+                    </td>
 
-            </tr>
+                </tr>
 
-            <tr>
-                <td>09 Jul 2026</td>
-                <td>INV-003</td>
-                <td>Green Store</td>
-                <td class="amount">NPR 22,500</td>
-                <td><span class="badge paid">Paid</span></td>
-                <td>
+                <tr>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                    <td>18 Jul 2026</td>
+                    <td>INV-002</td>
+                    <td>XYZ Footwear</td>
+                    <td>Retail</td>
+                    <td>Sports Shoes</td>
+                    <td>85</td>
+                    <td>NPR 1,350</td>
+                    <td>NPR 114,750</td>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <td>
+                        <span class="status pending">Pending</span>
+                    </td>
 
-                </td>
+                    <td>
 
-            </tr>
+                        <button class="action-btn edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
 
-            <tr>
-                <td>08 Jul 2026</td>
-                <td>INV-004</td>
-                <td>Local Market</td>
-                <td class="amount">NPR 15,000</td>
-                <td><span class="badge pending">Pending</span></td>
-                <td>
+                        <button class="action-btn delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
 
-                    <button class="action-btn edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                    </td>
 
-                    <button class="action-btn delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                </tr>
 
-                </td>
-
-            </tr>
-
-        </tbody>
+            </tbody>
 
         </table>
 
+    </div>
+
 </div>
-</div>
+
 </div>
 
 </section>

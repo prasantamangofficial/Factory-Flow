@@ -1,241 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
+{% block title %}FactoryFlow | Product Catalog{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
 
-    <title>FactoryFlow | Product Catalog</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-
-    <!-- Product CSS -->
-    <link rel="stylesheet" href="../assets/css/products.css">
-
-</head>
-
-<body>
-
-<div class="app">
-
-<!-- =====================================
-SIDEBAR
-===================================== -->
-
-<aside class="sidebar">
-
-    <div class="logo">
-
-        <i class="fa-solid fa-industry"></i>
-
-        <span>FactoryFlow</span>
-
-    </div>
-
-    <ul class="menu">
-
-        <li>
-
-            <a href="../index.html">
-
-                <i class="fa-solid fa-house"></i>
-
-                <span>Dashboard</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="income.html">
-
-                <i class="fa-solid fa-dollar-sign"></i>
-
-                <span>Income (Sales)</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="expenses.html">
-
-                <i class="fa-solid fa-wallet"></i>
-
-                <span>Expenses</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="raw-materials.html">
-
-                <i class="fa-solid fa-cubes"></i>
-
-                <span>Raw Materials</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="production.html">
-
-                <i class="fa-solid fa-industry"></i>
-
-                <span>Production</span>
-
-            </a>
-
-        </li>
-
-        <li class="active">
-
-            <a href="products.html">
-
-                <i class="fa-solid fa-box-open"></i>
-
-                <span>Products</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="suppliers.html">
-
-                <i class="fa-solid fa-truck"></i>
-
-                <span>Suppliers</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="customers.html">
-
-                <i class="fa-solid fa-users"></i>
-
-                <span>Customers</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="reports.html">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <span>Reports</span>
-
-            </a>
-
-        </li>
-
-        <li>
-
-            <a href="settings.html">
-
-                <i class="fa-solid fa-gear"></i>
-
-                <span>Settings</span>
-
-            </a>
-
-        </li>
-
-    </ul>
-
-    <div class="logout">
-
-        <a href="#">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            <span>Logout</span>
-
-        </a>
-
-    </div>
-
-</aside>
-
-<!-- =====================================
-MAIN
-===================================== -->
-
-<main class="main">
-
-<header class="navbar">
-
-    <div class="nav-left">
-
-        <button class="menu-btn">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-            type="text"
-            placeholder="Search Products...">
-
-        </div>
-
-    </div>
-
-    <div class="nav-right">
-
-        <div class="date">
-
-            <i class="fa-regular fa-calendar"></i>
-
-            <span>21 Jul 2026</span>
-
-        </div>
-
-        <button class="icon-btn">
-
-            <i class="fa-regular fa-bell"></i>
-
-        </button>
-
-        <div class="profile">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Admin</span>
-
-            <i class="fa-solid fa-chevron-down"></i>
-
-        </div>
-
-    </div>
-
-</header>
+{% block content %}
 
 <section class="content">
 
@@ -244,13 +16,10 @@ MAIN
 <h1>Product Catalog</h1>
 
 <p>
-
 Manage all finished shoe products, stock levels, prices and availability.
-
 </p>
 
 </div>
-
 
 <!-- ======================================
 ADD NEW PRODUCT
@@ -282,6 +51,7 @@ ADD NEW PRODUCT
         </div>
 
         <div class="form-group">
+
             <label>Category</label>
 
             <select>
@@ -308,6 +78,7 @@ ADD NEW PRODUCT
         <!-- Row 2 -->
 
         <div class="form-group">
+
             <label>Size</label>
 
             <select>
@@ -345,6 +116,7 @@ ADD NEW PRODUCT
         <!-- Row 3 -->
 
         <div class="form-group">
+
             <label>Status</label>
 
             <select>
@@ -370,11 +142,8 @@ ADD NEW PRODUCT
     <div class="form-footer">
 
         <button class="btn-primary">
-
             <i class="fa-solid fa-plus"></i>
-
             Save Product
-
         </button>
 
     </div>
@@ -401,13 +170,11 @@ PRODUCT SUMMARY
         <thead>
 
             <tr>
-
                 <th>Total Products</th>
                 <th>In Stock</th>
                 <th>Low Stock</th>
                 <th>Out of Stock</th>
                 <th>Total Inventory Value</th>
-
             </tr>
 
         </thead>
@@ -419,26 +186,18 @@ PRODUCT SUMMARY
                 <td>85</td>
 
                 <td>
-                    <span class="stock-good">
-                        72
-                    </span>
+                    <span class="stock-good">72</span>
                 </td>
 
                 <td>
-                    <span class="stock-medium">
-                        9
-                    </span>
+                    <span class="stock-medium">9</span>
                 </td>
 
                 <td>
-                    <span class="stock-low">
-                        4
-                    </span>
+                    <span class="stock-low">4</span>
                 </td>
 
-                <td class="income">
-                    NPR 2,850,000
-                </td>
+                <td class="income">NPR 2,850,000</td>
 
             </tr>
 
@@ -457,11 +216,8 @@ PRODUCT CATALOG
     <div class="table-header">
 
         <h2>
-
             <i class="fa-solid fa-box-open"></i>
-
             Product Catalog
-
         </h2>
 
     </div>
@@ -471,7 +227,6 @@ PRODUCT CATALOG
         <thead>
 
             <tr>
-
                 <th>SKU</th>
                 <th>Product Name</th>
                 <th>Category</th>
@@ -479,7 +234,6 @@ PRODUCT CATALOG
                 <th>Stock</th>
                 <th>Status</th>
                 <th>Action</th>
-
             </tr>
 
         </thead>
@@ -489,39 +243,26 @@ PRODUCT CATALOG
             <tr>
 
                 <td>SKU-1001</td>
-
                 <td>Men Sports Shoes</td>
-
                 <td>Sports</td>
-
                 <td>NPR 2,500</td>
 
                 <td>
-                    <span class="stock-good">
-                        120
-                    </span>
+                    <span class="stock-good">120</span>
                 </td>
 
                 <td>
-
-                    <span class="stock-good">
-                        Available
-                    </span>
-
+                    <span class="stock-good">Available</span>
                 </td>
 
                 <td>
 
                     <button class="btn-edit">
-
                         <i class="fa-solid fa-pen"></i>
-
                     </button>
 
                     <button class="btn-delete">
-
                         <i class="fa-solid fa-trash"></i>
-
                     </button>
 
                 </td>
@@ -531,41 +272,26 @@ PRODUCT CATALOG
             <tr>
 
                 <td>SKU-1002</td>
-
                 <td>School Shoes</td>
-
                 <td>School</td>
-
                 <td>NPR 1,800</td>
 
                 <td>
-
-                    <span class="stock-medium">
-                        25
-                    </span>
-
+                    <span class="stock-medium">25</span>
                 </td>
 
                 <td>
-
-                    <span class="stock-medium">
-                        Low Stock
-                    </span>
-
+                    <span class="stock-medium">Low Stock</span>
                 </td>
 
                 <td>
 
                     <button class="btn-edit">
-
                         <i class="fa-solid fa-pen"></i>
-
                     </button>
 
                     <button class="btn-delete">
-
                         <i class="fa-solid fa-trash"></i>
-
                     </button>
 
                 </td>
@@ -575,41 +301,26 @@ PRODUCT CATALOG
             <tr>
 
                 <td>SKU-1003</td>
-
                 <td>Formal Shoes</td>
-
                 <td>Formal</td>
-
                 <td>NPR 3,200</td>
 
                 <td>
-
-                    <span class="stock-low">
-                        0
-                    </span>
-
+                    <span class="stock-low">0</span>
                 </td>
 
                 <td>
-
-                    <span class="stock-low">
-                        Out of Stock
-                    </span>
-
+                    <span class="stock-low">Out of Stock</span>
                 </td>
 
                 <td>
 
                     <button class="btn-edit">
-
                         <i class="fa-solid fa-pen"></i>
-
                     </button>
 
                     <button class="btn-delete">
-
                         <i class="fa-solid fa-trash"></i>
-
                     </button>
 
                 </td>
@@ -621,16 +332,6 @@ PRODUCT CATALOG
     </table>
 
 </div>
-            </div> <!-- End table-card -->
 
-        </section> <!-- End content -->
-
-    </main> <!-- End main -->
-
-</div> <!-- End app -->
-
-<!-- JavaScript -->
-<script src="../assets/js/script.js"></script>
-
-</body>
-</html>
+</section>
+{% endblock %}
