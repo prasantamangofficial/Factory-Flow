@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import RawMaterial
 
-# Register your models here.
+
+@admin.register(RawMaterial)
+class RawMaterialAdmin(admin.ModelAdmin):
+    list_display = ("name", "unit", "quantity_in_stock", "unit_cost", "stock_value")
+    search_fields = ("name",)
