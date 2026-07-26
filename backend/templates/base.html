@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}FactoryFlow{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Page specific CSS -->
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ===========================
+         SIDEBAR
+         =========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-industry"></i>
+            <span>FactoryFlow</span>
+        </div>
+
+        <ul class="menu">
+
+            <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                <a href="{% url 'dashboard' %}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'income' %}active{% endif %}">
+                <a href="{% url 'income' %}">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <span>Income (Sales)</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'expenses' %}active{% endif %}">
+                <a href="{% url 'expenses' %}">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Expenses</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'raw_materials' %}active{% endif %}">
+                <a href="{% url 'raw_materials' %}">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Raw Materials</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'production' %}active{% endif %}">
+                <a href="{% url 'production' %}">
+                    <i class="fa-solid fa-industry"></i>
+                    <span>Production</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}">
+                <a href="{% url 'products' %}">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Products Catalog</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'suppliers' %}active{% endif %}">
+                <a href="{% url 'suppliers' %}">
+                    <i class="fa-solid fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'customers' %}active{% endif %}">
+                <a href="{% url 'customers' %}">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'reports' %}active{% endif %}">
+                <a href="{% url 'reports' %}">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Reports &amp; Audits</span>
+                </a>
+            </li>
+
+            <li class="{% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
+                <a href="{% url 'settings' %}">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="logout">
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- ===========================
+         MAIN
+         =========================== -->
+
+    <main class="main">
+
+        <!-- NAVBAR -->
+
+        <header class="navbar">
+
+            <div class="nav-left">
+
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search anything...">
+                </div>
+
+            </div>
+
+            <div class="nav-right">
+
+                <div class="date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>{% now "d M Y" %}</span>
+                </div>
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <div class="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span>{{ user.username|default:"Admin" }}</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- PAGE CONTENT -->
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

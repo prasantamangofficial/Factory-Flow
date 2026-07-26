@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}FactoryFlow | Income{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/income.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="content">
+
+<div class="page-header">
+
+<h1>Income (Sales Ledger)</h1>
+
+<p>Track all your sales and customer payments here.</p>
+
+</div>
+
+<!-- Summary Cards -->
+
+<div class="income-summary">
+
+    <div class="summary-card">
+
+        <div class="summary-icon total-icon">
+            <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+
+        <div class="summary-info">
+            <h4>Total Sales</h4>
+            <h2>NPR 125,000</h2>
+            <span>This Month</span>
+        </div>
+
+    </div>
+
+    <div class="summary-card">
+
+        <div class="summary-icon paid-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="summary-info">
+            <h4>Paid</h4>
+            <h2>NPR 98,000</h2>
+            <span>Received</span>
+        </div>
+
+    </div>
+
+    <div class="summary-card">
+
+        <div class="summary-icon due-icon">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+
+        <div class="summary-info">
+            <h4>Pending</h4>
+            <h2>NPR 27,000</h2>
+            <span>Due</span>
+        </div>
+
+    </div>
+
+    <div class="summary-card">
+
+        <div class="summary-icon invoice-icon">
+            <i class="fa-solid fa-file-invoice"></i>
+        </div>
+
+        <div class="summary-info">
+            <h4>Total Invoices</h4>
+            <h2>42</h2>
+            <span>This Month</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Toolbar -->
+
+<div class="table-toolbar">
+
+    <div class="toolbar-left">
+
+        <div class="search-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search invoice or customer...">
+        </div>
+
+        <select class="filter-select">
+            <option>All Status</option>
+            <option>Paid</option>
+            <option>Pending</option>
+        </select>
+
+    </div>
+
+    <div class="toolbar-right">
+
+        <button class="btn-secondary">
+            <i class="fa-solid fa-file-export"></i>
+            Export
+        </button>
+
+        <button class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Add Sale
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Income Table -->
+
+<div class="table-card">
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Date</th>
+                <th>Invoice</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>11 Jul 2026</td>
+                <td>INV-001</td>
+                <td>ABC Traders</td>
+                <td class="amount">NPR 25,000</td>
+                <td><span class="badge paid">Paid</span></td>
+                <td>
+
+                    <button class="action-btn edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="action-btn delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>10 Jul 2026</td>
+                <td>INV-002</td>
+                <td>XYZ Enterprises</td>
+                <td class="amount">NPR 18,000</td>
+                <td><span class="badge pending">Pending</span></td>
+                <td>
+
+                    <button class="action-btn edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="action-btn delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>09 Jul 2026</td>
+                <td>INV-003</td>
+                <td>Green Store</td>
+                <td class="amount">NPR 22,500</td>
+                <td><span class="badge paid">Paid</span></td>
+                <td>
+
+                    <button class="action-btn edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="action-btn delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>08 Jul 2026</td>
+                <td>INV-004</td>
+                <td>Local Market</td>
+                <td class="amount">NPR 15,000</td>
+                <td><span class="badge pending">Pending</span></td>
+                <td>
+
+                    <button class="action-btn edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="action-btn delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+        </table>
+
+</div>
+</div>
+</div>
+
+</section>
+{% endblock %}
