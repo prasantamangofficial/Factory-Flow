@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from dashboard.views import dashboard
-from income.views import income
+from income.views import income, income_delete
 from expenses.views import expenses
 from raw_materials.views import raw_materials, purchase_delete
 from production.views import production
@@ -18,13 +18,16 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path("", dashboard, name="dashboard"),
-    path("income/", income, name="income"),
     path("expenses/", expenses, name="expenses"),
     path("production/", production, name="production"),
     path("products/", products, name="products"),
     path("customers/", customers, name="customers"),
     path("reports/", reports, name="reports"),
     path("settings/", settings_view, name="settings"),
+
+    # Income
+    path("income/", income, name="income"),
+    path("income/<int:pk>/delete/", income_delete, name="income_delete"),
 
     # Raw materials
     path("raw-materials/", raw_materials, name="raw_materials"),

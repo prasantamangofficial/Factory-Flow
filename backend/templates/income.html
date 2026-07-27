@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Income{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/income.css' %}">
+<link rel="stylesheet" href="{% static 'css/income.css' %}?v=2">
 {% endblock %}
 
 {% block content %}
@@ -13,11 +13,13 @@
 
 <div class="page-header">
 
-<h1>Income (Sales Ledger)</h1>
+    <h1>Income (Sales Ledger)</h1>
 
-<p>
-Manage customer sales, invoices and payment records.
-</p>
+    <p>
+        Manage customer sales, invoices and payment records.
+    </p>
+
+</div>
 
 <!-- =====================================
 ADD SALES RECORD
@@ -29,87 +31,71 @@ ADD SALES RECORD
         <h2>Add Sales Record</h2>
     </div>
 
-    <form class="sales-form">
-
-        <!-- Row 1 -->
+    <form class="sales-form" method="post">
+        {% csrf_token %}
 
         <div class="form-group">
             <label>Date</label>
-            <input type="date">
+            {{ form.date }}
+            {{ form.date.errors }}
         </div>
 
         <div class="form-group">
             <label>Invoice No.</label>
-            <input type="text" placeholder="INV-001">
+            {{ form.invoice_no }}
+            {{ form.invoice_no.errors }}
         </div>
 
         <div class="form-group">
             <label>Customer / Buyer</label>
-            <input type="text" placeholder="Customer Name">
+            {{ form.customer }}
+            {{ form.customer.errors }}
         </div>
 
         <div class="form-group">
-
             <label>Sales Channel</label>
-
-            <select>
-                <option>Wholesale</option>
-                <option>Retail Shop</option>
-                <option>Online</option>
-                <option>Distributor</option>
-            </select>
-
+            {{ form.channel }}
+            {{ form.channel.errors }}
         </div>
 
         <div class="form-group">
             <label>Product</label>
-            <input type="text" placeholder="Men Shoes">
+            {{ form.product }}
+            {{ form.product.errors }}
         </div>
-
-        <!-- Row 2 -->
 
         <div class="form-group">
             <label>Pairs Sold</label>
-            <input type="number" placeholder="0">
+            {{ form.pairs_sold }}
+            {{ form.pairs_sold.errors }}
         </div>
 
         <div class="form-group">
             <label>Unit Price (NPR)</label>
-            <input type="number" placeholder="0">
+            {{ form.unit_price }}
+            {{ form.unit_price.errors }}
         </div>
 
         <div class="form-group">
-            <label>Total Amount</label>
-            <input type="number" placeholder="0">
-        </div>
-
-        <div class="form-group">
-
             <label>Payment Status</label>
-
-            <select>
-                <option>Paid</option>
-                <option>Pending</option>
-                <option>Partial</option>
-            </select>
-
+            {{ form.payment_status }}
+            {{ form.payment_status.errors }}
         </div>
 
         <div class="form-group">
             <label>Notes</label>
-            <input type="text" placeholder="Additional Notes">
+            {{ form.notes }}
+            {{ form.notes.errors }}
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Add Sales Entry
+            </button>
         </div>
 
     </form>
-
-    <div class="form-footer">
-
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Add Sales Entry
-        </button>
-
-    </div>
 
 </div>
 
@@ -146,71 +132,59 @@ SALES LEDGER TABLE
 
             <tbody>
 
+                {% for s in sales %}
                 <tr>
 
-                    <td>19 Jul 2026</td>
-                    <td>INV-001</td>
-                    <td>ABC Traders</td>
-                    <td>Wholesale</td>
-                    <td>Men Shoes</td>
-                    <td>120</td>
-                    <td>NPR 1,200</td>
-                    <td>NPR 144,000</td>
+                    <td>{{ s.date|date:"d M Y" }}</td>
+                    <td>{{ s.invoice_no }}</td>
+                    <td>{{ s.customer.name }}</td>
+                    <td>{{ s.get_channel_display }}</td>
+                    <td>{{ s.product.name }}</td>
+                    <td>{{ s.pairs_sold }}</td>
+                    <td>NPR {{ s.unit_price|floatformat:0 }}</td>
+                    <td class="income">NPR {{ s.amount|floatformat:0 }}</td>
 
                     <td>
-                        <span class="status paid">Paid</span>
+                        {% if s.payment_status == "paid" %}
+                            <span class="status paid">Paid</span>
+                        {% elif s.payment_status == "partial" %}
+                            <span class="status partial">Partial</span>
+                        {% else %}
+                            <span class="status pending">Pending</span>
+                        {% endif %}
                     </td>
 
                     <td>
-
-                        <button class="action-btn edit">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="action-btn delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-
+                        <form method="post" action="{% url 'income_delete' s.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="action-btn delete">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </td>
 
                 </tr>
-
+                {% empty %}
                 <tr>
-
-                    <td>18 Jul 2026</td>
-                    <td>INV-002</td>
-                    <td>XYZ Footwear</td>
-                    <td>Retail</td>
-                    <td>Sports Shoes</td>
-                    <td>85</td>
-                    <td>NPR 1,350</td>
-                    <td>NPR 114,750</td>
-
-                    <td>
-                        <span class="status pending">Pending</span>
+                    <td colspan="10" class="empty-row">
+                        No sales recorded yet. Add one using the form above.
                     </td>
-
-                    <td>
-
-                        <button class="action-btn edit">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="action-btn delete">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-
-                    </td>
-
                 </tr>
+                {% endfor %}
+
+                {% if sales %}
+                <tr class="total-row">
+                    <td colspan="7"><strong>Total Sales ({{ invoice_count }} invoices)</strong></td>
+                    <td class="income"><strong>NPR {{ total_sales|floatformat:0 }}</strong></td>
+                    <td colspan="2"></td>
+                </tr>
+                {% endif %}
 
             </tbody>
 
         </table>
 
     </div>
-
-</div>
 
 </div>
 
