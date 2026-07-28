@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Product Catalog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="stylesheet" href="{% static 'css/products.css' %}?v=3">
 {% endblock %}
 
 {% block content %}
@@ -13,11 +13,11 @@
 
 <div class="page-header">
 
-<h1>Product Catalog</h1>
+    <h1>Product Catalog</h1>
 
-<p>
-Manage all finished shoe products, stock levels, prices and availability.
-</p>
+    <p>
+        Manage all finished shoe products, stock levels, prices and availability.
+    </p>
 
 </div>
 
@@ -36,117 +36,89 @@ ADD NEW PRODUCT
 
     </div>
 
-    <form class="product-form">
-
-        <!-- Row 1 -->
+    <form class="product-form" method="post">
+        {% csrf_token %}
 
         <div class="form-group">
             <label>Product Name</label>
-            <input type="text" placeholder="Men Sports Shoes">
+            {{ form.name }}
+            {{ form.name.errors }}
         </div>
 
         <div class="form-group">
             <label>Product Code (SKU)</label>
-            <input type="text" placeholder="SKU-1001">
+            {{ form.sku }}
+            {{ form.sku.errors }}
         </div>
 
         <div class="form-group">
-
             <label>Category</label>
-
-            <select>
-                <option>Sports Shoes</option>
-                <option>School Shoes</option>
-                <option>Casual Shoes</option>
-                <option>Formal Shoes</option>
-                <option>Boots</option>
-                <option>Sandals</option>
-            </select>
-
+            {{ form.category }}
+            {{ form.category.errors }}
         </div>
 
         <div class="form-group">
             <label>Brand</label>
-            <input type="text" placeholder="FactoryFlow Brand">
+            {{ form.brand }}
+            {{ form.brand.errors }}
         </div>
 
         <div class="form-group">
             <label>Color</label>
-            <input type="text" placeholder="White">
+            {{ form.color }}
+            {{ form.color.errors }}
         </div>
 
-        <!-- Row 2 -->
-
         <div class="form-group">
-
             <label>Size</label>
-
-            <select>
-                <option>38</option>
-                <option>39</option>
-                <option>40</option>
-                <option>41</option>
-                <option>42</option>
-                <option>43</option>
-                <option>44</option>
-            </select>
-
+            {{ form.size }}
+            {{ form.size.errors }}
         </div>
 
         <div class="form-group">
             <label>Cost Price (NPR)</label>
-            <input type="number" placeholder="1500">
+            {{ form.cost_price }}
+            {{ form.cost_price.errors }}
         </div>
 
         <div class="form-group">
             <label>Selling Price (NPR)</label>
-            <input type="number" placeholder="2500">
+            {{ form.selling_price }}
+            {{ form.selling_price.errors }}
         </div>
 
         <div class="form-group">
             <label>Current Stock</label>
-            <input type="number" placeholder="250">
+            {{ form.quantity_in_stock }}
+            {{ form.quantity_in_stock.errors }}
         </div>
 
         <div class="form-group">
             <label>Reorder Level</label>
-            <input type="number" placeholder="50">
+            {{ form.reorder_level }}
+            {{ form.reorder_level.errors }}
         </div>
-
-        <!-- Row 3 -->
 
         <div class="form-group">
-
             <label>Status</label>
-
-            <select>
-                <option>Available</option>
-                <option>Out of Stock</option>
-                <option>Discontinued</option>
-            </select>
-
+            {{ form.status }}
+            {{ form.status.errors }}
         </div>
 
-        <div class="form-group" style="grid-column: span 2;">
-            <label>Product Image</label>
-            <input type="file">
-        </div>
-
-        <div class="form-group" style="grid-column: span 2;">
+        <div class="form-group">
             <label>Description</label>
-            <input type="text" placeholder="Short product description">
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Save Product
+            </button>
         </div>
 
     </form>
-
-    <div class="form-footer">
-
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Save Product
-        </button>
-
-    </div>
 
 </div>
 
@@ -168,7 +140,6 @@ PRODUCT SUMMARY
     <table>
 
         <thead>
-
             <tr>
                 <th>Total Products</th>
                 <th>In Stock</th>
@@ -176,31 +147,26 @@ PRODUCT SUMMARY
                 <th>Out of Stock</th>
                 <th>Total Inventory Value</th>
             </tr>
-
         </thead>
 
         <tbody>
-
             <tr>
-
-                <td>85</td>
+                <td>{{ total_products }}</td>
 
                 <td>
-                    <span class="stock-good">72</span>
+                    <span class="stock-good">{{ in_stock }}</span>
                 </td>
 
                 <td>
-                    <span class="stock-medium">9</span>
+                    <span class="stock-medium">{{ low_stock }}</span>
                 </td>
 
                 <td>
-                    <span class="stock-low">4</span>
+                    <span class="stock-low">{{ out_of_stock }}</span>
                 </td>
 
-                <td class="income">NPR 2,850,000</td>
-
+                <td class="income">NPR {{ inventory_value|floatformat:0 }}</td>
             </tr>
-
         </tbody>
 
     </table>
@@ -225,7 +191,6 @@ PRODUCT CATALOG
     <table>
 
         <thead>
-
             <tr>
                 <th>SKU</th>
                 <th>Product Name</th>
@@ -235,97 +200,63 @@ PRODUCT CATALOG
                 <th>Status</th>
                 <th>Action</th>
             </tr>
-
         </thead>
 
         <tbody>
 
+            {% for p in products %}
             <tr>
 
-                <td>SKU-1001</td>
-                <td>Men Sports Shoes</td>
-                <td>Sports</td>
-                <td>NPR 2,500</td>
+                <td>{{ p.sku }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.get_category_display }}</td>
+                <td>NPR {{ p.selling_price|floatformat:0 }}</td>
 
                 <td>
-                    <span class="stock-good">120</span>
+                    {% if p.stock_status == "out" %}
+                        <span class="stock-low">{{ p.quantity_in_stock }}</span>
+                    {% elif p.stock_status == "low" %}
+                        <span class="stock-medium">{{ p.quantity_in_stock }}</span>
+                    {% else %}
+                        <span class="stock-good">{{ p.quantity_in_stock }}</span>
+                    {% endif %}
                 </td>
 
                 <td>
-                    <span class="stock-good">Available</span>
+                    {% if p.status == "discontinued" %}
+                        <span class="stock-low">Discontinued</span>
+                    {% elif p.stock_status == "out" %}
+                        <span class="stock-low">Out of Stock</span>
+                    {% elif p.stock_status == "low" %}
+                        <span class="stock-medium">Low Stock</span>
+                    {% else %}
+                        <span class="stock-good">Available</span>
+                    {% endif %}
                 </td>
 
                 <td>
 
                     <button class="btn-edit">
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
-                    <button class="btn-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <form method="post" action="{% url 'product_delete' p.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
 
                 </td>
 
             </tr>
-
+            {% empty %}
             <tr>
-
-                <td>SKU-1002</td>
-                <td>School Shoes</td>
-                <td>School</td>
-                <td>NPR 1,800</td>
-
-                <td>
-                    <span class="stock-medium">25</span>
+                <td colspan="7" class="empty-row">
+                    No products yet. Add one using the form above.
                 </td>
-
-                <td>
-                    <span class="stock-medium">Low Stock</span>
-                </td>
-
-                <td>
-
-                    <button class="btn-edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="btn-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
             </tr>
-
-            <tr>
-
-                <td>SKU-1003</td>
-                <td>Formal Shoes</td>
-                <td>Formal</td>
-                <td>NPR 3,200</td>
-
-                <td>
-                    <span class="stock-low">0</span>
-                </td>
-
-                <td>
-                    <span class="stock-low">Out of Stock</span>
-                </td>
-
-                <td>
-
-                    <button class="btn-edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="btn-delete">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
-            </tr>
+            {% endfor %}
 
         </tbody>
 

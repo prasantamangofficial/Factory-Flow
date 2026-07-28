@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Customers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/customers.css' %}">
+<link rel="stylesheet" href="{% static 'css/customers.css' %}?v=2">
 {% endblock %}
 
 {% block content %}
@@ -13,11 +13,11 @@
 
 <div class="page-header">
 
-<h1>Customer Management</h1>
+    <h1>Customer Management</h1>
 
-<p>
-Manage customers, contact details and sales records.
-</p>
+    <p>
+        Manage customers, contact details and sales records.
+    </p>
 
 </div>
 
@@ -36,86 +36,77 @@ ADD CUSTOMER ACCOUNT
 
     </div>
 
-    <form class="customer-form">
-
-        <!-- Row 1 -->
+    <form class="customer-form" method="post">
+        {% csrf_token %}
 
         <div class="form-group">
             <label>Customer Name</label>
-            <input type="text" placeholder="e.g. ABC Shoe Store">
+            {{ form.name }}
+            {{ form.name.errors }}
         </div>
 
         <div class="form-group">
             <label>Contact Person</label>
-            <input type="text" placeholder="e.g. Ram Bahadur">
+            {{ form.contact_person }}
+            {{ form.contact_person.errors }}
         </div>
 
         <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" placeholder="+977-98XXXXXXXX">
+            {{ form.phone }}
+            {{ form.phone.errors }}
         </div>
 
         <div class="form-group">
             <label>Email</label>
-            <input type="email" placeholder="customer@email.com">
+            {{ form.email }}
+            {{ form.email.errors }}
         </div>
 
         <div class="form-group">
             <label>Address</label>
-            <input type="text" placeholder="Kathmandu, Nepal">
+            {{ form.address }}
+            {{ form.address.errors }}
         </div>
 
-        <!-- Row 2 -->
-
         <div class="form-group">
-
             <label>Customer Type</label>
-
-            <select>
-                <option>Retailer</option>
-                <option>Wholesaler</option>
-                <option>Distributor</option>
-                <option>Individual</option>
-            </select>
-
+            {{ form.customer_type }}
+            {{ form.customer_type.errors }}
         </div>
 
         <div class="form-group">
             <label>Business Name</label>
-            <input type="text" placeholder="Optional">
+            {{ form.business_name }}
+            {{ form.business_name.errors }}
         </div>
 
         <div class="form-group">
             <label>Credit Limit (NPR)</label>
-            <input type="number" placeholder="0">
+            {{ form.credit_limit }}
+            {{ form.credit_limit.errors }}
         </div>
 
         <div class="form-group">
-
             <label>Status</label>
-
-            <select>
-                <option>Active</option>
-                <option>Inactive</option>
-            </select>
-
+            {{ form.status }}
+            {{ form.status.errors }}
         </div>
 
         <div class="form-group">
             <label>Remarks</label>
-            <input type="text" placeholder="Optional Notes">
+            {{ form.remarks }}
+            {{ form.remarks.errors }}
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Add Customer
+            </button>
         </div>
 
     </form>
-
-    <div class="form-footer">
-
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Add Customer
-        </button>
-
-    </div>
 
 </div>
 
@@ -153,101 +144,50 @@ CUSTOMER DIRECTORY
 
         <tbody>
 
+            {% for c in customers %}
             <tr>
 
-                <td>ABC Shoe Store</td>
-                <td>Ram Bahadur</td>
-                <td>9812345678</td>
-                <td>Retailer</td>
-                <td>15</td>
+                <td>{{ c.name }}</td>
+                <td>{{ c.contact_person }}</td>
+                <td>{{ c.phone }}</td>
+                <td>{{ c.get_customer_type_display }}</td>
+                <td>{{ c.total_orders }}</td>
 
                 <td class="income">
-                    NPR 185,000
+                    NPR {{ c.total_purchase|floatformat:0 }}
                 </td>
 
                 <td>
-                    <span class="status-active">
-                        Active
-                    </span>
+                    {% if c.status == "active" %}
+                        <span class="status-active">Active</span>
+                    {% else %}
+                        <span class="status-inactive">Inactive</span>
+                    {% endif %}
                 </td>
 
                 <td>
 
                     <button class="action-btn edit-btn">
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
-                    <button class="action-btn delete-btn">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <form method="post" action="{% url 'customer_delete' c.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="action-btn delete-btn">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
 
                 </td>
 
             </tr>
-
+            {% empty %}
             <tr>
-
-                <td>Everest Footwear</td>
-                <td>Sita Lama</td>
-                <td>9841122334</td>
-                <td>Wholesaler</td>
-                <td>42</td>
-
-                <td class="income">
-                    NPR 560,000
+                <td colspan="8" class="empty-row">
+                    No customers yet. Add one using the form above.
                 </td>
-
-                <td>
-                    <span class="status-active">
-                        Active
-                    </span>
-                </td>
-
-                <td>
-
-                    <button class="action-btn edit-btn">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete-btn">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
             </tr>
-
-            <tr>
-
-                <td>Modern Sports Shop</td>
-                <td>Hari Shrestha</td>
-                <td>9809988776</td>
-                <td>Distributor</td>
-                <td>8</td>
-
-                <td class="income">
-                    NPR 92,500
-                </td>
-
-                <td>
-                    <span class="status-inactive">
-                        Inactive
-                    </span>
-                </td>
-
-                <td>
-
-                    <button class="action-btn edit-btn">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-
-                    <button class="action-btn delete-btn">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </td>
-
-            </tr>
+            {% endfor %}
 
         </tbody>
 

@@ -4,5 +4,7 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "sku", "selling_price", "quantity_in_stock")
+    list_display = ("sku", "name", "category", "selling_price",
+                    "quantity_in_stock", "status")
+    list_filter = ("category", "status")
     search_fields = ("name", "sku")

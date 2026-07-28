@@ -7,10 +7,10 @@ from dashboard.views import dashboard, dashboard_charts
 from income.views import income, income_delete
 from expenses.views import expenses, expense_delete
 from raw_materials.views import raw_materials, purchase_delete
-from production.views import production
-from products.views import products
 from suppliers.views import suppliers, supplier_delete
-from customers.views import customers
+from customers.views import customers, customer_delete
+from production.views import production
+from products.views import products, product_delete
 from reports.views import reports
 from settings_app.views import settings as settings_view
 
@@ -18,9 +18,10 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path("", dashboard, name="dashboard"),
+    path("api/dashboard-charts/", dashboard_charts, name="dashboard-charts"),
+
     path("production/", production, name="production"),
     path("products/", products, name="products"),
-    path("customers/", customers, name="customers"),
     path("reports/", reports, name="reports"),
     path("settings/", settings_view, name="settings"),
 
@@ -40,8 +41,13 @@ urlpatterns = [
     path("suppliers/", suppliers, name="suppliers"),
     path("suppliers/<int:pk>/delete/", supplier_delete, name="supplier_delete"),
 
-    path("", dashboard, name="dashboard"),
-    path("api/dashboard-charts/", dashboard_charts, name="dashboard-charts"),
+    # Customers
+    path("customers/", customers, name="customers"),
+    path("customers/<int:pk>/delete/", customer_delete, name="customer_delete"),
+
+    # Products
+    path("products/", products, name="products"),
+    path("products/<int:pk>/delete/", product_delete, name="product_delete"),
 ]
 
 if settings.DEBUG:
