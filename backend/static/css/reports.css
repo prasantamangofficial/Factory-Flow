@@ -401,10 +401,11 @@ grid-template-columns:1fr;
 
 }
 
-.export-buttons{
-
-flex-direction:column;
-
+a.export-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
 }
 
 table{
@@ -414,4 +415,18 @@ overflow-x:auto;
 
 }
 
+}
+
+.chart-container{
+    height:320px;
+    padding:10px;
+}
+
+.status-poor{
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
 }

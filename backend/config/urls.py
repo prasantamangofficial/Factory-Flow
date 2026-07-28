@@ -11,7 +11,7 @@ from suppliers.views import suppliers, supplier_delete
 from customers.views import customers, customer_delete
 from production.views import production, production_delete
 from products.views import products, product_delete
-from reports.views import reports
+from reports.views import reports, reports_charts, reports_export
 from settings_app.views import settings as settings_view
 
 urlpatterns = [
@@ -52,6 +52,11 @@ urlpatterns = [
     # Production
     path("production/", production, name="production"),
     path("production/<int:pk>/delete/", production_delete, name="production_delete"),
+
+    # Reports
+    path("reports/", reports, name="reports"),
+    path("api/reports-charts/", reports_charts, name="reports-charts"),
+    path("reports/export/", reports_export, name="reports_export"),
 ]
 
 if settings.DEBUG:
