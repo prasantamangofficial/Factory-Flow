@@ -9,7 +9,7 @@ from expenses.views import expenses, expense_delete
 from raw_materials.views import raw_materials, purchase_delete
 from suppliers.views import suppliers, supplier_delete
 from customers.views import customers, customer_delete
-from production.views import production
+from production.views import production, production_delete
 from products.views import products, product_delete
 from reports.views import reports
 from settings_app.views import settings as settings_view
@@ -48,6 +48,10 @@ urlpatterns = [
     # Products
     path("products/", products, name="products"),
     path("products/<int:pk>/delete/", product_delete, name="product_delete"),
+
+    # Production
+    path("production/", production, name="production"),
+    path("production/<int:pk>/delete/", production_delete, name="production_delete"),
 ]
 
 if settings.DEBUG:

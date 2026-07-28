@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Production{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/production.css' %}">
+<link rel="stylesheet" href="{% static 'css/production.css' %}?v=2">
 {% endblock %}
 
 {% block content %}
@@ -21,6 +21,10 @@
 
     </div>
 
+<!-- ======================================
+RECORD PRODUCTION
+====================================== -->
+
 <div class="form-card">
 
     <div class="form-header">
@@ -32,84 +36,89 @@
 
     </div>
 
-    <form class="production-form">
+    <form class="production-form" method="post">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="form-error">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
 
         <div class="form-group">
             <label>Production Date</label>
-            <input type="date">
+            {{ form.date }}
+            {{ form.date.errors }}
         </div>
 
         <div class="form-group">
             <label>Batch No.</label>
-            <input type="text" placeholder="BATCH-001">
+            {{ form.batch_no }}
+            {{ form.batch_no.errors }}
         </div>
 
         <div class="form-group">
-            <label>Product Name</label>
-            <input type="text" placeholder="Men Sports Shoes">
+            <label>Product</label>
+            {{ form.product }}
+            {{ form.product.errors }}
         </div>
 
         <div class="form-group">
             <label>Supervisor</label>
-            <input type="text" placeholder="Supervisor Name">
+            {{ form.supervisor }}
+            {{ form.supervisor.errors }}
         </div>
 
         <div class="form-group">
             <label>Machine</label>
-
-            <select>
-                <option>Cutting</option>
-                <option>Stitching</option>
-                <option>Assembly</option>
-                <option>Finishing</option>
-            </select>
-
+            {{ form.machine }}
+            {{ form.machine.errors }}
         </div>
 
         <div class="form-group">
             <label>Target Quantity</label>
-            <input type="number" placeholder="500">
+            {{ form.target_quantity }}
+            {{ form.target_quantity.errors }}
         </div>
 
         <div class="form-group">
             <label>Produced Quantity</label>
-            <input type="number" placeholder="480">
+            {{ form.produced_quantity }}
+            {{ form.produced_quantity.errors }}
         </div>
 
         <div class="form-group">
             <label>Defective Quantity</label>
-            <input type="number" placeholder="5">
+            {{ form.defective_quantity }}
+            {{ form.defective_quantity.errors }}
         </div>
 
         <div class="form-group">
             <label>Production Status</label>
-
-            <select>
-                <option>Completed</option>
-                <option>Running</option>
-                <option>Pending</option>
-            </select>
-
+            {{ form.status }}
+            {{ form.status.errors }}
         </div>
 
         <div class="form-group">
             <label>Remarks</label>
-            <input type="text" placeholder="Production Notes">
+            {{ form.remarks }}
+            {{ form.remarks.errors }}
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Record Production
+            </button>
         </div>
 
     </form>
 
-    <div class="form-footer">
-
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Record Production
-        </button>
-
-    </div>
-
 </div>
 
+<!-- ======================================
+PRODUCTION SUMMARY
+====================================== -->
 
 <div class="table-card">
 
@@ -125,7 +134,6 @@
     <table>
 
         <thead>
-
             <tr>
                 <th>Today's Production</th>
                 <th>This Week</th>
@@ -133,35 +141,39 @@
                 <th>Defective</th>
                 <th>Efficiency</th>
             </tr>
-
         </thead>
 
         <tbody>
-
             <tr>
 
-                <td>520 Pairs</td>
-
-                <td>3,240 Pairs</td>
-
-                <td>12,580 Pairs</td>
+                <td>{{ today_produced }} Pairs</td>
+                <td>{{ week_produced }} Pairs</td>
+                <td>{{ month_produced }} Pairs</td>
 
                 <td>
-                    <span class="stock-low">28</span>
+                    <span class="stock-low">{{ month_defective }}</span>
                 </td>
 
                 <td>
-                    <span class="stock-good">96%</span>
+                    {% if efficiency >= 90 %}
+                        <span class="stock-good">{{ efficiency }}%</span>
+                    {% elif efficiency >= 70 %}
+                        <span class="stock-medium">{{ efficiency }}%</span>
+                    {% else %}
+                        <span class="stock-low">{{ efficiency }}%</span>
+                    {% endif %}
                 </td>
 
             </tr>
-
         </tbody>
 
     </table>
 
 </div>
 
+<!-- ======================================
+PRODUCTION RUNS
+====================================== -->
 
 <div class="table-card">
 
@@ -169,7 +181,7 @@
 
         <h2>
             <i class="fa-solid fa-list-check"></i>
-            Today's Production Status
+            Production Runs
         </h2>
 
     </div>
@@ -177,78 +189,67 @@
     <table>
 
         <thead>
-
             <tr>
-                <th>Department</th>
+                <th>Date</th>
+                <th>Batch</th>
+                <th>Product</th>
+                <th>Machine</th>
+                <th>Supervisor</th>
                 <th>Target</th>
-                <th>Completed</th>
+                <th>Produced</th>
+                <th>Defective</th>
                 <th>Progress</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
-
         </thead>
 
         <tbody>
 
+            {% for r in runs %}
             <tr>
 
-                <td>Cutting</td>
-                <td>600</td>
-                <td>600</td>
-                <td>100%</td>
+                <td>{{ r.date|date:"d M Y" }}</td>
+                <td>{{ r.batch_no }}</td>
+                <td>{{ r.product.name }}</td>
+                <td>{{ r.get_machine_display }}</td>
+                <td>{{ r.supervisor }}</td>
+                <td>{{ r.target_quantity }}</td>
+                <td>{{ r.produced_quantity }}</td>
 
                 <td>
-                    <span class="stock-good">
-                        Completed
-                    </span>
+                    <span class="stock-low">{{ r.defective_quantity }}</span>
+                </td>
+
+                <td>{{ r.progress }}%</td>
+
+                <td>
+                    {% if r.status == "completed" %}
+                        <span class="stock-good">Completed</span>
+                    {% elif r.status == "running" %}
+                        <span class="stock-medium">Running</span>
+                    {% else %}
+                        <span class="stock-low">Pending</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    <form method="post" action="{% url 'production_delete' r.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="action-btn delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
                 </td>
 
             </tr>
-
+            {% empty %}
             <tr>
-
-                <td>Stitching</td>
-                <td>600</td>
-                <td>520</td>
-                <td>87%</td>
-
-                <td>
-                    <span class="stock-medium">
-                        Running
-                    </span>
+                <td colspan="11" class="empty-row">
+                    No production recorded yet. Add a batch using the form above.
                 </td>
-
             </tr>
-
-            <tr>
-
-                <td>Assembly</td>
-                <td>600</td>
-                <td>310</td>
-                <td>52%</td>
-
-                <td>
-                    <span class="stock-low">
-                        Pending
-                    </span>
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td>Finishing</td>
-                <td>600</td>
-                <td>590</td>
-                <td>98%</td>
-
-                <td>
-                    <span class="stock-good">
-                        Completed
-                    </span>
-                </td>
-
-            </tr>
+            {% endfor %}
 
         </tbody>
 
