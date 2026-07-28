@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from dashboard.views import dashboard
+from dashboard.views import dashboard, dashboard_charts
 from income.views import income, income_delete
 from expenses.views import expenses, expense_delete
 from raw_materials.views import raw_materials, purchase_delete
@@ -39,6 +39,9 @@ urlpatterns = [
     # Suppliers
     path("suppliers/", suppliers, name="suppliers"),
     path("suppliers/<int:pk>/delete/", supplier_delete, name="supplier_delete"),
+
+    path("", dashboard, name="dashboard"),
+    path("api/dashboard-charts/", dashboard_charts, name="dashboard-charts"),
 ]
 
 if settings.DEBUG:

@@ -1,103 +1,120 @@
 console.log("FactoryFlow Loaded Successfully");
 
-// ===========================
-// Revenue Bar Chart
-// ===========================
+const PIE_COLORS = [
+    "#2563eb", "#22c55e", "#f59e0b",
+    "#8b5cf6", "#ef4444", "#9ca3af",
+    "#06b6d4", "#ec4899"
+];
 
-const revenueCtx = document.getElementById("revenueChart");
+function money(n) {
+    return "NPR " + Number(n).toLocaleString();
+}
 
-if (revenueCtx) {
+function drawRevenueChart(data) {
+    const el = document.getElementById("revenueChart");
+    if (!el) return;
 
-    new Chart(revenueCtx, {
+    new Chart(el, {
         type: "bar",
-
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-
+            labels: data.labels,
             datasets: [
                 {
                     label: "Income",
-                    data: [90000, 120000, 100000, 150000, 130000, 125000],
+                    data: data.income,
                     backgroundColor: "#2563eb",
                     borderRadius: 8
                 },
                 {
                     label: "Expenses",
-                    data: [60000, 75000, 70000, 80000, 76000, 78500],
+                    data: data.expenses,
                     backgroundColor: "#ef4444",
                     borderRadius: 8
                 }
             ]
         },
-
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: "top" },
+                tooltip: {
+                    callbacks: {
+                        label: c => c.dataset.label + ": " + money(c.parsed.y)
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { callback: v => Number(v).toLocaleString() }
+                }
+            }
         }
     });
-
 }
 
+function drawExpenseChart(breakdown) {
+    const el = document.getElementById("expenseChart");
+    if (!el) return;
 
-// =====================================
-// ADD THE PIE CHART CODE BELOW HERE
-// =====================================
+    const legend = document.getElementById("pieLegend");
 
-const expenseCtx = document.getElementById("expenseChart");
+    if (!breakdown.labels.length) {
+        if (legend) {
+            legend.innerHTML = "<p style='color:#94a3b8'>No expenses this month.</p>";
+        }
+        return;
+    }
 
-if (expenseCtx) {
-
-    new Chart(expenseCtx, {
-
+    new Chart(el, {
         type: "pie",
-
         data: {
-
-            labels: [
-                "Raw Materials",
-                "Salaries",
-                "Electricity",
-                "Transport",
-                "Maintenance",
-                "Others"
-            ],
-
+            labels: breakdown.labels,
             datasets: [{
-
-                data: [45,20,10,10,10,5],
-
-                backgroundColor: [
-                    "#2563eb",
-                    "#22c55e",
-                    "#f59e0b",
-                    "#8b5cf6",
-                    "#ef4444",
-                    "#9ca3af"
-                ],
-
+                data: breakdown.values,
+                backgroundColor: PIE_COLORS,
                 borderWidth: 0
-
             }]
-
         },
-
         options: {
-
             responsive: true,
             maintainAspectRatio: true,
             aspectRatio: 1,
-
             plugins: {
-
-                legend: {
-                    display: false
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: c => c.label + ": " + money(c.parsed)
+                    }
                 }
-
             }
-
         }
-
     });
 
+    if (legend) {
+        const total = breakdown.values.reduce((a, b) => a + b, 0);
+
+        legend.innerHTML = breakdown.labels.map((label, i) => {
+            const pct = total ? Math.round((breakdown.values[i] / total) * 100) : 0;
+            return `
+                <div class="legend-item">
+                    <span class="legend-color" style="background:${PIE_COLORS[i % PIE_COLORS.length]}"></span>
+                    <span>${label}</span>
+                    <strong>${pct}%</strong>
+                </div>`;
+        }).join("");
+    }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    if (!document.getElementById("revenueChart")) return;
+
+    fetch("/api/dashboard-charts/")
+        .then(r => r.json())
+        .then(data => {
+            drawRevenueChart(data);
+            drawExpenseChart(data.breakdown);
+        })
+        .catch(err => console.error("Chart data failed:", err));
+});

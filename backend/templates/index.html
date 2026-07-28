@@ -29,7 +29,7 @@
 
             <div class="card-info">
                 <h4>Total Income</h4>
-                <h2>NPR 125,000</h2>
+                <h2>NPR {{ income_total|floatformat:0 }}</h2>
                 <span>This Month</span>
             </div>
 
@@ -43,7 +43,7 @@
 
             <div class="card-info">
                 <h4>Total Expenses</h4>
-                <h2>NPR 78,500</h2>
+                <h2>NPR {{ expense_total|floatformat:0 }}</h2>
                 <span>This Month</span>
             </div>
 
@@ -57,7 +57,7 @@
 
             <div class="card-info">
                 <h4>Net Profit</h4>
-                <h2>NPR 46,500</h2>
+                <h2>NPR {{ net_profit|floatformat:0 }}</h2>
                 <span>This Month</span>
             </div>
 
@@ -71,7 +71,7 @@
 
             <div class="card-info">
                 <h4>Raw Material Value</h4>
-                <h2>NPR 96,000</h2>
+                <h2>NPR {{ material_value|floatformat:0 }}</h2>
                 <span>In Stock</span>
             </div>
 
@@ -85,7 +85,7 @@
 
             <div class="card-info">
                 <h4>Total Products</h4>
-                <h2>120</h2>
+                <h2>{{ product_count }}</h2>
                 <span>In Stock</span>
             </div>
 
@@ -127,45 +127,7 @@
                     <canvas id="expenseChart"></canvas>
                 </div>
 
-                <div class="pie-legend">
-
-                    <div class="legend-item">
-                        <span class="legend-color blue"></span>
-                        <span>Raw Materials</span>
-                        <strong>45%</strong>
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-color green"></span>
-                        <span>Salaries</span>
-                        <strong>20%</strong>
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-color orange"></span>
-                        <span>Electricity</span>
-                        <strong>10%</strong>
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-color purple"></span>
-                        <span>Transport</span>
-                        <strong>10%</strong>
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-color red"></span>
-                        <span>Maintenance</span>
-                        <strong>10%</strong>
-                    </div>
-
-                    <div class="legend-item">
-                        <span class="legend-color gray"></span>
-                        <span>Others</span>
-                        <strong>5%</strong>
-                    </div>
-
-                </div>
+                <div class="pie-legend" id="pieLegend"></div>
 
             </div>
 
@@ -195,18 +157,18 @@
                 </thead>
 
                 <tbody>
+                    {% for s in recent_income %}
                     <tr>
-                        <td>11 Jul 2026</td>
-                        <td>INV-001</td>
-                        <td>ABC Traders</td>
-                        <td class="income">NPR 25,000</td>
+                        <td>{{ s.date|date:"d M Y" }}</td>
+                        <td>{{ s.invoice_no }}</td>
+                        <td>{{ s.customer.name }}</td>
+                        <td class="income">NPR {{ s.amount|floatformat:0 }}</td>
                     </tr>
+                    {% empty %}
                     <tr>
-                        <td>10 Jul 2026</td>
-                        <td>INV-002</td>
-                        <td>XYZ Enterprises</td>
-                        <td class="income">NPR 18,000</td>
+                        <td colspan="4" class="empty-row">No sales recorded yet.</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
 
             </table>
@@ -233,18 +195,18 @@
                 </thead>
 
                 <tbody>
+                    {% for e in recent_expenses %}
                     <tr>
-                        <td>11 Jul 2026</td>
-                        <td>Raw Materials</td>
-                        <td>Purchased Steel</td>
-                        <td class="expense">NPR 20,000</td>
+                        <td>{{ e.date|date:"d M Y" }}</td>
+                        <td>{{ e.category.name }}</td>
+                        <td>{{ e.description }}</td>
+                        <td class="expense">NPR {{ e.amount|floatformat:0 }}</td>
                     </tr>
+                    {% empty %}
                     <tr>
-                        <td>10 Jul 2026</td>
-                        <td>Salaries</td>
-                        <td>Workers Salary</td>
-                        <td class="expense">NPR 15,000</td>
+                        <td colspan="4" class="empty-row">No expenses recorded yet.</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
 
             </table>
