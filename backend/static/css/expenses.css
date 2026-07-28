@@ -218,3 +218,8 @@ tbody td{
     }
 
 }
+.expense-form .form-footer{
+    grid-column:1 / -1;
+    display:flex;
+    justify-content:flex-end;
+}

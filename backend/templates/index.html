@@ -1,192 +1,259 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}FactoryFlow | Income{% endblock %}
+{% block title %}FactoryFlow | Dashboard{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/income.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <section class="content">
 
-<div class="page-header">
+    <div class="page-header">
 
-    <h1>Income (Sales Ledger)</h1>
+        <h1>Dashboard</h1>
 
-    <p>
-        Manage customer sales, invoices and payment records.
-    </p>
-
-</div>
-
-<!-- =====================================
-ADD SALES RECORD
-====================================== -->
-
-<div class="form-card">
-
-    <div class="form-header">
-        <h2>Add Sales Record</h2>
-    </div>
-
-    <form class="sales-form" method="post">
-        {% csrf_token %}
-
-        <div class="form-group">
-            <label>Date</label>
-            {{ form.date }}
-            {{ form.date.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Invoice No.</label>
-            {{ form.invoice_no }}
-            {{ form.invoice_no.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Customer / Buyer</label>
-            {{ form.customer }}
-            {{ form.customer.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Sales Channel</label>
-            {{ form.channel }}
-            {{ form.channel.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Product</label>
-            {{ form.product }}
-            {{ form.product.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Pairs Sold</label>
-            {{ form.pairs_sold }}
-            {{ form.pairs_sold.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Unit Price (NPR)</label>
-            {{ form.unit_price }}
-            {{ form.unit_price.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Payment Status</label>
-            {{ form.payment_status }}
-            {{ form.payment_status.errors }}
-        </div>
-
-        <div class="form-group">
-            <label>Notes</label>
-            {{ form.notes }}
-            {{ form.notes.errors }}
-        </div>
-
-        <div class="form-footer">
-            <button type="submit" class="btn-primary">
-                <i class="fa-solid fa-plus"></i>
-                Add Sales Entry
-            </button>
-        </div>
-
-    </form>
-
-</div>
-
-<!-- =====================================
-SALES LEDGER TABLE
-====================================== -->
-
-<div class="table-card">
-
-    <div class="table-header">
-        <h2>Sales Dispatch Ledger</h2>
-    </div>
-
-    <div class="table-responsive">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Date</th>
-                    <th>Invoice</th>
-                    <th>Customer</th>
-                    <th>Channel</th>
-                    <th>Product</th>
-                    <th>Pairs</th>
-                    <th>Unit Price</th>
-                    <th>Total Revenue</th>
-                    <th>Payment</th>
-                    <th>Actions</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                {% for s in sales %}
-                <tr>
-
-                    <td>{{ s.date|date:"d M Y" }}</td>
-                    <td>{{ s.invoice_no }}</td>
-                    <td>{{ s.customer.name }}</td>
-                    <td>{{ s.get_channel_display }}</td>
-                    <td>{{ s.product.name }}</td>
-                    <td>{{ s.pairs_sold }}</td>
-                    <td>NPR {{ s.unit_price|floatformat:0 }}</td>
-                    <td class="income">NPR {{ s.amount|floatformat:0 }}</td>
-
-                    <td>
-                        {% if s.payment_status == "paid" %}
-                            <span class="status paid">Paid</span>
-                        {% elif s.payment_status == "partial" %}
-                            <span class="status partial">Partial</span>
-                        {% else %}
-                            <span class="status pending">Pending</span>
-                        {% endif %}
-                    </td>
-
-                    <td>
-                        <form method="post" action="{% url 'income_delete' s.pk %}">
-                            {% csrf_token %}
-                            <button type="submit" class="action-btn delete">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </form>
-                    </td>
-
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="10" class="empty-row">
-                        No sales recorded yet. Add one using the form above.
-                    </td>
-                </tr>
-                {% endfor %}
-
-                {% if sales %}
-                <tr class="total-row">
-                    <td colspan="7"><strong>Total Sales ({{ invoice_count }} invoices)</strong></td>
-                    <td class="income"><strong>NPR {{ total_sales|floatformat:0 }}</strong></td>
-                    <td colspan="2"></td>
-                </tr>
-                {% endif %}
-
-            </tbody>
-
-        </table>
+        <p>Welcome back! Here's what's happening in your factory.</p>
 
     </div>
 
-</div>
+    <div class="dashboard-cards">
+
+        <div class="card income-card">
+
+            <div class="card-icon income-icon">
+                <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Total Income</h4>
+                <h2>NPR 125,000</h2>
+                <span>This Month</span>
+            </div>
+
+        </div>
+
+        <div class="card expense-card">
+
+            <div class="card-icon expense-icon">
+                <i class="fa-solid fa-arrow-trend-down"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Total Expenses</h4>
+                <h2>NPR 78,500</h2>
+                <span>This Month</span>
+            </div>
+
+        </div>
+
+        <div class="card profit-card">
+
+            <div class="card-icon profit-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Net Profit</h4>
+                <h2>NPR 46,500</h2>
+                <span>This Month</span>
+            </div>
+
+        </div>
+
+        <div class="card material-card">
+
+            <div class="card-icon material-icon">
+                <i class="fa-solid fa-cubes"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Raw Material Value</h4>
+                <h2>NPR 96,000</h2>
+                <span>In Stock</span>
+            </div>
+
+        </div>
+
+        <div class="card product-card">
+
+            <div class="card-icon product-icon">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+
+            <div class="card-info">
+                <h4>Total Products</h4>
+                <h2>120</h2>
+                <span>In Stock</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Charts Section -->
+
+    <div class="dashboard-row">
+
+        <div class="chart-card revenue-card">
+
+            <div class="chart-header">
+                <div>
+                    <h3>Revenue &amp; Expense</h3>
+                    <span>Last 6 Months</span>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+
+        </div>
+
+        <div class="chart-card pie-card">
+
+            <div class="chart-header">
+                <div>
+                    <h3>Expense Breakdown</h3>
+                    <span>This Month</span>
+                </div>
+            </div>
+
+            <div class="pie-wrapper">
+
+                <div class="pie-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+
+                <div class="pie-legend">
+
+                    <div class="legend-item">
+                        <span class="legend-color blue"></span>
+                        <span>Raw Materials</span>
+                        <strong>45%</strong>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-color green"></span>
+                        <span>Salaries</span>
+                        <strong>20%</strong>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-color orange"></span>
+                        <span>Electricity</span>
+                        <strong>10%</strong>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-color purple"></span>
+                        <span>Transport</span>
+                        <strong>10%</strong>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-color red"></span>
+                        <span>Maintenance</span>
+                        <strong>10%</strong>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-color gray"></span>
+                        <span>Others</span>
+                        <strong>5%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Tables -->
+
+    <div class="table-row">
+
+        <div class="table-card">
+
+            <div class="table-header">
+                <h3>Recent Income (Sales)</h3>
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Invoice</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>11 Jul 2026</td>
+                        <td>INV-001</td>
+                        <td>ABC Traders</td>
+                        <td class="income">NPR 25,000</td>
+                    </tr>
+                    <tr>
+                        <td>10 Jul 2026</td>
+                        <td>INV-002</td>
+                        <td>XYZ Enterprises</td>
+                        <td class="income">NPR 18,000</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <a href="{% url 'income' %}" class="view-all">View All</a>
+
+        </div>
+
+        <div class="table-card">
+
+            <div class="table-header">
+                <h3>Recent Expenses</h3>
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>11 Jul 2026</td>
+                        <td>Raw Materials</td>
+                        <td>Purchased Steel</td>
+                        <td class="expense">NPR 20,000</td>
+                    </tr>
+                    <tr>
+                        <td>10 Jul 2026</td>
+                        <td>Salaries</td>
+                        <td>Workers Salary</td>
+                        <td class="expense">NPR 15,000</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <a href="{% url 'expenses' %}" class="view-all">View All</a>
+
+        </div>
+
+    </div>
 
 </section>
 {% endblock %}

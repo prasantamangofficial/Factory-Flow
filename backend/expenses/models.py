@@ -5,6 +5,7 @@ class ExpenseCategory(models.Model):
     name = models.CharField(max_length=60, unique=True)
 
     class Meta:
+        ordering = ["name"]
         verbose_name_plural = "Expense categories"
 
     def __str__(self):
@@ -12,12 +13,12 @@ class ExpenseCategory(models.Model):
 
 
 class Expense(models.Model):
+    date = models.DateField()
     category = models.ForeignKey(
         ExpenseCategory,
         on_delete=models.PROTECT,
         related_name="expenses",
     )
-    date = models.DateField()
     description = models.CharField(max_length=200)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
 
