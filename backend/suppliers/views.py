@@ -5,16 +5,22 @@ from .forms import SupplierForm
 
 
 def suppliers(request):
+    edit_id = request.GET.get("edit")
+    instance = get_object_or_404(Supplier, pk=edit_id) if edit_id else None
+
     if request.method == "POST":
-        form = SupplierForm(request.POST)
+        post_id = request.POST.get("edit_id")
+        instance = get_object_or_404(Supplier, pk=post_id) if post_id else None
+        form = SupplierForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect("suppliers")
     else:
-        form = SupplierForm()
+        form = SupplierForm(instance=instance)
 
     return render(request, "suppliers.html", {
         "form": form,
+        "editing": instance,
         "suppliers": Supplier.objects.all(),
     })
 

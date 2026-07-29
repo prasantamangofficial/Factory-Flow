@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Suppliers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/suppliers.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}?v=5">
 {% endblock %}
 
 {% block content %}
@@ -27,15 +27,16 @@ ADD SUPPLIER ACCOUNT
 
 <div class="form-card">
 
-    <div class="form-header">
+    <<div class="form-header">
         <h2>
             <i class="fa-solid fa-truck"></i>
-            Add Supplier Account
+            {% if editing %}Edit {{ editing.name }}{% else %}Add Supplier Account{% endif %}
         </h2>
     </div>
 
     <form class="supplier-form" method="post">
         {% csrf_token %}
+        {% if editing %}<input type="hidden" name="edit_id" value="{{ editing.pk }}">{% endif %}
 
         <div class="form-group">
             <label>Supplier Name</label>
@@ -68,9 +69,12 @@ ADD SUPPLIER ACCOUNT
         </div>
 
         <div class="form-footer">
+            {% if editing %}
+            <a href="{% url 'suppliers' %}" class="btn-cancel">Cancel</a>
+            {% endif %}
             <button type="submit" class="btn-primary">
-                <i class="fa-solid fa-plus"></i>
-                Add Supplier
+                <i class="fa-solid fa-{% if editing %}floppy-disk{% else %}plus{% endif %}"></i>
+                {% if editing %}Update Supplier{% else %}Add Supplier{% endif %}
             </button>
         </div>
 
@@ -126,9 +130,9 @@ ACTIVE RAW MATERIAL VENDORS
 
                 <td>
 
-                    <button class="action-btn edit">
+                    <a href="?edit={{ s.pk }}" class="action-btn edit">
                         <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
+                    </a>
 
                     <form method="post" action="{% url 'supplier_delete' s.pk %}">
                         {% csrf_token %}
