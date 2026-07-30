@@ -1,3 +1,5 @@
+from datetime import date
+
 from django import forms
 from .models import Income
 
@@ -14,3 +16,8 @@ class IncomeForm(forms.ModelForm):
             "unit_price": forms.NumberInput(attrs={"placeholder": "0", "step": "0.01"}),
             "notes": forms.TextInput(attrs={"placeholder": "Additional notes"}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance.pk:
+            self.fields["date"].initial = date.today()

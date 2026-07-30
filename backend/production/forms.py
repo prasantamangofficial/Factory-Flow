@@ -1,3 +1,5 @@
+from datetime import date
+
 from django import forms
 from .models import Production
 
@@ -17,6 +19,11 @@ class ProductionForm(forms.ModelForm):
             "defective_quantity": forms.NumberInput(attrs={"placeholder": "5"}),
             "remarks": forms.TextInput(attrs={"placeholder": "Production notes"}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance.pk:
+            self.fields["date"].initial = date.today()
 
     def clean(self):
         cleaned = super().clean()
