@@ -427,3 +427,47 @@ Responsive
     background:#f8fafc;
     border-top:2px solid #e2e8f0;
 }
+.form-footer{
+    grid-column:1 / -1;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:12px;
+}
+
+.btn-cancel{
+    background:#f1f5f9;
+    color:#475569;
+    border:none;
+    border-radius:12px;
+    padding:14px 24px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
+}
+
+.btn-cancel:hover{
+    background:#e2e8f0;
+}
+
+.table-card a.action-btn{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    color:#fff;
+    background:#3b82f6;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    margin-right:8px;
+    font-size:13px;
+    vertical-align:middle;
+}
+
+.table-card a.action-btn:hover{
+    opacity:.85;
+}
