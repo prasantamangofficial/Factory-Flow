@@ -1,4 +1,4 @@
-/* RAW MATERIALS PAGE*/
+/* RAW MATERIALS PAGE */
 
 .page-header{
     margin-bottom:30px;
@@ -46,7 +46,7 @@
 
 .purchase-form{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
 }
 
@@ -79,12 +79,23 @@
     border-color:#2563eb;
 }
 
-/* Button*/
+.form-group .errorlist{
+    list-style:none;
+    margin-top:6px;
+    padding:0;
+    font-size:12px;
+    color:#ef4444;
+}
 
-.form-footer{
-    margin-top:24px;
+/* Footer */
+
+.purchase-form .form-footer{
+    grid-column:1 / -1;
+    margin-top:10px;
     display:flex;
     justify-content:flex-end;
+    align-items:center;
+    gap:12px;
 }
 
 .btn-primary{
@@ -97,19 +108,35 @@
     font-weight:600;
     cursor:pointer;
     transition:.3s;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 }
 
 .btn-primary:hover{
     background:#2449ef;
 }
 
-.btn-primary i{
-    margin-right:8px;
+.btn-cancel{
+    background:#f1f5f9;
+    color:#475569;
+    border:none;
+    border-radius:10px;
+    padding:13px 24px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
 }
 
-/* 
-   Table
-*/
+.btn-cancel:hover{
+    background:#e2e8f0;
+}
+
+/* Table */
 
 table{
     width:100%;
@@ -134,6 +161,12 @@ td{
     border-top:1px solid #edf2f7;
     font-size:14px;
     color:#334155;
+}
+
+.empty-row{
+    text-align:center;
+    padding:30px;
+    color:#94a3b8;
 }
 
 /* Stock Status */
@@ -165,9 +198,7 @@ td{
     font-weight:600;
 }
 
-/* 
-   Total Row
- */
+/* Total Row */
 
 .total-row{
     background:#fff7e6;
@@ -177,22 +208,37 @@ td{
     font-weight:700;
 }
 
-/* Action Buttons*/
+/* Action Buttons */
 
-.action-btn{
+.table-card td form{
+    display:inline-block;
+    margin:0;
+}
+
+.action-btn,
+a.action-btn{
     width:34px;
     height:34px;
     border:none;
     border-radius:8px;
     color:#fff;
     cursor:pointer;
+    font-size:13px;
+    margin-right:8px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    vertical-align:middle;
+    transition:.3s;
 }
 
-.edit{
+.action-btn.edit,
+a.action-btn.edit{
     background:#3b82f6;
 }
 
-.delete{
+.action-btn.delete{
     background:#ef4444;
 }
 
@@ -200,78 +246,29 @@ td{
     opacity:.9;
 }
 
-/* 
-   Responsive
- */
+/* Responsive */
 
 @media(max-width:1200px){
 
-.purchase-form{
-    grid-template-columns:repeat(2,1fr);
-}
+    .purchase-form{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
 
 @media(max-width:768px){
 
-.purchase-form{
-    grid-template-columns:1fr;
-}
+    .purchase-form{
+        grid-template-columns:1fr;
+    }
 
-table{
-    display:block;
-    overflow-x:auto;
-}
+    table{
+        display:block;
+        overflow-x:auto;
+    }
 
-.page-header h1{
-    font-size:32px;
-}
+    .page-header h1{
+        font-size:32px;
+    }
 
-}
-.purchase-form{
-    grid-template-columns:repeat(4,1fr);
-}
-.form-footer{
-    grid-column:1 / -1;
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    gap:12px;
-}
-
-.btn-cancel{
-    background:#f1f5f9;
-    color:#475569;
-    border:none;
-    border-radius:12px;
-    padding:14px 24px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:14px;
-    line-height:1;
-    display:inline-flex;
-    align-items:center;
-}
-
-.btn-cancel:hover{
-    background:#e2e8f0;
-}
-
-.table-card a.action-btn{
-    width:34px;
-    height:34px;
-    border-radius:10px;
-    color:#fff;
-    background:#3b82f6;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    margin-right:8px;
-    font-size:13px;
-    vertical-align:middle;
-}
-
-.table-card a.action-btn:hover{
-    opacity:.85;
 }

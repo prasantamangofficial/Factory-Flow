@@ -1,39 +1,38 @@
+from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Product
-from .forms import ProductForm
+from .models import Expense
+from .forms import ExpenseForm
 
 
-def products(request):
+def expenses(request):
     edit_id = request.GET.get("edit")
-    instance = get_object_or_404(Product, pk=edit_id) if edit_id else None
+    instance = get_object_or_404(Expense, pk=edit_id) if edit_id else None
 
     if request.method == "POST":
         post_id = request.POST.get("edit_id")
-        instance = get_object_or_404(Product, pk=post_id) if post_id else None
-        form = ProductForm(request.POST, instance=instance)
+        instance = get_object_or_404(Expense, pk=post_id) if post_id else None
+        form = ExpenseForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect("products")
+            return redirect("expenses")
     else:
-        form = ProductForm(instance=instance)
+        form = ExpenseForm(instance=instance)
 
-    items = Product.objects.all()
+    records = Expense.objects.select_related("category")
 
-    return render(request, "products.html", {
+    return render(request, "expenses.html", {
         "form": form,
         "editing": instance,
-        "products": items,
-        "total_products": items.count(),
-        "in_stock": sum(1 for p in items if p.stock_status == "ok"),
-        "low_stock": sum(1 for p in items if p.stock_status == "low"),
-        "out_of_stock": sum(1 for p in items if p.stock_status == "out"),
-        "inventory_value": sum(p.stock_value for p in items),
+        "expenses": records,
+        "total_expenses": records.aggregate(t=Sum("amount"))["t"] or 0,
+        "by_category": records.values("category__name").annotate(
+            total=Sum("amount")).order_by("-total"),
     })
 
 
-def product_delete(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+def expense_delete(request, pk):
+    expense = get_object_or_404(Expense, pk=pk)
     if request.method == "POST":
-        product.delete()
-    return redirect("products")
+        expense.delete()
+    return redirect("expenses")
