@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactoryFlow | Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            <i class="fa-solid fa-industry"></i>
+            <span>FactoryFlow</span>
+        </div>
+
+        <h1>Welcome back</h1>
+        <p class="login-sub">Sign in to manage your factory.</p>
+
+        {% if form.errors %}
+        <div class="login-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Incorrect username or password.
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="login-group">
+                <label>Username</label>
+                <input type="text" name="username" autofocus required>
+            </div>
+
+            <div class="login-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign In
+            </button>
+
+            <input type="hidden" name="next" value="{{ next }}">
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

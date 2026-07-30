@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -5,6 +6,7 @@ from .models import Expense
 from .forms import ExpenseForm
 
 
+@login_required
 def expenses(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(Expense, pk=edit_id) if edit_id else None
@@ -31,6 +33,7 @@ def expenses(request):
     })
 
 
+@login_required
 def expense_delete(request, pk):
     expense = get_object_or_404(Expense, pk=pk)
     if request.method == "POST":

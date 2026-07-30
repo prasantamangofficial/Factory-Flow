@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
 from django.http import JsonResponse
@@ -24,6 +25,7 @@ def _last_six_months():
     return list(reversed(months))
 
 
+@login_required
 def reports(request):
     revenue = Income.objects.aggregate(t=Sum("amount"))["t"] or 0
     expenses_total = Expense.objects.aggregate(t=Sum("amount"))["t"] or 0
@@ -80,6 +82,7 @@ def reports(request):
     })
 
 
+@login_required
 def reports_charts(request):
     months = _last_six_months()
 
@@ -101,6 +104,8 @@ def reports_charts(request):
         "expenses": [exp.get(k, 0) for k in keys],
     })
 
+
+@login_required
 def reports_export(request):
     from io import BytesIO
     from openpyxl import Workbook

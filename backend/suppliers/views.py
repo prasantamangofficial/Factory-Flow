@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Supplier
 from .forms import SupplierForm
 
 
+@login_required
 def suppliers(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(Supplier, pk=edit_id) if edit_id else None
@@ -25,6 +27,7 @@ def suppliers(request):
     })
 
 
+@login_required
 def supplier_delete(request, pk):
     supplier = get_object_or_404(Supplier, pk=pk)
     if request.method == "POST":

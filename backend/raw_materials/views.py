@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import RawMaterial, MaterialPurchase
 from .forms import MaterialPurchaseForm
 
 
+@login_required
 def raw_materials(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(MaterialPurchase, pk=edit_id) if edit_id else None
@@ -45,6 +47,7 @@ def raw_materials(request):
     })
 
 
+@login_required
 def purchase_delete(request, pk):
     purchase = get_object_or_404(MaterialPurchase, pk=pk)
 

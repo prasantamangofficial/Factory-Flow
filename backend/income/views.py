@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -5,6 +6,7 @@ from .models import Income
 from .forms import IncomeForm
 
 
+@login_required
 def income(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(Income, pk=edit_id) if edit_id else None
@@ -32,6 +34,7 @@ def income(request):
     })
 
 
+@login_required
 def income_delete(request, pk):
     sale = get_object_or_404(Income, pk=pk)
     if request.method == "POST":

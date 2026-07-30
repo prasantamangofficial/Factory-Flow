@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -7,6 +8,7 @@ from .models import Production
 from .forms import ProductionForm
 
 
+@login_required
 def production(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(Production, pk=edit_id) if edit_id else None
@@ -71,6 +73,7 @@ def production(request):
     })
 
 
+@login_required
 def production_delete(request, pk):
     run = get_object_or_404(Production, pk=pk)
 

@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Customer
 from .forms import CustomerForm
 
 
+@login_required
 def customers(request):
     edit_id = request.GET.get("edit")
     instance = get_object_or_404(Customer, pk=edit_id) if edit_id else None
@@ -25,6 +27,7 @@ def customers(request):
     })
 
 
+@login_required
 def customer_delete(request, pk):
     customer = get_object_or_404(Customer, pk=pk)
     if request.method == "POST":

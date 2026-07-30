@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
 from django.http import JsonResponse
@@ -24,6 +25,7 @@ def _last_six_months():
     return list(reversed(months))
 
 
+@login_required
 def dashboard(request):
     month_start = _month_start(date.today())
 
@@ -49,6 +51,7 @@ def dashboard(request):
     })
 
 
+@login_required
 def dashboard_charts(request):
     months = _last_six_months()
     start = months[0]
