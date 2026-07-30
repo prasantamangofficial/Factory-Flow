@@ -8,19 +8,37 @@ from .forms import ProductionForm
 
 
 def production(request):
+    edit_id = request.GET.get("edit")
+    instance = get_object_or_404(Production, pk=edit_id) if edit_id else None
+
     if request.method == "POST":
-        form = ProductionForm(request.POST)
+        post_id = request.POST.get("edit_id")
+        old = get_object_or_404(Production, pk=post_id) if post_id else None
+
+        old_good = old.good_quantity if old and old.status == "completed" else 0
+        old_product = old.product if old else None
+
+        form = ProductionForm(request.POST, instance=old)
         if form.is_valid():
             run = form.save()
 
-            if run.status == "completed":
+            if old_product and old_product.pk != run.product.pk and old_good:
+                old_product.quantity_in_stock = max(
+                    0, old_product.quantity_in_stock - old_good)
+                old_product.save()
+                old_good = 0
+
+            new_good = run.good_quantity if run.status == "completed" else 0
+            diff = new_good - old_good
+
+            if diff:
                 product = run.product
-                product.quantity_in_stock += run.good_quantity
+                product.quantity_in_stock = max(0, product.quantity_in_stock + diff)
                 product.save()
 
             return redirect("production")
     else:
-        form = ProductionForm()
+        form = ProductionForm(instance=instance)
 
     today = date.today()
     week_start = today - timedelta(days=today.weekday())
@@ -43,6 +61,7 @@ def production(request):
 
     return render(request, "production.html", {
         "form": form,
+        "editing": instance,
         "runs": runs[:20],
         "today_produced": produced_since(today),
         "week_produced": produced_since(week_start),

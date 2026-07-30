@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Customers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/customers.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/customers.css' %}?v=3">
 {% endblock %}
 
 {% block content %}
@@ -31,13 +31,14 @@ ADD CUSTOMER ACCOUNT
 
         <h2>
             <i class="fa-solid fa-user-plus"></i>
-            Add Customer Account
+            {% if editing %}Edit {{ editing.name }}{% else %}Add Customer Account{% endif %}
         </h2>
 
     </div>
 
     <form class="customer-form" method="post">
         {% csrf_token %}
+        {% if editing %}<input type="hidden" name="edit_id" value="{{ editing.pk }}">{% endif %}
 
         <div class="form-group">
             <label>Customer Name</label>
@@ -100,9 +101,12 @@ ADD CUSTOMER ACCOUNT
         </div>
 
         <div class="form-footer">
+            {% if editing %}
+            <a href="{% url 'customers' %}" class="btn-cancel">Cancel</a>
+            {% endif %}
             <button type="submit" class="btn-primary">
-                <i class="fa-solid fa-plus"></i>
-                Add Customer
+                <i class="fa-solid fa-{% if editing %}floppy-disk{% else %}plus{% endif %}"></i>
+                {% if editing %}Update Customer{% else %}Add Customer{% endif %}
             </button>
         </div>
 
@@ -167,9 +171,9 @@ CUSTOMER DIRECTORY
 
                 <td>
 
-                    <button class="action-btn edit-btn">
+                    <a href="?edit={{ c.pk }}" class="action-btn edit-btn">
                         <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
+                    </a>
 
                     <form method="post" action="{% url 'customer_delete' c.pk %}">
                         {% csrf_token %}
