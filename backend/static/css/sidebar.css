@@ -69,6 +69,10 @@
 
 }
 
+/* ===========================
+   LOGOUT
+=========================== */
+
 .logout{
 
     margin-top:auto;
@@ -93,5 +97,54 @@
 .logout a:hover{
 
     background:rgba(255,255,255,.08);
+
+}
+
+.logout form{
+
+    margin:0;
+
+}
+
+.logout button{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    width:100%;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+
+    font:inherit;
+    color:inherit;
+    text-align:left;
+
+}
+
+.logout button:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.logout button:focus{
+
+    outline:none;
+
+}
+
+.logout button:focus-visible{
+
+    background:rgba(255,255,255,.12);
 
 }

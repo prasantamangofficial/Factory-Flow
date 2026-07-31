@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- Shared CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2">
 
     <!-- Page specific CSS -->
     {% block extra_css %}{% endblock %}
@@ -109,14 +109,15 @@
             </li>
 
         </ul>
-
         <div class="logout">
-            <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-            </a>
+            <form method="post" action="{% url 'logout' %}" style="margin:0">
+                {% csrf_token %}
+                <button type="submit" style="display:flex;align-items:center;gap:15px;padding:14px 18px;border-radius:12px;width:100%;background:none;border:none;cursor:pointer;font:inherit;color:#fff;text-align:left;outline:none">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
         </div>
-
     </aside>
 
     <!-- ===========================
