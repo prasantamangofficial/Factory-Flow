@@ -4,20 +4,38 @@
 {% block title %}FactoryFlow | Dashboard{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=4">
 {% endblock %}
 
 {% block content %}
 
 <section class="content">
 
-    <div class="page-header">
+    <div class="page-header dashboard-header">
 
-        <h1>Dashboard</h1>
+        <div class="page-heading">
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here's what's happening in your factory.</p>
+        </div>
 
-        <p>Welcome back! Here's what's happening in your factory.</p>
+        <nav class="period-tabs" aria-label="Date range">
+            {% for value, label in period_options %}
+            <a href="?period={{ value }}"
+               class="period-tab{% if value == period %} is-active{% endif %}"
+               {% if value == period %}aria-current="page"{% endif %}>{{ label }}</a>
+            {% endfor %}
+        </nav>
 
     </div>
+
+    {% if has_any_data and not income_total and not expense_total %}
+    <div class="period-hint">
+        <i class="fa-solid fa-circle-info"></i>
+        No income or expenses fall inside <strong>{{ period_label }}</strong>.
+        You do have records outside this range &mdash; try
+        <a href="?period=all">All Time</a>.
+    </div>
+    {% endif %}
 
     <div class="dashboard-cards">
 
@@ -30,7 +48,7 @@
             <div class="card-info">
                 <h4>Total Income</h4>
                 <h2>NPR {{ income_total|floatformat:0 }}</h2>
-                <span>This Month</span>
+                <span>{{ period_label }}</span>
             </div>
 
         </div>
@@ -44,7 +62,7 @@
             <div class="card-info">
                 <h4>Total Expenses</h4>
                 <h2>NPR {{ expense_total|floatformat:0 }}</h2>
-                <span>This Month</span>
+                <span>{{ period_label }}</span>
             </div>
 
         </div>
@@ -58,7 +76,7 @@
             <div class="card-info">
                 <h4>Net Profit</h4>
                 <h2>NPR {{ net_profit|floatformat:0 }}</h2>
-                <span>This Month</span>
+                <span>{{ period_label }}</span>
             </div>
 
         </div>
@@ -117,7 +135,7 @@
             <div class="chart-header">
                 <div>
                     <h3>Expense Breakdown</h3>
-                    <span>This Month</span>
+                    <span>{{ period_label }}</span>
                 </div>
             </div>
 

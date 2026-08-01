@@ -278,3 +278,90 @@ td{
     font-weight:600;
     text-decoration:none;
 }
+
+/* ==========================================
+   PERIOD TABS  (dashboard date-range filter)
+   Scoped to .dashboard-header so it can't disturb the .page-header
+   on other pages -- dashboard.css is @imported by style.css globally.
+========================================== */
+
+.dashboard-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.dashboard-header .page-heading{
+    min-width:0;
+}
+
+.period-tabs{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    padding:5px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    flex-shrink:0;
+}
+
+.period-tab{
+    display:inline-block;
+    padding:9px 16px;
+    border-radius:9px;
+    font-size:14px;
+    font-weight:500;
+    line-height:1;
+    white-space:nowrap;
+    color:var(--text-light);
+    text-decoration:none;
+    transition:background .15s ease, color .15s ease;
+}
+
+.period-tab:hover{
+    background:var(--background);
+    color:var(--text);
+}
+
+.period-tab.is-active{
+    background:var(--primary);
+    color:#fff;
+    font-weight:600;
+}
+
+.period-tab.is-active:hover{
+    background:var(--primary-dark);
+    color:#fff;
+}
+
+.period-tab:focus-visible{
+    outline:2px solid var(--primary);
+    outline-offset:2px;
+}
+
+/* ==========================================
+   EMPTY-PERIOD HINT
+========================================== */
+
+.period-hint{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+    padding:14px 18px;
+    border-radius:var(--radius);
+    background:#FEF3C7;
+    border:1px solid var(--warning);
+    color:#92400E;
+    font-size:14px;
+}
+
+.period-hint a{
+    color:#92400E;
+    font-weight:600;
+    text-decoration:underline;
+}
