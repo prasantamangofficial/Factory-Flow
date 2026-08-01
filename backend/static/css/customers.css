@@ -358,3 +358,78 @@ tbody tr:hover{
 .table-card a.action-btn:hover{
     opacity:.85;
 }
+
+/* ===========================
+   TABLE SEARCH
+=========================== */
+
+.table-search{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.search-field{
+    position:relative;
+    flex:1;
+    max-width:360px;
+}
+
+.search-field i{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.search-field input{
+    width:100%;
+    height:44px;
+    border:1px solid #d9e2ef;
+    border-radius:10px;
+    padding:0 14px 0 38px;
+    font-size:14px;
+    font-family:Poppins,sans-serif;
+    outline:none;
+}
+
+.search-field input:focus{
+    border-color:#4f46e5;
+}
+
+.search-btn{
+    height:44px;
+    padding:0 22px;
+    background:#4f46e5;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14px;
+    font-family:Poppins,sans-serif;
+    cursor:pointer;
+}
+
+.search-btn:hover{
+    background:#4338ca;
+}
+
+.search-clear{
+    height:44px;
+    padding:0 18px;
+    background:#f1f5f9;
+    color:#475569;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+}
+
+.search-clear:hover{
+    background:#e2e8f0;
+}

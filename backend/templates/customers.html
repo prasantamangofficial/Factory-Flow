@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Customers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/customers.css' %}?v=3">
+<link rel="stylesheet" href="{% static 'css/customers.css' %}?v=5">
 {% endblock %}
 
 {% block content %}
@@ -129,6 +129,17 @@ CUSTOMER DIRECTORY
 
     </div>
 
+    <form method="get" class="table-search">
+        <div class="search-field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="q" value="{{ q }}" placeholder="Search customers...">
+        </div>
+        <button type="submit" class="search-btn">Search</button>
+        {% if q %}
+        <a href="{% url 'customers' %}" class="search-clear">Clear</a>
+        {% endif %}
+    </form>
+
     <table>
 
         <thead>
@@ -177,7 +188,8 @@ CUSTOMER DIRECTORY
 
                     <form method="post" action="{% url 'customer_delete' c.pk %}">
                         {% csrf_token %}
-                        <button type="submit" class="action-btn delete-btn">
+                        <button type="submit" class="action-btn delete-btn"
+                                onclick="return confirm('Delete this customer?')">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </form>
@@ -188,7 +200,11 @@ CUSTOMER DIRECTORY
             {% empty %}
             <tr>
                 <td colspan="8" class="empty-row">
-                    No customers yet. Add one using the form above.
+                    {% if q %}
+                        No customers match "{{ q }}".
+                    {% else %}
+                        No customers yet. Add one using the form above.
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

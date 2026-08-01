@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Supplier
@@ -20,10 +21,23 @@ def suppliers(request):
     else:
         form = SupplierForm(instance=instance)
 
+    q = request.GET.get("q", "").strip()
+    records = Supplier.objects.all()
+
+    if q:
+        records = records.filter(
+            Q(name__icontains=q)
+            | Q(contact_person__icontains=q)
+            | Q(phone__icontains=q)
+            | Q(materials_supplied__icontains=q)
+            | Q(address__icontains=q)
+        )
+
     return render(request, "suppliers.html", {
         "form": form,
         "editing": instance,
-        "suppliers": Supplier.objects.all(),
+        "suppliers": records,
+        "q": q,
     })
 
 

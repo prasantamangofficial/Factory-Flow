@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Suppliers{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/suppliers.css' %}?v=5">
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}?v=7">
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@ ADD SUPPLIER ACCOUNT
 
 <div class="form-card">
 
-    <<div class="form-header">
+    <div class="form-header">
         <h2>
             <i class="fa-solid fa-truck"></i>
             {% if editing %}Edit {{ editing.name }}{% else %}Add Supplier Account{% endif %}
@@ -97,6 +97,17 @@ ACTIVE RAW MATERIAL VENDORS
 
     </div>
 
+    <form method="get" class="table-search">
+        <div class="search-field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="q" value="{{ q }}" placeholder="Search suppliers...">
+        </div>
+        <button type="submit" class="search-btn">Search</button>
+        {% if q %}
+        <a href="{% url 'suppliers' %}" class="search-clear">Clear</a>
+        {% endif %}
+    </form>
+
     <table>
 
         <thead>
@@ -136,7 +147,8 @@ ACTIVE RAW MATERIAL VENDORS
 
                     <form method="post" action="{% url 'supplier_delete' s.pk %}">
                         {% csrf_token %}
-                        <button type="submit" class="action-btn delete">
+                        <button type="submit" class="action-btn delete"
+                                onclick="return confirm('Delete this supplier?')">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </form>
@@ -147,7 +159,11 @@ ACTIVE RAW MATERIAL VENDORS
             {% empty %}
             <tr>
                 <td colspan="7" class="empty-row">
-                    No suppliers yet. Add one using the form above.
+                    {% if q %}
+                        No suppliers match "{{ q }}".
+                    {% else %}
+                        No suppliers yet. Add one using the form above.
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
