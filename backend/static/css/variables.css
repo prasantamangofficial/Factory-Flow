@@ -39,61 +39,27 @@
 
 }
 
-/* DARK THEME */
+/* DARK THEME - black and blue */
 
 html[data-theme="dark"]{
 
-    --primary:#3B82F6;
-    --primary-dark:#2563EB;
-
-    --background:#0B1120;
-    --card:#151E2E;
-
-    --sidebar:#0A0F1A;
-
-    --text:#E5E7EB;
-    --text-light:#94A3B8;
-
-    --success:#34D399;
-    --warning:#FBBF24;
-    --danger:#F87171;
-
-    --border:#2A3547;
-
-    --shadow:0 8px 25px rgba(0,0,0,.45);
-
-}
-
-/* ==========================================
-   DARK THEME  —  black & blue
-========================================== */
-
-html[data-theme="dark"]{
-
-    /* Primary — lifted, because #2563EB goes muddy on near-black */
     --primary:#3B82F6;
     --primary-dark:#60A5FA;
 
-    /* Background — near-black with a blue cast, not neutral grey */
     --background:#080D18;
     --card:#111B2E;
 
-    /* Sidebar — darker than the cards so it still reads as a panel */
     --sidebar:#050A12;
 
-    /* Text */
     --text:#E8EDF5;
     --text-light:#8FA3BF;
 
-    /* Status — desaturated; full-strength greens and reds glare on dark */
     --success:#34D399;
     --warning:#FBBF24;
     --danger:#F87171;
 
-    /* Border — visible against the cards without drawing attention */
     --border:#1E2C45;
 
-    /* Shadow — deeper, since a soft grey shadow is invisible on black */
     --shadow:0 8px 25px rgba(0,0,0,.55);
 
 }

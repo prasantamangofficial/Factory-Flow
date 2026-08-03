@@ -1,9 +1,9 @@
-@import url("variables.css");
-@import url("layout.css");
-@import url("sidebar.css");
-@import url("navbar.css");
-@import url("dashboard.css");
-@import url("responsive.css");
+@import url("variables.css?v=6");
+@import url("layout.css?v=6");
+@import url("sidebar.css?v=6");
+@import url("navbar.css?v=6");
+@import url("dashboard.css?v=6");
+@import url("responsive.css?v=6");
 
 *{
     margin:0;
