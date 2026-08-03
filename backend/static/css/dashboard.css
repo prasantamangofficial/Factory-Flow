@@ -412,3 +412,12 @@ html[data-theme="dark"] .period-hint{
 html[data-theme="dark"] .period-hint a{
     color:#FCD34D;
 }
+
+html[data-theme="dark"] th{
+    background:#1A2433;
+    color:var(--text-light);
+}
+
+html[data-theme="dark"] .card:hover{
+    box-shadow:0 10px 25px rgba(0,0,0,.5);
+}

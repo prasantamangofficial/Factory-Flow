@@ -39,27 +39,27 @@
 
 }
 
-/* DARK THEME - black and blue */
+/* DARK THEME - navy and blue */
 
 html[data-theme="dark"]{
 
-    --primary:#3B82F6;
-    --primary-dark:#60A5FA;
+    --primary:#2563EB;
+    --primary-dark:#3B82F6;
 
-    --background:#080D18;
-    --card:#111B2E;
+    --background:#0B111C;
+    --card:#151E2C;
 
-    --sidebar:#050A12;
+    --sidebar:#0A0F19;
 
-    --text:#E8EDF5;
-    --text-light:#8FA3BF;
+    --text:#F1F5F9;
+    --text-light:#94A3B8;
 
-    --success:#34D399;
-    --warning:#FBBF24;
-    --danger:#F87171;
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
 
-    --border:#1E2C45;
+    --border:#1F2937;
 
-    --shadow:0 8px 25px rgba(0,0,0,.55);
+    --shadow:0 4px 18px rgba(0,0,0,.35);
 
 }
