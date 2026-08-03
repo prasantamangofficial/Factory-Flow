@@ -37,15 +37,15 @@
 }
 
 .card{
-    background:#fff;
+    background:var(--card);
     border-radius:16px;
     padding:18px;
     display:flex;
     align-items:center;
     gap:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,.06);
+    box-shadow:var(--shadow);
     transition:.3s;
-    border:1px solid #ececec;
+    border:1px solid var(--border);
 }
 
 .card:hover{
@@ -62,6 +62,10 @@
     align-items:center;
     font-size:20px;
 }
+
+/* Icon chips: pale fill + saturated glyph in light mode.
+   In dark mode the pale fills glare, so they become dim tints
+   of the same hue with a brighter glyph. */
 
 .income-icon{
     background:#dcfce7;
@@ -88,9 +92,34 @@
     color:#7c3aed;
 }
 
+html[data-theme="dark"] .income-icon{
+    background:#0F2E1F;
+    color:#4ADE80;
+}
+
+html[data-theme="dark"] .expense-icon{
+    background:#3A1517;
+    color:#F87171;
+}
+
+html[data-theme="dark"] .profit-icon{
+    background:#12243F;
+    color:#60A5FA;
+}
+
+html[data-theme="dark"] .material-icon{
+    background:#33260A;
+    color:#FBBF24;
+}
+
+html[data-theme="dark"] .product-icon{
+    background:#221A3D;
+    color:#A78BFA;
+}
+
 .card-info h4{
     font-size:14px;
-    color:#666;
+    color:var(--text-light);
     margin-bottom:8px;
     font-weight:500;
 }
@@ -99,11 +128,12 @@
     font-size:18px;
     font-weight:700;
     margin-bottom:6px;
+    color:var(--text);
 }
 
 .card-info span{
     font-size:13px;
-    color:#16a34a;
+    color:var(--success);
 }
 
 /* Dashboard Chart Section */
@@ -116,11 +146,11 @@
 }
 
 .chart-card{
-    background:#fff;
+    background:var(--card);
     border-radius:16px;
     padding:20px;
-    box-shadow:0 4px 18px rgba(0,0,0,.06);
-    border:1px solid #ececec;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
 }
 
 .chart-header{
@@ -130,13 +160,13 @@
 .chart-header h3{
     font-size:24px;
     font-weight:600;
-    color:#222;
+    color:var(--text);
     margin-bottom:4px;
 }
 
 .chart-header span{
     font-size:14px;
-    color:#777;
+    color:var(--text-light);
 }
 
 /* Revenue Chart */
@@ -203,7 +233,7 @@
     align-items:center;
     justify-content:space-between;
     font-size:14px;
-    color:#444;
+    color:var(--text);
 }
 
 .legend-item span:nth-child(2){
@@ -238,11 +268,11 @@
 }
 
 .table-card{
-    background:#fff;
+    background:var(--card);
     border-radius:16px;
     padding:20px;
-    box-shadow:0 4px 18px rgba(0,0,0,.06);
-    border:1px solid #ececec;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
     overflow:hidden;
 }
 
@@ -250,6 +280,7 @@
     margin-bottom:18px;
     font-size:26px;
     font-weight:600;
+    color:var(--text);
 }
 
 table{
@@ -258,23 +289,30 @@ table{
 }
 
 th{
-    background:#f5f7fb;
+    background:var(--background);
     padding:14px;
     text-align:left;
     font-size:14px;
+    color:var(--text-light);
 }
 
 td{
     padding:14px;
-    border-bottom:1px solid #ececec;
+    border-bottom:1px solid var(--border);
     font-size:14px;
+    color:var(--text);
+}
+
+.empty-row{
+    color:var(--text-light);
+    text-align:center;
 }
 
 .view-all{
     display:block;
     text-align:center;
     margin-top:20px;
-    color:#2563eb;
+    color:var(--primary);
     font-weight:600;
     text-decoration:none;
 }
@@ -364,4 +402,13 @@ td{
     color:#92400E;
     font-weight:600;
     text-decoration:underline;
+}
+
+html[data-theme="dark"] .period-hint{
+    background:#2A1F06;
+    color:#FCD34D;
+}
+
+html[data-theme="dark"] .period-hint a{
+    color:#FCD34D;
 }
