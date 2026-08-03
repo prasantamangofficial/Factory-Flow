@@ -142,3 +142,35 @@
     cursor:pointer;
 
 }
+/* THEME TOGGLE */
+
+.theme-btn{
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--border);
+    outline:none;
+
+    background:var(--card);
+    color:var(--text-light);
+
+    border-radius:10px;
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:background .2s ease, color .2s ease;
+
+}
+
+.theme-btn:hover{
+
+    background:var(--primary);
+    color:#fff;
+
+}

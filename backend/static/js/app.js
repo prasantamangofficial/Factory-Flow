@@ -118,3 +118,41 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error("Chart data failed:", err));
 });
+
+/* THEME TOGGLE*/
+
+(function () {
+    const STORAGE_KEY = "factoryflow-theme";
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+
+        const icon = document.querySelector("#themeToggle i");
+        if (icon) {
+            icon.className = theme === "dark"
+                ? "fa-solid fa-sun"
+                : "fa-solid fa-moon";
+        }
+    }
+
+    // Saved choice wins; otherwise follow the operating system.
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(saved || (prefersDark ? "dark" : "light"));
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("themeToggle");
+        if (!btn) return;
+
+        // Re-apply now that the icon element exists.
+        applyTheme(document.documentElement.getAttribute("data-theme"));
+
+        btn.addEventListener("click", () => {
+            const next = document.documentElement.getAttribute("data-theme") === "dark"
+                ? "light"
+                : "dark";
+            applyTheme(next);
+            localStorage.setItem(STORAGE_KEY, next);
+        });
+    });
+})();
