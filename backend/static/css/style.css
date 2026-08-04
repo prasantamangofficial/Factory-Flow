@@ -1,9 +1,9 @@
-@import url("variables.css?v=14");
-@import url("layout.css?v=14");
-@import url("sidebar.css?v=14");
-@import url("navbar.css?v=14");
-@import url("dashboard.css?v=14");
-@import url("responsive.css?v=14");
+@import url("variables.css?v=15");
+@import url("layout.css?v=15");
+@import url("sidebar.css?v=15");
+@import url("navbar.css?v=15");
+@import url("dashboard.css?v=15");
+@import url("responsive.css?v=15");
 *{
     margin:0;
     padding:0;
@@ -187,4 +187,24 @@ html[data-theme="dark"] .stat-row{
     background:var(--background);
     border:1px solid var(--border);
     color:var(--text);
+}
+/* Reports page - any remaining white panels */
+
+html[data-theme="dark"] .export-card,
+html[data-theme="dark"] .export-box,
+html[data-theme="dark"] .action-card,
+html[data-theme="dark"] .download-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    color:var(--text);
+}
+
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4{
+    color:var(--text);
+}
+
+html[data-theme="dark"] p{
+    color:var(--text-light);
 }
