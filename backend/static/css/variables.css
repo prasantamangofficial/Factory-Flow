@@ -46,20 +46,20 @@ html[data-theme="dark"]{
     --primary:#2563EB;
     --primary-dark:#3B82F6;
 
-    --background:#0B111C;
-    --card:#151E2C;
+    --background:#0E1520;
+    --card:#161F2E;
 
-    --sidebar:#0A0F19;
+    --sidebar:#0A1017;
 
-    --text:#F1F5F9;
+    --text:#FFFFFF;
     --text-light:#94A3B8;
 
     --success:#22C55E;
     --warning:#F59E0B;
     --danger:#EF4444;
 
-    --border:#1F2937;
+    --border:#243044;
 
-    --shadow:0 4px 18px rgba(0,0,0,.35);
+    --shadow:0 4px 18px rgba(0,0,0,.30);
 
 }
