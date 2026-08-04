@@ -166,3 +166,25 @@ html[data-theme="dark"] .total-row td{
     background:var(--background);
     color:var(--text);
 }
+/* Reports page panels */
+
+html[data-theme="dark"] .report-chart,
+html[data-theme="dark"] .chart-box,
+html[data-theme="dark"] .analytics-card,
+html[data-theme="dark"] .production-summary,
+html[data-theme="dark"] .summary-box,
+html[data-theme="dark"] .panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    color:var(--text);
+}
+
+/* The striped summary rows on the right */
+
+html[data-theme="dark"] .summary-item,
+html[data-theme="dark"] .summary-row,
+html[data-theme="dark"] .stat-row{
+    background:var(--background);
+    border:1px solid var(--border);
+    color:var(--text);
+}

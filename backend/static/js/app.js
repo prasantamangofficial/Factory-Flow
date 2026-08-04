@@ -1,5 +1,12 @@
 console.log("FactoryFlow Loaded Successfully");
-
+// Chart.js draws onto a canvas, so CSS can't reach its text or gridlines.
+// Read the theme and set them explicitly.
+function applyChartTheme() {
+    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+    Chart.defaults.color = dark ? "#94A3B8" : "#666";
+    Chart.defaults.borderColor = dark ? "#243044" : "#e5e7eb";
+}
+applyChartTheme();
 const PIE_COLORS = [
     "#2563eb", "#22c55e", "#f59e0b",
     "#8b5cf6", "#ef4444", "#9ca3af",
