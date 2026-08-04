@@ -15,6 +15,6 @@
 
 .content{
     padding:35px;
-    background:#f5f7fb;
+    background:var(--background);
     min-height:100vh;
 }
