@@ -13,7 +13,7 @@ from products.views import products, product_delete
 from suppliers.views import suppliers, supplier_delete
 from customers.views import customers, customer_delete
 from reports.views import reports, reports_charts, reports_export
-from settings_app.views import settings as settings_view
+from settings_app.views import settings as settings_view, settings_backup
 
 urlpatterns = [
     path("admin/", admin.site.urls),
