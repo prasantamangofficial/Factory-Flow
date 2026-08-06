@@ -112,3 +112,61 @@ def settings_backup(request):
     response["Content-Disposition"] = (
         f'attachment; filename="factoryflow-backup-{stamp}.json"')
     return response
+
+
+@login_required
+def settings_restore(request):
+    """
+    Restore business records from a backup JSON file.
+
+    Guardrails, because this is the most destructive action in the app:
+      - only accepts models in BACKUP_MODELS, so a stray fixture can't
+        touch users, sessions or admin logs
+      - runs inside a transaction, so a partial failure rolls back whole
+      - refuses anything that isn't valid JSON in Django's fixture shape
+    """
+    if request.method != "POST" or "backup_file" not in request.FILES:
+        return redirect("settings")
+
+    upload = request.FILES["backup_file"]
+
+    if upload.size > 20 * 1024 * 1024:
+        messages.error(request, "That file is larger than 20 MB. Restore refused.")
+        return redirect("settings")
+
+    try:
+        raw = upload.read().decode("utf-8")
+        records = json.loads(raw)
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        messages.error(request, "That file isn't valid JSON. Nothing was changed.")
+        return redirect("settings")
+
+    if not isinstance(records, list) or not records:
+        messages.error(request, "That file isn't a FactoryFlow backup. Nothing was changed.")
+        return redirect("settings")
+
+    allowed = {f"{m._meta.app_label}.{m._meta.model_name}" for m in BACKUP_MODELS}
+    found = {r.get("model") for r in records if isinstance(r, dict)}
+
+    if not found or not found.issubset(allowed):
+        unexpected = ", ".join(sorted(found - allowed)) or "none recognised"
+        messages.error(
+            request,
+            f"That file contains records this app won't restore ({unexpected}). "
+            f"Nothing was changed.")
+        return redirect("settings")
+
+    try:
+        with transaction.atomic():
+            restored = 0
+            for obj in serializers.deserialize("json", raw):
+                obj.save()
+                restored += 1
+    except Exception as exc:
+        messages.error(
+            request,
+            f"Restore failed and was rolled back — your data is unchanged. ({exc})")
+        return redirect("settings")
+
+    messages.success(request, f"Restored {restored} records from {upload.name}.")
+    return redirect("settings")
