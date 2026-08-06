@@ -9,6 +9,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core import serializers
 from django.http import HttpResponse
+from django.db import transaction
 from django.shortcuts import render, redirect
 
 from customers.models import Customer

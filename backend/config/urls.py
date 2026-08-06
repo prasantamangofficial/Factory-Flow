@@ -13,7 +13,7 @@ from products.views import products, product_delete
 from suppliers.views import suppliers, supplier_delete
 from customers.views import customers, customer_delete
 from reports.views import reports, reports_charts, reports_export
-from settings_app.views import settings as settings_view, settings_backup
+from settings_app.views import settings as settings_view, settings_backup, settings_restore
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -64,6 +64,7 @@ urlpatterns = [
     # Settings
     path("settings/", settings_view, name="settings"),
     path("settings/backup/", settings_backup, name="settings_backup"),
+    path("settings/restore/", settings_restore, name="settings_restore"),
 ]
 
 if settings.DEBUG:
