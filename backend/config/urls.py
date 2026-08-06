@@ -63,6 +63,7 @@ urlpatterns = [
 
     # Settings
     path("settings/", settings_view, name="settings"),
+    path("settings/backup/", settings_backup, name="settings_backup"),
 ]
 
 if settings.DEBUG:
