@@ -363,3 +363,50 @@ width:100%;
 }
 
 }
+
+/* The form is a grid; the footer must span all columns, not occupy one cell. */
+
+.settings-form .form-footer{
+    grid-column:1 / -1;
+    display:flex;
+    justify-content:flex-end;
+    padding-top:8px;
+}
+
+/* The password form is a single column, so its button shouldn't stretch. */
+
+.settings-form.stacked{
+    display:block;
+}
+
+.settings-form.stacked .form-group{
+    margin-bottom:16px;
+}
+
+.settings-form.stacked button{
+    width:auto;
+    padding:12px 22px;
+}
+
+/* Help text and validation errors */
+
+.settings-form .form-group small{
+    display:block;
+    margin-top:6px;
+    font-size:12px;
+    color:var(--text-light);
+}
+
+.settings-form .form-group ul.errorlist{
+    list-style:none;
+    margin-top:6px;
+    font-size:12px;
+    color:var(--danger);
+}
+
+/* Checkbox shouldn't stretch to full field width */
+
+.form-group-check input[type="checkbox"]{
+    width:18px;
+    height:18px;
+}
