@@ -410,3 +410,112 @@ width:100%;
     width:18px;
     height:18px;
 }
+
+/* ==========================================
+   BACKUP & RESTORE
+========================================== */
+
+.restore-item{
+    display:block;
+    padding-top:4px;
+}
+
+.restore-form{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:14px;
+    flex-wrap:wrap;
+}
+
+.restore-form input[type="file"]{
+    flex:1;
+    min-width:180px;
+    padding:9px 12px;
+    font-size:13px;
+    color:var(--text-light);
+    background:var(--background);
+    border:1px dashed var(--border);
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* The only way to style the native "Choose File" button */
+
+.restore-form input[type="file"]::file-selector-button{
+    margin-right:12px;
+    padding:7px 14px;
+    font:inherit;
+    font-size:13px;
+    font-weight:500;
+    color:var(--text);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.restore-form input[type="file"]::file-selector-button:hover{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:#fff;
+}
+
+/* ==========================================
+   DARK MODE
+   Everything above hardcodes light colours, so the page stays white
+   when the theme flips. These override by specificity.
+========================================== */
+
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .table-card{
+    background:var(--card);
+    border:1px solid var(--border);
+}
+
+html[data-theme="dark"] .form-header,
+html[data-theme="dark"] .card-header,
+html[data-theme="dark"] .table-header{
+    border-bottom:1px solid var(--border);
+}
+
+html[data-theme="dark"] .page-header h1,
+html[data-theme="dark"] .form-header h2,
+html[data-theme="dark"] .card-header h2,
+html[data-theme="dark"] .table-header h2,
+html[data-theme="dark"] .setting-item h3{
+    color:var(--text);
+}
+
+html[data-theme="dark"] .page-header p,
+html[data-theme="dark"] .setting-item p,
+html[data-theme="dark"] .form-group label{
+    color:var(--text-light);
+}
+
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group select{
+    background:var(--background);
+    border:1px solid var(--border);
+    color:var(--text);
+}
+
+html[data-theme="dark"] .setting-item,
+html[data-theme="dark"] tbody td{
+    border-bottom:1px solid var(--border);
+}
+
+html[data-theme="dark"] tbody td{
+    color:var(--text);
+}
+
+html[data-theme="dark"] tbody td:first-child{
+    color:var(--text);
+}
+
+/* Native date/select arrows render black-on-black */
+
+html[data-theme="dark"] select{
+    color-scheme:dark;
+}

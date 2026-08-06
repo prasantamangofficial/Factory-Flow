@@ -4,7 +4,7 @@
 {% block title %}FactoryFlow | Settings{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/settings.css' %}?v=17">
+<link rel="stylesheet" href="{% static 'css/settings.css' %}?v=18">
 {% endblock %}
 
 {% block content %}
@@ -134,7 +134,7 @@
         <div class="card-header">
             <h2>
                 <i class="fa-solid fa-database"></i>
-                Backup
+                Backup &amp; Restore
             </h2>
         </div>
 
@@ -151,13 +151,22 @@
                 <a href="{% url 'settings_backup' %}" class="setting-btn blue">Download</a>
             </div>
 
-            <div class="setting-item">
+            <div class="setting-item restore-item">
                 <div>
-                    <h3>Restore</h3>
+                    <h3>Restore from Backup</h3>
                     <p>
-                        Restore from the command line:<br>
-                        <code>python manage.py loaddata backup.json</code>
+                        Uploads a FactoryFlow backup file and writes those records
+                        back. Records with the same ID are <strong>overwritten</strong>.
+                        Download a fresh backup first.
                     </p>
+
+                    <form method="post" action="{% url 'settings_restore' %}"
+                          enctype="multipart/form-data" class="restore-form"
+                          onsubmit="return confirm('This overwrites existing records with matching IDs. Continue?');">
+                        {% csrf_token %}
+                        <input type="file" name="backup_file" accept=".json" required>
+                        <button type="submit" class="setting-btn orange">Restore</button>
+                    </form>
                 </div>
             </div>
 
@@ -200,12 +209,6 @@
                 <td><strong>Signed in as</strong></td>
                 <td>{{ user.username }}</td>
             </tr>
-            {% for label, count in record_counts %}
-            <tr>
-                <td><strong>{{ label }}</strong></td>
-                <td>{{ count }}</td>
-            </tr>
-            {% endfor %}
         </tbody>
     </table>
 
