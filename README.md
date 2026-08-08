@@ -15,7 +15,7 @@ CSS, and vanilla JavaScript.
 
 | Dashboard (dark) | Dashboard (light) |
 |---|---|
-| _add screenshot_ | _add screenshot_ |
+| ![alt text](image.png) | ![alt text](image-1.png) |
 
 ---
 
